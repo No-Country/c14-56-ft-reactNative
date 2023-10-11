@@ -1,1 +1,0 @@
-const letra = 1
