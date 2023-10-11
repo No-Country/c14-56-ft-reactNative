@@ -1,0 +1,19 @@
+{
+  "name": "c14-56-ft-reactnative",
+  "version": "1.0.0",
+  "description": "proyecto basado en la aplicación movile de Twitter",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.4.0",
+    "@typescript-eslint/parser": "6.4.0",
+    "eslint": "8.47.0",
+    "eslint-plugin-react": "7.33.2",
+    "prettier": "^3.0.3"
+  }
+}
