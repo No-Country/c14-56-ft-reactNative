@@ -2,13 +2,14 @@ import * as functions from 'firebase-functions'
 import * as express from 'express'
 import * as logger from 'firebase-functions/logger'
 import * as cors from 'cors'
+import likesRoute from './routes/likesRoute'
 
 const app = express()
 app.use(express.json())
 
 app.use(cors())
 
-// app.use('/api/v1/auth')
+app.use('/api/v1/likes', likesRoute)
 
 // Define una ruta para obtener datos de PostgreSQL
 app.post('/api/v1/create', async (req, res) => {
