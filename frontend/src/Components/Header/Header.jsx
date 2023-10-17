@@ -1,5 +1,5 @@
 
-import logo from '../../../assets/img/logoLinkUp.png';
+import logo from '../../assets/img/logoLinkUp.png';
 import './Header.css';
 
 
