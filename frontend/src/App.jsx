@@ -1,8 +1,7 @@
 
-import Avatar from './Components/Home/Avatar/Avatar';
-import Header from './Components/Home/Header/Header';
-import NavBar from './Components/Home/NavBar/NavBar';
-import UserList from './Components/Home/UserList/UserList';
+import Avatar from './Components/Avatar/Avatar';
+import Header from './Components/Header/Header';
+import NavBar from './Components/NavBar/NavBar';
 //Agregar Import de ReactRouter, RouterDOM, etc
 
 const App = () => {
@@ -19,7 +18,6 @@ const App = () => {
         </NavBar>
 
       </Header>
-      <UserList/>
     </div>
   );
 };
