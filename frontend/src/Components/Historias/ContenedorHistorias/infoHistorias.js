@@ -3,26 +3,26 @@ export const infoHistorias = [
       "nombre": "Usuario 1",
       "imagenes": [
         "https://i.ebayimg.com/thumbs/images/g/DvMAAOSw1J5bhYo-/s-l225.jpg",
-        "URL_imagen_1_2",
-        "URL_imagen_1_3"
+        "https://www.anahuac.mx/mexico/sites/default/files/styles/webp/public/noticias/Los-colores-que-utilizamos-en-la-ropa-dicen-como-somos.jpg.webp?itok=k3GFCGkN",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT05f-Z7ShpdYOGCXP7xff4CTlFnc4CYsV5_ubGb_alQMnAtd2t1G7bPOSMj8CG_vmCbMQ&usqp=CAU"
       ],
       "imagen_perfil": 'https://www.menswearstyle.co.uk/content/blogs/1c0d1483-1249-4705-b879-a3c36b5a42e8_blog_tn_.jpg'
     },
     {
       "nombre": "Usuario 2",
       "imagenes": [
-        "URL_imagen_2_1",
-        "URL_imagen_2_2",
-        "URL_imagen_2_3"
+        "https://images.squarespace-cdn.com/content/v1/579202971b631b5dbc741986/1528320659483-X5HYGS9GC385XQTOEBLN/caring-for-your-clothes.jpg?format=750w",
+        "https://www.amba24.ar/u/fotografias/m/2021/7/25/f768x1-51072_51199_15.jpg",
+        "https://st3.depositphotos.com/1177973/14118/i/450/depositphotos_141182010-stock-photo-modern-casual-clothes.jpg"
       ],
       "imagen_perfil": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoA2kS2b6N6nBo22L7bUYnWuu3vWCTdouBLrCFm1MT1vPg-zfaT1WVsEGrInlkzdzrBrI'
     },
     {
       "nombre": "Usuario 3",
       "imagenes": [
-        "URL_imagen_3_1",
-        "URL_imagen_3_2",
-        "URL_imagen_3_3"
+        "https://i.pinimg.com/originals/cf/b1/63/cfb163d47a9edd655f9391cac817d0b9.jpg",
+        "https://i.pinimg.com/736x/7e/b6/dd/7eb6dd8ee6398e1fc27dda168aa2ec7b.jpg",
+        "https://i.pinimg.com/originals/6e/67/b3/6e67b39b84763860905f3f2637eede43.png"
       ],
       "imagen_perfil": 'https://muhimu.es/wp-content/uploads/2017/04/FRENTE-NITIDA.jpg'
     },

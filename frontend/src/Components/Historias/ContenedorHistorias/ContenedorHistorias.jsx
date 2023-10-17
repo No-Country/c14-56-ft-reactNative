@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import Historia from '../Historia';
-// import CrearHistoria from '../CrearHistoria';
 import ModalHistorias from '../ModalHistorias';
 
 import { infoHistorias } from './infoHistorias'
@@ -9,23 +8,21 @@ const ContenedorHistorias = () => {
   const mi_modal = useRef()
   const containerRef = useRef(null);
 
-  const historiaWidth = 300;
-
+  let [actualIndex, setActualIndex] = useState(0)
+  
   let info = infoHistorias
 
   const scrollLeft = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft -= historiaWidth;
+      containerRef.current.scrollLeft -= 300;
     }
   };
 
   const scrollRight = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += historiaWidth;
+      containerRef.current.scrollLeft += 300;
     }
   };
-
-  const [actualIndex, setActualIndex] = useState(0)
 
   const openModal = (e) => {
     if (mi_modal.current) {
@@ -45,17 +42,30 @@ const ContenedorHistorias = () => {
     </div>
   );
 
-  const elementosRepetidos = Array(info.length).fill(null);
-  
+  const tomarTodasLasImagenes = () => {
+    let imagenes = []
+
+    for (let i of info) {
+      imagenes.push(i.imagenes)
+    }
+
+    return(imagenes)
+  }
 
   return (
     <div className='relative w-max m-5'>
       <div className='relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar' ref={containerRef}>
-        
+
         <Historia />
 
-        {elementosRepetidos.map((_, index) => (
-          <div key={index}><HistoriasEjemplo nombre={info[index].nombre} index={index} perfil={info[index].imagen_perfil} /></div>
+        {info.map((_, index) => (
+          <div key={index}>
+            <HistoriasEjemplo
+              nombre={info[index].nombre}
+              index={index}
+              perfil={info[index].imagen_perfil}
+            />
+          </div>
         ))}
 
       </div>
@@ -63,7 +73,12 @@ const ContenedorHistorias = () => {
         <a className="btn btn-sm btn-circle drop-shadow-lg filter ml-3" onClick={scrollLeft}>❮</a>
         <a className="btn btn-sm btn-circle drop-shadow-lg filter mr-3" onClick={scrollRight}>❯</a>
       </div>
-      <ModalHistorias mi_modal={mi_modal} imageUrls={info[actualIndex].imagenes} imageLength={info[actualIndex].imagenes.length} />
+      <ModalHistorias
+        mi_modal={mi_modal}
+        imageUrls={tomarTodasLasImagenes()}
+        imageLength={info[actualIndex].imagenes.length}
+        actualIndex={actualIndex}
+      />
     </div>
   );
 };
