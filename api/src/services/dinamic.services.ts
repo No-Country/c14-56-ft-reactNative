@@ -8,93 +8,70 @@ export class DinamicServices<T extends Document> {
     this.schemaModel = schemaModel
   }
 
-  async insert(data: any): Promise<T | null> {
-    try {
-      const response = await this.schemaModel.create(data)
-      return response
-    } catch (error) {
-      console.error('Error al insertar:', error)
-      return null
-    }
+  insert(data: any): Promise<T | null> {
+    return new Promise((resolve, reject) => {
+      const response = this.schemaModel.create(data)
+      if (!response) reject('Error! Insert action failed')
+
+      resolve(response)
+    })
   }
 
-  async getOne(userId: string): Promise<T | null> {
-    try {
-      if (!userId) {
-        console.log('ID no proporcionado')
-        return null
+  getOne(id: string): Promise<T | null> {
+    return new Promise((resolve, reject) => {
+      if (!id || !id.match(/^[0-9a-fA-F]{24}$/)) {
+        reject('Please type valid ID')
       }
 
-      if (!userId.match(/^[0-9a-fA-F]{24}$/)) {
-        console.log('ID no válido')
-        return null
-      }
-
-      const section = await this.schemaModel.findById(userId)
-      return section
-    } catch (error) {
-      console.error('Error al obtener sección:', error)
-      return null
-    }
+      const response = this.schemaModel.findById(id)
+      if (!response) reject('Error! Find action failed')
+      resolve(response)
+    })
   }
 
-  async findOne(user: IUser): Promise<T | null> {
-    try {
-      if (!user) {
-        console.log('Data is empty')
-        return null
+  findOne(data: IUser): Promise<T | null> {
+    return new Promise((resolve, reject) => {
+      if (!data) {
+        reject('Error! Select a valid data')
       }
 
-      const response = await this.schemaModel.findOne({ user })
-      return response
-    } catch (error) {
-      console.error('Error al obtener sección:', error)
-      return null
-    }
+      const response = this.schemaModel.findOne({ data })
+      if (!response) reject('Error! Find action failed')
+      resolve(response)
+    })
   }
 
-  async get(): Promise<T[]> {
-    return await this.schemaModel.find({})
+  get(): Promise<T[] | null> {
+    return new Promise((resolve, reject) => {
+      const response = this.schemaModel.find({})
+      if (!response) reject("Didn't find any match")
+      resolve(response)
+    })
   }
 
-  async update(userId: string, data: any): Promise<T | null> {
-    try {
-      if (!userId) {
-        console.log('ID no proporcionado')
-        return null
+  update(id: string, data: any): Promise<T | null> {
+    return new Promise((resolve, reject) => {
+      if (!id || !id.match(/^[0-9a-fA-F]{24}$/)) {
+        reject('ID no proporcionado')
       }
 
-      if (!userId.match(/^[0-9a-fA-F]{24}$/)) {
-        console.log('ID no válido')
-        return null
-      }
-
-      const section = await this.schemaModel.findByIdAndUpdate(userId, data, {
+      const response = this.schemaModel.findByIdAndUpdate(id, data, {
         new: true,
       })
-      return section
-    } catch (error) {
-      console.error('Error al actualizar sección:', error)
-      return null
-    }
+      if (!response) reject('Error! Update action failed')
+      resolve(response)
+    })
   }
 
   async delete(id: string): Promise<object | null> {
-    try {
-      if (!id) {
-        console.log('ID no proporcionado')
-        return null
+    return new Promise((resolve, reject) => {
+      if (!id || !id.match(/^[0-9a-fA-F]{24}$/)) {
+        reject('ID no proporcionado')
       }
 
-      if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        console.log('ID no válido')
-        return null
-      }
-
-      return await this.schemaModel.findByIdAndDelete(id)
-    } catch (error) {
-      console.error('Error al eliminar:', error)
-      return null
-    }
+      const response = this.schemaModel.findByIdAndDelete(id)
+      if (!response) reject('Error! Delete action failed')
+      resolve(response)
+    })
   }
 }

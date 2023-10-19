@@ -4,6 +4,7 @@ import cors from 'cors'
 
 import { router } from './routes'
 import dbConnect from './config/mongo'
+import fileUpload from 'express-fileupload'
 
 const app = express()
 const port = process.env.PORT || 3002
@@ -11,6 +12,14 @@ const port = process.env.PORT || 3002
 // Middlewares
 app.use(express.json())
 app.use(cors())
+
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/',
+    createParentPath: true,
+  })
+)
 
 app.use(router)
 

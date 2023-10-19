@@ -1,12 +1,19 @@
 import { Document } from 'mongoose'
 
+export interface IPhoto {
+  path: string
+  public_id: string
+  tag: string
+  format: string
+}
+
 export interface IUser extends Document {
   id: string
   name: string
   email: string
   password: string
   username: string
-  photoProfile: string
+  photoProfile: IPhoto
   role: string
   description: string
   birthday: Date
@@ -14,10 +21,16 @@ export interface IUser extends Document {
   status: number
 }
 
+export interface IHistory extends Document {
+  id: string
+  path: IPhoto
+  userId: string
+  status: number
+}
+
 export interface IMessages {
   id: string
   description: string
-  date: Date
   userSendId: string
   userReceiveId: string
 }

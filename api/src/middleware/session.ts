@@ -10,7 +10,6 @@ const verifySession = (req: RequestExt, res: Response, next: NextFunction) => {
     console.log(bearer)
 
     const reqJWT = bearer?.split(' ').pop()
-    console.log(reqJWT)
 
     const isValid = jwt.verifyToken(`${reqJWT}`)
     if (!isValid) {
