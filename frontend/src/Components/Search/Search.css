@@ -1,0 +1,26 @@
+.search-bar {
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 70px;
+}
+
+.search-icon {
+    margin-right: 100px;
+ 
+}
+
+.search-input {
+    background-color: aliceblue;
+    border: none;
+    align-content: center;
+    text-align: center;
+    padding: 0;
+    outline: none;
+    flex: 1;
+
+}
