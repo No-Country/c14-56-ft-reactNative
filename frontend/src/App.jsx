@@ -2,11 +2,14 @@
 import Avatar from './Components/Avatar/Avatar';
 import Header from './Components/Header/Header';
 import NavBar from './Components/NavBar/NavBar';
+<<<<<<< HEAD
 import Aside from './Components/Aside/Aside';
 
 import './main.css'
 
 
+=======
+>>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
 //Agregar Import de ReactRouter, RouterDOM, etc
 
 const App = () => {
@@ -17,6 +20,7 @@ const App = () => {
       <Header>
         <NavBar>
           <Avatar imageUrl={avatarImageUrl} />    {/*  Agregar Routes  */}
+<<<<<<< HEAD
 
             {userName}
          
@@ -29,6 +33,14 @@ const App = () => {
      
       
       
+=======
+         
+            {userName}
+         
+        </NavBar>
+
+      </Header>
+>>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
     </div>
   );
 };

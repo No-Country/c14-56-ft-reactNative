@@ -1,10 +1,18 @@
 .user-card {
     border: 1px solid #ccc;
+<<<<<<< HEAD
     background-color: #d9d9d9;
     border-top: none;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
     
+=======
+
+    border-top: none;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+
+>>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
     padding: 3px;
     margin-bottom: 10px;
     display: flex;
@@ -13,20 +21,28 @@
 
 }
 
+<<<<<<< HEAD
 .user-card h4{
     font-family: 'Roboto', sans-serif;
 }
+=======
+>>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
 .user-info {
     display: flex;
     align-items: center;
 }
 
 .user-text {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
     margin-right: 50px;
     color: black;
     font-family: 'Roboto', sans-serif;
 }
 
+<<<<<<< HEAD
 .user-name{
     margin-bottom: 0
 }
@@ -35,12 +51,21 @@
     margin-top: 0;
 }
 
+=======
+>>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
 .avatar img {
     width: 50px;
     height: 50px;
 }
 
+<<<<<<< HEAD
 
+=======
+.user-list {
+    max-width: 300px;
+    margin: 0 auto;
+}
+>>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
 
 .follow-button {
     background-color: #1F3054;
