@@ -7,7 +7,8 @@ import UserIcon from '../Icons/UserIcon/UserIcon';
 //agregar import de ReactRouter
 import MoreIcon from '../Icons/MoreIcon/MoreIcon';
 
-
+// pero no entiendo porque no funcionan los iconos
+//a vos a nivel local te funciona bien?
 
 const Navbar = ({ children }) => {
   return (

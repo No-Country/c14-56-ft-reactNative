@@ -78,7 +78,7 @@ export const infoHistorias = [
         "URL_imagen_3_2",
         "URL_imagen_3_3"
       ],
-      "imagen_perfil": ''
+      "imagen_perfil": 'https://previews.123rf.com/images/rawpixel/rawpixel1704/rawpixel170441704/76561515-retrato-de-personas-estudio-disparar-con-expresi%C3%B3n-de-cara-sonriente.jpg'
     },
     {
       "nombre": "Usuario 10",
@@ -87,7 +87,7 @@ export const infoHistorias = [
         "URL_imagen_3_2",
         "URL_imagen_3_3"
       ],
-      "imagen_perfil": ''
+      "imagen_perfil": 'https://static.vecteezy.com/system/resources/previews/001/131/187/non_2x/serious-man-portrait-real-people-high-definition-grey-background-photo.jpg'
     },
     {
       "nombre": "Usuario 11",
@@ -96,6 +96,6 @@ export const infoHistorias = [
         "URL_imagen_3_2",
         "URL_imagen_3_3"
       ],
-      "imagen_perfil": ''
+      "imagen_perfil": 'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'
     },
   ]

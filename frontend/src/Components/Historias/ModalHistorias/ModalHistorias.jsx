@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useImageStore from '../../../../store';
+import useImageStore from '../../../store';
 import './ModalHistorias.css'
 
 import { infoHistorias } from '../ContenedorHistorias/infoHistorias';
