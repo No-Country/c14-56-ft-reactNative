@@ -29,13 +29,15 @@ export class DinamicServices<T extends Document> {
     })
   }
 
-  findOne(data: IUser): Promise<T | null> {
+  findByParams(data: any): Promise<T | null> {
     return new Promise((resolve, reject) => {
       if (!data) {
         reject('Error! Select a valid data')
       }
 
-      const response = this.schemaModel.findOne({ data })
+      const response = this.schemaModel
+        .findOne({ data })
+        .sort({ createdAt: -1 })
       if (!response) reject('Error! Find action failed')
       resolve(response)
     })
@@ -43,7 +45,7 @@ export class DinamicServices<T extends Document> {
 
   get(): Promise<T[] | null> {
     return new Promise((resolve, reject) => {
-      const response = this.schemaModel.find({})
+      const response = this.schemaModel.find({}).sort({ createdAt: -1 })
       if (!response) reject("Didn't find any match")
       resolve(response)
     })
@@ -63,7 +65,7 @@ export class DinamicServices<T extends Document> {
     })
   }
 
-  async delete(id: string): Promise<object | null> {
+  delete(id: string): Promise<object | null> {
     return new Promise((resolve, reject) => {
       if (!id || !id.match(/^[0-9a-fA-F]{24}$/)) {
         reject('ID no proporcionado')

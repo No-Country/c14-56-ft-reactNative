@@ -35,28 +35,27 @@ export interface IMessages {
   userReceiveId: string
 }
 
-export interface IPublication {
+export interface IPublication extends Document {
   id: string
   description: string
-  date: Date
-  role: string
+  image: IPhoto
   userId: string
-  status: string
+  status: number
 }
 
-export interface IFollower {
+export interface IFollower extends Document {
   id: string
   userFollower: string
-  userFollow: string
+  userFollowed: string
 }
 
-export interface ILike {
+export interface ILike extends Document {
   id: string
   publicationId: string
   userId: string
 }
 
-export interface ICommets {
+export interface ICommets extends Document {
   id: string
   text: string
   date: Date
