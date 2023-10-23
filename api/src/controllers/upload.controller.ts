@@ -6,6 +6,9 @@ import { Upload } from '../services/upload.services'
 import UserModel from '../models/schema/user'
 import HistoryModel from '../models/schema/history'
 
+const removeTagValidation = ['profile']
+const multiUploadValidation = ['history']
+
 const updatedImage = async (req: Request, res: Response) => {
   try {
     const { id, collection } = req.params
@@ -15,7 +18,9 @@ const updatedImage = async (req: Request, res: Response) => {
 
     // Validation
     if (!req.files || !req.files.file) {
-      return res.status(400).send('No files were uploaded.')
+      return res
+        .status(400)
+        .send('No files were uploaded or upload a valid extension.')
     }
 
     const file = req.files.file
@@ -34,6 +39,11 @@ const updatedImage = async (req: Request, res: Response) => {
     const { photoProfile } = model
 
     if (Array.isArray(file)) {
+      if (!multiUploadValidation.includes(collection)) {
+        console.error('This functionality is only to history tags')
+        res.status(400).json({ msg: 'Multiupload is only to history services' })
+      }
+
       const filesArray: UploadApiResponse[] = await FileUpload.multiUpload(file)
       const response: IHistory[] = []
 
@@ -59,16 +69,44 @@ const updatedImage = async (req: Request, res: Response) => {
       const { public_id, secure_url, format } =
         await FileUpload.singleUpload(file)
 
-      await FileUpload.deleteFile(photoProfile.public_id, photoProfile.tag)
+      let response
+      switch (collection) {
+        case 'profile':
+          await FileUpload.deleteFile(photoProfile.public_id, photoProfile.tag)
+          response = await User.update(id, {
+            photoProfile: {
+              path: secure_url,
+              public_id: public_id,
+              tag: collection,
+              format,
+            },
+          })
+          if (!response) {
+            throw new Error('Something went wrong during the upload')
+          }
+          break
 
-      const response = await User.update(id, {
-        photoProfile: {
-          path: secure_url,
-          public_id: public_id,
-          tag: collection,
-          format,
-        },
-      })
+        case 'history':
+          response = await History.insert({
+            path: {
+              path: secure_url,
+              public_id: public_id,
+              tag: collection,
+              format,
+            },
+            userId: id,
+          })
+          if (!response) {
+            throw new Error('Something went wrong during the upload')
+          }
+          break
+
+        case 'post':
+          break
+
+        default:
+          break
+      }
 
       res.status(200).json({ msg: 'Successful', data: response })
     }
