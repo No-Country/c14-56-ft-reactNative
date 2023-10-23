@@ -1,11 +1,6 @@
 import React from 'react';
 import UserCard from '../UserCard/UserCard';
 import './UserList.css';
-<<<<<<< HEAD
-import './UserList.css';
-
-=======
->>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
 
 const UserList = () => {
   const users = [
@@ -21,15 +16,11 @@ const UserList = () => {
 
   return (
     <div className="user-list">
-<<<<<<< HEAD
 
       <h3>Follow</h3>
 
       <h2 className='h2-follow'>Follow</h2>
 
-=======
-      <h2 className='h2-follow'>Follow</h2>
->>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
       {users.map((user, index) => (
         <UserCard
           key={index}
@@ -44,7 +35,3 @@ const UserList = () => {
 };
 
 export default UserList;
-<<<<<<< HEAD
-=======
-
->>>>>>> 82b96c39f46b66389fc7644c4bcabf7a1a9302ad
