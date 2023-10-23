@@ -6,7 +6,7 @@ import UserModel from '../models/schema/user'
 import { IUser } from '../interface/models.interface'
 import { handleHttp } from '../utils/error.handle'
 
-const user = new DinamicServices<IUser>(UserModel)
+const User = new DinamicServices<IUser>(UserModel)
 
 const getUsers = async (req: Request, res: Response) => {
   try {
@@ -63,8 +63,8 @@ const insertUser = async (req: Request, res: Response) => {
   try {
     const { body } = req
 
-    const user = new DinamicServices<IUser>(UserModel)
-    const response = await user.insert(body)
+    const User = new DinamicServices<IUser>(UserModel)
+    const response = await User.insert(body)
 
     res.send(response)
   } catch (e) {
@@ -77,8 +77,8 @@ const updateUser = async (req: Request, res: Response) => {
     if (!id) return
 
     const data = req?.body
-    const user = new DinamicServices<IUser>(UserModel)
-    const response = await user.update(id, data)
+    const User = new DinamicServices<IUser>(UserModel)
+    const response = await User.update(id, data)
 
     res.send(response)
   } catch (e) {
@@ -89,8 +89,8 @@ const deleteUser = async ({ params }: Request, res: Response) => {
   try {
     const { id } = params
 
-    const user = new DinamicServices<IUser>(UserModel)
-    const response = await user.delete(id)
+    const User = new DinamicServices<IUser>(UserModel)
+    const response = await User.delete(id)
 
     response != null
       ? res.send({

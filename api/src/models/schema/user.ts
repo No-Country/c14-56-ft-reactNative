@@ -22,7 +22,13 @@ const UserSchema = new Schema<IUser>(
       unique: true,
     },
     photoProfile: {
-      type: String,
+      type: Object,
+      default: {
+        path: 'https://res.cloudinary.com/dxbnpkfiw/image/upload/v1697654047/default/653004793a350c09e7358b7d/blnoaxqhs0rtli6gwdhw.svg',
+        public_id: 'default/653004793a350c09e7358b7d/blnoaxqhs0rtli6gwdhw',
+        tag: 'default',
+        format: 'svg',
+      },
     },
     role: {
       type: String,
@@ -49,6 +55,6 @@ const UserSchema = new Schema<IUser>(
   }
 )
 
-const SectionModel = model<IUser>('users', UserSchema, 'user')
+const UserModel = model<IUser>('users', UserSchema, 'user')
 
-export default SectionModel
+export default UserModel
