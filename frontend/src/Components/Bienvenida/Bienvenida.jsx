@@ -1,41 +1,22 @@
 import React, { useState } from 'react'
-import icon from '../../../assets/icon.png'
-import loginImage from '../../../assets/loginImage.png'
+
+import icon from '../../assets/icon.png'
+import loginImage from '../../assets/loginImage.png'
 import './Bienvenida.css'
+
+import SignIn from '../Formulario/SignIn'
+import SignUp from '../Formulario/SignUp'
 
 const Bienvenida = () => {
   const [mostrarForm, setMostrarForm] = useState(true)
-
-  const signInForm = () => (
-    <div>
-      <div className='flex flex-col justify-center align-center w-full h-full mt-10'>
-        <input
-          type="text"
-          placeholder="USERNAME"
-          className="input focus:outline-none w-4/5 max-w-xs bg-transparent my-4 mx-auto border-b-4 border-amber-200 rounded-none border-l-0 border-r-0 border-t-0 placeholder-slate-100"
-        />
-        <input
-          type="text"
-          placeholder="PASSWORD"
-          className="input focus:outline-none w-4/5 max-w-xs bg-transparent my-4 mx-auto border-b-4 border-amber-200 rounded-none border-l-0 border-r-0 border-t-0 placeholder-slate-100"
-        />
-      </div>
-      <button className="btn bg-fuchsia-400 ">Secondary</button>
-    </div>
-  )
-  const signUpForm = () => (
-    <div>
-      <p>chau</p>
-    </div>
-  )
 
   const formulario = () => {
     return (
       <div className='transition-opacity duration-500 text-white'>
         {mostrarForm ? (
-          signInForm()
+          <SignIn />
         ) : (
-          signUpForm()
+          <SignUp />
         )}
       </div>
     )
@@ -66,7 +47,7 @@ const Bienvenida = () => {
               onClick={() => setMostrarForm(false)}
             >sign up</button>
           </div>
-          <div className='transition-opacity duration-500' >
+          <div className='transition-opacity duration-500 flex flex-col text-slate-100' >
             {formulario()}
           </div>
         </div>

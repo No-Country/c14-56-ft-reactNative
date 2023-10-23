@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import useImageStore from '../../../../store';
+import useImageStore from '../../../store';
 import ModalHistorias from '../ModalHistorias';
 
 const Historia = () => {
