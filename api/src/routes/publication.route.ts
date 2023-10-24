@@ -16,7 +16,7 @@ const router = Router()
 router.get('/all/:id', getPublications)
 router.get('/own/:id', getOwnPublications)
 router.get('/:id', getOnePublication)
-router.post('/', insertPublication)
+router.post('/:collection/:id', insertPublication)
 router.put('/:id', updatePublication)
 router.delete('/:id', deletePublication)
 
