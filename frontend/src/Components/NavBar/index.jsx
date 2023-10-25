@@ -9,7 +9,7 @@ import MoreIcon from '@Icons/MoreIcon';
 // pero no entiendo porque no funcionan los iconos
 //a vos a nivel local te funciona bien?
 
-const Navbar = ({ children }) => {
+const index = ({ children }) => {
   return (
     <nav className="navbar">
       <ul className="ul">
@@ -30,4 +30,4 @@ const Navbar = ({ children }) => {
   );
 };
 
-export default Navbar;
+export default index;

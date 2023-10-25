@@ -1,8 +1,8 @@
 import React from 'react'
 
 import Avatar from '@Avatar'
-import Header from '@Components/Header';
-import NavBar from '@Components/NavBar/NavBar';
+import Header from '@Header';
+import NavBar from '@NavBar';
 
 const Index = () => {
   const avatarImageUrl = 'https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg';
