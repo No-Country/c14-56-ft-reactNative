@@ -1,7 +1,6 @@
-import React from 'react';
-import UserHeader from './UserHeader/UserHeader';
-import PostContent from './PostContent/PostContent';
-import InteractionButtons from './InteractionButtons/InteractionButtons';
+import UserHeader from '@UserHeader';
+import PostContent from '@PostContent';
+import InteractionButtons from '@PostButtons';
 
 import './Post.css'
 

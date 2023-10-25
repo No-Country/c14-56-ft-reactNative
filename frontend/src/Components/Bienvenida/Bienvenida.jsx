@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import icon from '../../assets/icon.png'
-import loginImage from '../../assets/loginImage.png'
+import icon from '@logo'
+import loginImage from '@loginImg'
 import './Bienvenida.css'
 
 import SignIn from '../Formulario/SignIn'

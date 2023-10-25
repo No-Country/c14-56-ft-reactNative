@@ -1,5 +1,5 @@
 import React from 'react'
-import ErrorType from '../Formulario/ErrorType';
+import ErrorType from '@FormError';
 
 const InputForm = ({ name, register, type, placeholder, errors }) => (
     <div className='flex justify-center'>

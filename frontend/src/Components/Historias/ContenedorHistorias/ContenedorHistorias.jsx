@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import Historia from '../Historia';
-import ModalHistorias from '../ModalHistorias';
+import Historia from '@Histories';
+import ModalHistorias from '@HistoriesModal';
 
 import { infoHistorias } from './infoHistorias'
 

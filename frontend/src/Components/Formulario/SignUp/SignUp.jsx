@@ -1,6 +1,5 @@
-import React from 'react';
-import ErrorType from '../ErrorType';
-import InputForm from '../../InputForm';
+import ErrorType from '@FormError';
+import InputForm from '@InputForm';
 import { useForm } from 'react-hook-form';
 
 const SignUp = () => {

@@ -1,7 +1,5 @@
-
-import logo from '../../assets/img/logoLinkUp.png';
+import logo from '@logo';
 import './Header.css';
-
 
 
 const Header = ({ children }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Trends.css';  // Importa el archivo CSS
 
 const Trends = () => {

@@ -1,12 +1,11 @@
-import Avatar from '../../Components/Avatar/Avatar'
-import Header from '../../Components/Header/Header';
-import NavBar from '../../Components/NavBar/NavBar';
+import Avatar from '@Avatar'
+import Header from '@Header';
+import NavBar from '@NavBar';
 //Agregar Import de ReactRouter, RouterDOM, etc
 
-import ContenedorHistorias from '../../Components/Historias/ContenedorHistorias'
-import UserList from '../../Components/UserList/UserList'
+import ContenedorHistorias from '@HistoriesContainer'
+import UserList from '@UserList'
 
-import React from 'react'
 
 const Home = () => {
   const avatarImageUrl = 'https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg';  //Imagen de Prueba, eliminar luego para dejar variable

@@ -1,5 +1,4 @@
-import React from 'react';
-import Avatar from '../Avatar/Avatar';
+import Avatar from '@Avatar';
 import './UserCard.css';
 
 const UserCard = ({ name, username, avatarUrl, onFollowClick }) => {

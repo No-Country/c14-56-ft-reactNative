@@ -1,5 +1,4 @@
-import React from 'react'
-import Bienvenida from '../../Components/Bienvenida'
+import Bienvenida from '@Welcome'
 
 const Login = () => {
   return (

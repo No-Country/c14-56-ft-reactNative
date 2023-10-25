@@ -1,17 +1,15 @@
-
-import React from 'react'
 import './Aside.css';
-import UserList from '../UserList/UserList';
-import Search from '../Search/Search';
-import Plus from '../Plus/Plus';
-import Trends from '../Trends/Trends'
-import UserCard from '../UserCard/UserCard';
+import UserList from '@UserList';
+import Search from '@Search';
+import Plus from '@Plus';
+import Trends from '@Trends'
+import UserCard from '@UserCard';
 
 
 const Aside = () => {
   return (
-    <div className='aside-container'>
-      <div className="aside-components">
+    <div className='index-container'>
+      <div className="index-components">
         <Search />
         <Plus />
         <Trends /> {/* Incorpora el componente Trends aquí */}
@@ -19,7 +17,7 @@ const Aside = () => {
           <UserCard />
         </UserList>
       </div>
-      <div className="aside-footer ">
+      <div className="index-footer ">
         <ul>
           <li><a href="/condiciones-de-servicio">Condiciones de Servicio </a>| </li>
           <li><a href="/politica-de-privacidad">Política de Privacidad</a> | </li>
@@ -28,11 +26,10 @@ const Aside = () => {
           <li><a href="/privacidad">Privacidad</a> | </li>
           <li><a href="/ayuda">Ayuda</a></li>
         </ul>
-        <p>&copy; 2023 LinkUp Corp.</p>
       </div>
+
     </div>
+  )
+}
 
-  );
-};
-
-export default Aside;
+export default Aside

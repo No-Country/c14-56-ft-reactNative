@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import useImageStore from '../../../store';
+import useImageStore from '@store';
 import './ModalHistorias.css'
 
-import { infoHistorias } from '../ContenedorHistorias/infoHistorias';
+import { infoHistorias } from '@HistoriesContainer/InfoHistorias';
 
 const ModalHistorias = ({ mi_modal, imageUrls, imageLength, actualIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
