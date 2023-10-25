@@ -3,13 +3,19 @@ import Historia from '@Histories';
 import ModalHistorias from '@HistoriesModal';
 
 import { infoHistorias } from './infoHistorias'
+import { useCookies } from 'react-cookie'
+
+import axios from 'axios'
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vcmNpbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY5ODIzODE5NywiZXhwIjoxNjk4MjQxNzk3fQ.A_egyEumSnWhqVA56k45wb3ezWUmYa6SxW8whVfG6O8
 
 const ContenedorHistorias = () => {
   const mi_modal = useRef()
   const containerRef = useRef(null);
 
   let [actualIndex, setActualIndex] = useState(0)
-  
+  const [cookies] = useCookies(['authToken']);
+
   let info = infoHistorias
 
   const scrollLeft = () => {
@@ -31,6 +37,23 @@ const ContenedorHistorias = () => {
     setActualIndex(e)
   };
 
+  const traerHistorias = () => {
+    let token = cookies.authToken;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    axios.get('http://localhost:3001/api/v1/historys', { headers })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  traerHistorias()
+
+
   const HistoriasEjemplo = ({ nombre, index, perfil }) => (
     <div className="text-center">
       <div className="avatar mt-3 mx-3 h-14 w-14 cursor-pointer" onClick={() => openModal(index)}>
@@ -49,7 +72,7 @@ const ContenedorHistorias = () => {
       imagenes.push(i.imagenes)
     }
 
-    return(imagenes)
+    return (imagenes)
   }
 
   return (
@@ -84,3 +107,4 @@ const ContenedorHistorias = () => {
 };
 
 export default ContenedorHistorias;
+//108

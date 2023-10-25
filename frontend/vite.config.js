@@ -6,8 +6,8 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
+    extensions: ['.js', '.jsx'],
     alias: {
-
       //Components
       '@Components': path.resolve(__dirname, 'src/components'),
       '@Header': path.resolve(__dirname, 'src/components/header/'),

@@ -78,7 +78,7 @@ const ModalHistorias = ({ mi_modal, imageUrls, imageLength, actualIndex }) => {
                     )}
                   </div>
                   <div className='h-full bg-slate-300 '>
-                      <img src={imageUrl} className='object-cover h-full' />
+                    <img src={imageUrl} className='object-cover h-full' />
 
                     <div
                       className={`absolute flex transform -translate-y-1/2 left-5 right-5 top-1/3 justify-between`}

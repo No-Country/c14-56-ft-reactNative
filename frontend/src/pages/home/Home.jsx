@@ -1,3 +1,4 @@
+import Aside from '@Aside'
 import Avatar from '@Avatar'
 import Header from '@Header';
 import NavBar from '@NavBar';
@@ -21,10 +22,9 @@ const Home = () => {
         </NavBar>
 
       </Header>
+
       <div className='flex'>
-        <div className='m-5'>
-          <UserList />
-        </div>
+        <Aside />
         <div className='mx-32' >
           <ContenedorHistorias />
         </div>
