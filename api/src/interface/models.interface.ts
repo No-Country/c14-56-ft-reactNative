@@ -53,12 +53,12 @@ export interface ILike extends Document {
   id: string
   publicationId: string
   userId: string
+  isLiked?: boolean
 }
 
-export interface ICommets extends Document {
+export interface ICommet extends Document {
   id: string
   text: string
-  date: Date
   publicationId: string
   userId: string
 }
