@@ -4,7 +4,7 @@ import './Header.css';
 
 
 
-const Header = ({ children }) => {
+const index = ({ children }) => {
   return (
     <header className="header">
       <div className="logo-container">
@@ -19,4 +19,4 @@ const Header = ({ children }) => {
   );
 };
 
-export default Header;
+export default index;

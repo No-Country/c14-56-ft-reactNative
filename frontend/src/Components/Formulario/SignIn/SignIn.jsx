@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import InputForm from '../../InputForm';
-import ErrorType from '../ErrorType';
+
+import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 const SignIn = () => {
   const { handleSubmit, formState: { errors }, register } = useForm();
   const [peticionErronea, setPeticionErronea] = useState(false);
 
+  const navigate = useNavigate()
+  const [, setAuthCookie] = useCookies(['authToken']);
+  const [, setUserIdCookie] = useCookies(['userId']);
+
   const llamarApi = (data) => {
     axios.post('http://localhost:3001/api/v1/auths/login', data)
       .then((res) => {
-        console.log(res.data.token);
+        setAuthCookie('authToken', res.data.token);
+        setUserIdCookie('userId', res.data.user._id);
         setPeticionErronea(false);
+        navigate('/home')
       })
       .catch((error) => {
         console.log(error);
