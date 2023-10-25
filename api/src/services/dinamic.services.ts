@@ -29,7 +29,7 @@ export class DinamicServices<T extends Document> {
     })
   }
 
-  findByParams(data: any): Promise<T[] | null> {
+  findByParams(data: any, order: any = -1): Promise<T[] | null> {
     return new Promise(async (resolve, reject) => {
       if (!data) {
         reject('Error! Select a valid data')
@@ -39,7 +39,7 @@ export class DinamicServices<T extends Document> {
       try {
         const response = await this.schemaModel
           .find(data)
-          .sort({ createdAt: -1 })
+          .sort({ createdAt: order })
         resolve(response)
       } catch (error) {
         reject('Error! Find action failed')

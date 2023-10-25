@@ -12,6 +12,6 @@ const router = Router()
 
 router.get('/:publication/:user', getLikes)
 router.post('/:publication/:user', insertLike)
-router.delete('/:publication/:user', deleteLike)
+router.delete('/:id', deleteLike)
 
 export { router }

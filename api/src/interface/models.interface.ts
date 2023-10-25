@@ -56,7 +56,7 @@ export interface ILike extends Document {
   isLiked?: boolean
 }
 
-export interface ICommet extends Document {
+export interface IComment extends Document {
   id: string
   text: string
   publicationId: string

@@ -7,7 +7,6 @@ const verifySession = (req: RequestExt, res: Response, next: NextFunction) => {
   try {
     const jwt = new JWT()
     const bearer = req.headers.authorization
-    console.log(bearer)
 
     const reqJWT = bearer?.split(' ').pop()
 
