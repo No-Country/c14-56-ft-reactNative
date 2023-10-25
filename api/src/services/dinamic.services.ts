@@ -29,7 +29,14 @@ export class DinamicServices<T extends Document> {
     })
   }
 
-  findByParams(data: any, order: any = -1): Promise<T[] | null> {
+  findByParams(
+    data: any,
+    page: number = 1,
+    limit: number = 10,
+    order: any = -1
+  ): Promise<T[] | null> {
+    const skip = (page - 1) * limit
+
     return new Promise(async (resolve, reject) => {
       if (!data) {
         reject('Error! Select a valid data')
@@ -40,6 +47,8 @@ export class DinamicServices<T extends Document> {
         const response = await this.schemaModel
           .find(data)
           .sort({ createdAt: order })
+          .skip(skip)
+          .limit(limit)
         resolve(response)
       } catch (error) {
         reject('Error! Find action failed')
@@ -47,9 +56,17 @@ export class DinamicServices<T extends Document> {
     })
   }
 
-  get(): Promise<T[] | null> {
+  get(pageNumber?: string, limitNumber?: string): Promise<T[] | null> {
+    const page = parseInt(pageNumber as string) || 1
+    const limit = parseInt(limitNumber as string) || 10
+    const skip = (page - 1) * limit
+
     return new Promise((resolve, reject) => {
-      const response = this.schemaModel.find({}).sort({ createdAt: -1 })
+      const response = this.schemaModel
+        .find({})
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
       if (!response) reject("Didn't find any match")
       resolve(response)
     })

@@ -8,12 +8,27 @@ import { handleHttp } from '../utils/error.handle'
 
 const getHistories = async (req: Request, res: Response) => {
   try {
-    const History = new DinamicServices<IHistory>(HistoryModel)
-    const response = await History.get()
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 10
 
-    res.send(response)
+    const History = new DinamicServices<IHistory>(HistoryModel)
+    const response = await History.findByParams({}, page, limit, 1)
+
+    if (!response || response.length === 0) {
+      return res.status(204).json({
+        msg: 'No content',
+      })
+    }
+
+    res.json({
+      msg: 'Successsful',
+      data: response,
+      page,
+      limit,
+      total: response.length,
+    })
   } catch (e) {
-    handleHttp(res, 'ERROR_GET_SECTIONS', e)
+    console.error({ e })
   }
 }
 
@@ -33,27 +48,34 @@ const getHistory = async ({ params }: Request, res: Response) => {
           msg: 'Sorry, we are not find anything by this params',
         })
   } catch (e) {
-    handleHttp(res, 'ERROR_GET_SECTIONS', e)
+    console.error({ e })
   }
 }
 
-const getHistoryByParams = async ({ params }: Request, res: Response) => {
+const getHistoryByParams = async (req: Request, res: Response) => {
   try {
-    const { id } = params
+    const { id } = req.params
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 10
 
     const History = new DinamicServices<IHistory>(HistoryModel)
-    const response = await History.findByParams({ _id: id })
+    const response = await History.findByParams({ _id: id }, page, limit)
 
-    response != null
-      ? res.send({
-          msg: 'Successfull!',
-          data: response,
-        })
-      : res.send({
-          msg: 'Sorry, we are not find anything by this params',
-        })
+    if (!response || response.length === 0) {
+      return res.status(204).json({
+        msg: 'No content',
+      })
+    }
+
+    res.json({
+      msg: 'Successsful',
+      data: response,
+      page,
+      limit,
+      total: response.length,
+    })
   } catch (e) {
-    handleHttp(res, 'ERROR_GET_SECTIONS', e)
+    console.error({ e })
   }
 }
 
@@ -66,7 +88,7 @@ const insertHistory = async (req: Request, res: Response) => {
 
     res.send(response)
   } catch (e) {
-    handleHttp(res, 'ERROR_GET_SECTIONS', e)
+    console.error({ e })
   }
 }
 const updateHistory = async (req: Request, res: Response) => {
@@ -80,7 +102,7 @@ const updateHistory = async (req: Request, res: Response) => {
 
     res.send(response)
   } catch (e) {
-    handleHttp(res, 'ERROR_GET_SECTIONS', e)
+    console.error({ e })
   }
 }
 const deleteHistory = async ({ params }: Request, res: Response) => {
@@ -99,7 +121,7 @@ const deleteHistory = async ({ params }: Request, res: Response) => {
           msg: 'Sorry, we are not find anything by this params',
         })
   } catch (e) {
-    handleHttp(res, 'ERROR_GET_SECTIONS', e)
+    console.error({ e })
   }
 }
 

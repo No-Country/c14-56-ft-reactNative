@@ -7,35 +7,59 @@ import { IPublication } from '../interface/models.interface'
 import { handleHttp } from '../utils/error.handle'
 import { Upload } from '../services/upload.services'
 
-const getPublications = async ({ params }: Request, res: Response) => {
+const getPublications = async (req: Request, res: Response) => {
   try {
-    const { id } = params
+    const { id } = req.params
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 10
 
-    const response = await PublicationModel.find({ userId: { $ne: id } }).sort({
-      createdAt: -1,
+    const Publication = new DinamicServices<IPublication>(PublicationModel)
+    const response = await Publication.findByParams(
+      { userId: { $ne: id } },
+      page,
+      limit
+    )
+
+    if (!response || response.length === 0) {
+      return res.status(204).json({
+        msg: 'No content',
+      })
+    }
+
+    res.json({
+      msg: 'Successsful',
+      data: response,
+      page,
+      limit,
+      total: response.length,
     })
-
-    res.send(response)
   } catch (e) {
     handleHttp(res, 'ERROR_GET_POST', e)
   }
 }
 
-const getOwnPublications = async ({ params }: Request, res: Response) => {
+const getOwnPublications = async (req: Request, res: Response) => {
   try {
-    const { id } = params
+    const { id } = req.params
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 10
 
     const Publication = new DinamicServices<IPublication>(PublicationModel)
-    const response = await Publication.findByParams({ userId: id })
+    const response = await Publication.findByParams({ userId: id }, page, limit)
 
-    response != null
-      ? res.send({
-          msg: 'Successfull!',
-          data: response,
-        })
-      : res.send({
-          msg: 'Sorry, we are not find anything by this params',
-        })
+    if (!response || response.length === 0) {
+      return res.status(204).json({
+        msg: 'No content',
+      })
+    }
+
+    res.json({
+      msg: 'Successsful',
+      data: response,
+      page,
+      limit,
+      total: response.length,
+    })
   } catch (e) {
     handleHttp(res, 'ERROR_GET_POST', e)
   }

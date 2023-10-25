@@ -7,16 +7,32 @@ import { IComment } from '../interface/models.interface'
 
 const getComments = async (req: Request, res: Response) => {
   try {
-    const Comment = new DinamicServices<IComment>(CommentModel)
     const { publication: publicationId } = req.params
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 10
 
-    const response = await Comment.findByParams({ publicationId }, 1)
+    const Comment = new DinamicServices<IComment>(CommentModel)
 
-    if (response) {
-      if (response.length < 1) return res.json({ msg: 'No comments' })
+    const response = await Comment.findByParams(
+      { publicationId },
+      page,
+      limit,
+      1
+    )
+
+    if (!response || response.length === 0) {
+      return res.status(204).json({
+        msg: 'No content',
+      })
     }
 
-    res.json({ msg: 'Successful', data: response })
+    res.json({
+      msg: 'Successsful',
+      data: response,
+      page,
+      limit,
+      total: response.length,
+    })
   } catch (e) {
     console.error({ e })
   }
@@ -45,18 +61,25 @@ const getComment = async ({ params }: Request, res: Response) => {
 const getByParams = async (req: Request, res: Response) => {
   try {
     const body: IComment = req.body
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 10
 
     const Comment = new DinamicServices<IComment>(CommentModel)
-    const response = await Comment.findByParams(body)
+    const response = await Comment.findByParams(body, page, limit)
 
-    response != null
-      ? res.send({
-          msg: 'Successfull!',
-          data: response,
-        })
-      : res.send({
-          msg: 'Sorry, we are not find anything by this params',
-        })
+    if (!response || response.length === 0) {
+      return res.status(204).json({
+        msg: 'No content',
+      })
+    }
+
+    res.json({
+      msg: 'Successsful',
+      data: response,
+      page,
+      limit,
+      total: response.length,
+    })
   } catch (e) {
     console.error({ e })
   }

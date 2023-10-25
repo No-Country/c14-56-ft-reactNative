@@ -8,17 +8,29 @@ import { ILike } from '../interface/models.interface'
 
 const getLikes = async (req: Request, res: Response) => {
   try {
-    const Like = new DinamicServices<ILike>(LikeModel)
-
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 10
     const { publication: publicationId, user: userId } = req.params
 
-    const response = await Like.findByParams({ publicationId })
-    if (!response)
-      return res.json({ msg: "Don't have any likes", data: [], isLiked: false })
+    const Like = new DinamicServices<ILike>(LikeModel)
 
+    const response = await Like.findByParams({ publicationId }, page, limit)
     const isLiked = await getLikedValidation(publicationId, userId)
 
-    res.json({ msg: 'Successful', data: response, isLiked })
+    if (!response || response.length === 0) {
+      return res
+        .status(204)
+        .json({ msg: 'No content', data: [], isLiked: false })
+    }
+
+    res.json({
+      msg: 'Successsful',
+      data: response,
+      isLiked,
+      page,
+      limit,
+      total: response.length,
+    })
   } catch (e) {
     console.error({ e })
   }
