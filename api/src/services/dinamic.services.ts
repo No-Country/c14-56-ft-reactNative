@@ -29,17 +29,21 @@ export class DinamicServices<T extends Document> {
     })
   }
 
-  findByParams(data: any): Promise<T | null> {
-    return new Promise((resolve, reject) => {
+  findByParams(data: any): Promise<T[] | null> {
+    return new Promise(async (resolve, reject) => {
       if (!data) {
         reject('Error! Select a valid data')
+        return
       }
 
-      const response = this.schemaModel
-        .findOne({ data })
-        .sort({ createdAt: -1 })
-      if (!response) reject('Error! Find action failed')
-      resolve(response)
+      try {
+        const response = await this.schemaModel
+          .find(data)
+          .sort({ createdAt: -1 })
+        resolve(response)
+      } catch (error) {
+        reject('Error! Find action failed')
+      }
     })
   }
 
