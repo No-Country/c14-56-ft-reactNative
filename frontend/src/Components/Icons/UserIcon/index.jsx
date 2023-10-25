@@ -2,7 +2,7 @@
 import '../IconStyles.css';
 
 const UserIcon = () => {
-    return <i className="fa fa-user  white-icon"></i>;
+    return <ion-icon name="person"></ion-icon>
 };
 
 export default UserIcon;

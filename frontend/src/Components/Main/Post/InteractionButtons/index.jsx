@@ -4,16 +4,16 @@ const InteractionButtons = ({ numLikes, numComments }) => {
     return (
         <div className="interaction-buttons">
             <button className="button">
-                <i className="fa fa-thumbs-up"></i> {numLikes}
+            <ion-icon name="heart"></ion-icon>{numLikes}
             </button>
             <button className="button">
-                <i className="fa fa-comment"></i> {numComments}
+            <ion-icon name="chatbubble"></ion-icon> {numComments}
             </button>
             <button className="button">
-                <i className="fa fa-share"></i> Share
+            <ion-icon name="share-social"></ion-icon> 
             </button>
             <button className="button">
-                <i className="fa fa-share"></i> Save
+            <ion-icon name="bookmark"></ion-icon>
             </button>
         </div>
     );

@@ -2,7 +2,7 @@
 import '../IconStyles.css';
 
 const MessageIcon = () => {
-  return <i className="fa fa-envelope  white-icon"></i>;
+  return <ion-icon name="chatbubble"></ion-icon>
 };
 
 export default MessageIcon; 

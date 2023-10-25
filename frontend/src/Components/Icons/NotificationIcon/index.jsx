@@ -2,7 +2,7 @@
 import '../IconStyles.css'; 
 
 const NotificationIcon = () => {
-  return <i className="fa fa-bell  white-icon"></i>;
+  return <ion-icon name="notifications"></ion-icon>
 };
 
 export default NotificationIcon;
