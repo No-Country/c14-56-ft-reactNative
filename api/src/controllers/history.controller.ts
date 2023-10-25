@@ -37,6 +37,26 @@ const getHistory = async ({ params }: Request, res: Response) => {
   }
 }
 
+const getHistoryByParams = async ({ params }: Request, res: Response) => {
+  try {
+    const { id } = params
+
+    const History = new DinamicServices<IHistory>(HistoryModel)
+    const response = await History.findByParams({ _id: id })
+
+    response != null
+      ? res.send({
+          msg: 'Successfull!',
+          data: response,
+        })
+      : res.send({
+          msg: 'Sorry, we are not find anything by this params',
+        })
+  } catch (e) {
+    handleHttp(res, 'ERROR_GET_SECTIONS', e)
+  }
+}
+
 const insertHistory = async (req: Request, res: Response) => {
   try {
     const { body } = req
@@ -83,4 +103,10 @@ const deleteHistory = async ({ params }: Request, res: Response) => {
   }
 }
 
-export { getHistory, getHistories, insertHistory, updateHistory, deleteHistory }
+export {
+  getHistory,
+  getHistories,
+  insertHistory,
+  getHistoryByParams,
+  deleteHistory,
+}
