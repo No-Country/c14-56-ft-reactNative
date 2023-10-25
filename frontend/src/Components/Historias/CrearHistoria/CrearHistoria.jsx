@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import useImageStore from '../../../../store'
+import useImageStore from '@store'
 
 const CrearHistoria = () => {
   const cambioDeInput = useRef()

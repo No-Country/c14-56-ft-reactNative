@@ -1,11 +1,10 @@
-import React from 'react';
 import './NavBar.css';
-import 'font-awesome/css/font-awesome.min.css';
-import NotificacionIcon from '../Icons/NotificationIcon/NotificationIcon';
-import MessageIcon from '../Icons/MessageIcon/MessageIcon';
-import UserIcon from '../Icons/UserIcon/UserIcon';
+
+import NotificacionIcon from '@Icons/NotificationIcon';
+import MessageIcon from '@Icons/MessageIcon';
+import UserIcon from '@Icons/UserIcon';
 //agregar import de ReactRouter
-import MoreIcon from '../Icons/MoreIcon/MoreIcon';
+import MoreIcon from '@Icons/MoreIcon';
 
 // pero no entiendo porque no funcionan los iconos
 //a vos a nivel local te funciona bien?

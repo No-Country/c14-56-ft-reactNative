@@ -1,5 +1,4 @@
-import React from 'react';
-import UserCard from '../UserCard/UserCard';
+import UserCard from '@UserCard';
 import './UserList.css';
 
 const UserList = () => {

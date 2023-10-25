@@ -2,6 +2,7 @@ import Login from './pages/Login'
 import Home from './pages/home/';
 import Profile from './pages/Profile'
 import './index.css'
+import './App.css'
 
 import {
   BrowserRouter as Router,
@@ -20,8 +21,8 @@ const App = () => {
         </Routes>
       </Router>
     </>
+
   );
-};
+}
 
-
-export default App;
+export default App

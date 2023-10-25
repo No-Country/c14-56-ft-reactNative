@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import useImageStore from '../../../store';
-import ModalHistorias from '../ModalHistorias';
+import useImageStore from '@store';
+import ModalHistorias from '@HistoriesModal';
 
 const Historia = () => {
   const mi_modal = useRef();

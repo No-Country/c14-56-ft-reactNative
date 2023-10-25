@@ -24,3 +24,7 @@
     flex: 1;
 
 }
+
+.activeicon> ion-icon{
+    color: black;
+}

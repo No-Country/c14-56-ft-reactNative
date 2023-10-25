@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import InputForm from '../../InputForm';
-
 import { useCookies } from 'react-cookie';
+
+import InputForm from '@InputForm';
+import ErrorType from '@FormError';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 

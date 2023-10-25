@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import InputForm from '../../InputForm';
+import ErrorType from '@FormError';
+import InputForm from '@InputForm';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
