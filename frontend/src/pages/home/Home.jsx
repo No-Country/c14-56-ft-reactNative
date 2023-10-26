@@ -1,20 +1,22 @@
 import Avatar from '@Avatar'
+import Aside from '@Aside';
+import ContenedorHistorias from '@HistoriesContainer'
 import Header from '@Header';
 import NavBar from '@NavBar';
-//Agregar Import de ReactRouter, RouterDOM, etc
-
-import ContenedorHistorias from '@HistoriesContainer'
-import Aside from '@Aside';
 import Post from '@Post'
 
 const Home = () => {
-  const avatarImageUrl = 'https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg';  //Imagen de Prueba, eliminar luego para dejar variable
-  const userName = 'Catherine Ipsum';     //Nombre de Prueba, eliminar luego para dejar variable
+  const userData = JSON.parse(localStorage.getItem('userData'))
+  // console.log(userData)
+
+  const avatarImageUrl = userData.photoProfile.path
+  const userName = userData.name;
+
   return (
     <div className='home-container'>
       <Header>
         <NavBar>
-          <Avatar imageUrl={avatarImageUrl} />    {/*  Agregar Routes  */}
+          <Avatar imageUrl={avatarImageUrl}/>
 
           {userName}
 
@@ -28,7 +30,7 @@ const Home = () => {
           </div>
         </div>
         <div className='main'>
-          <div className='histories mx-32' >
+          <div className='histories mx-36' >
             <ContenedorHistorias />
           </div>
           <div className='post'>
@@ -36,8 +38,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-
 
     </div>
   )

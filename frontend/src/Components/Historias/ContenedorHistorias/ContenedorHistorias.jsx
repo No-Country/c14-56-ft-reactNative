@@ -1,13 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Historia from '@Histories';
 import ModalHistorias from '@HistoriesModal';
+import CrearHistoria from '@HistoriesCreate';
 
 import { infoHistorias } from './infoHistorias'
 import { useCookies } from 'react-cookie'
 
 import axios from 'axios'
-
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vcmNpbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY5ODIzODE5NywiZXhwIjoxNjk4MjQxNzk3fQ.A_egyEumSnWhqVA56k45wb3ezWUmYa6SxW8whVfG6O8
 
 const ContenedorHistorias = () => {
   const mi_modal = useRef()
@@ -15,6 +14,8 @@ const ContenedorHistorias = () => {
 
   let [actualIndex, setActualIndex] = useState(0)
   const [cookies] = useCookies(['authToken']);
+
+  const userData = JSON.parse(localStorage.getItem('userData'))
 
   let info = infoHistorias
 
@@ -37,22 +38,39 @@ const ContenedorHistorias = () => {
     setActualIndex(e)
   };
 
-  const traerHistorias = () => {
-    let token = cookies.authToken;
-    const headers = {
-      Authorization: `Bearer ${token}`,
-    };
+  let [stories, setStories] = useState()
+  let [users, setUsers] = useState()
 
+  let token = cookies.authToken;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  const getStories = () => {
     axios.get('http://localhost:3001/api/v1/historys', { headers })
       .then((res) => {
-        console.log(res.data);
+        setStories(res.data)
+        console.log(res.data.length)
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  traerHistorias()
 
+  const getUsers = () => {
+    axios.get('http://localhost:3001/api/v1/users/', { headers })
+      .then((res) => {
+        setUsers(res.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    getStories()
+    getUsers()
+  }, [cookies])
 
   const HistoriasEjemplo = ({ nombre, index, perfil }) => (
     <div className="text-center">
@@ -65,28 +83,33 @@ const ContenedorHistorias = () => {
     </div>
   );
 
-  const tomarTodasLasImagenes = () => {
-    let imagenes = []
+  const getAllStoriesImages = () => {
+    if (stories) {
+      let images = []
+      for (let i of stories) {
+        images.push(i.path.path)
+      }
 
-    for (let i of info) {
-      imagenes.push(i.imagenes)
+      return (images)
+    } else {
+      return []
     }
-
-    return (imagenes)
   }
 
   return (
     <div className='relative w-max m-5'>
       <div className='relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar' ref={containerRef}>
 
+        <CrearHistoria />
+
         <Historia />
 
-        {info.map((_, index) => (
+        {users && users.map((user, index) => (
           <div key={index}>
             <HistoriasEjemplo
-              nombre={info[index].nombre}
+              nombre={user.name}
               index={index}
-              perfil={info[index].imagen_perfil}
+              perfil={user.photoProfile.path}
             />
           </div>
         ))}
@@ -98,8 +121,8 @@ const ContenedorHistorias = () => {
       </div>
       <ModalHistorias
         mi_modal={mi_modal}
-        imageUrls={tomarTodasLasImagenes()}
-        imageLength={info[actualIndex].imagenes.length}
+        imageUrls={getAllStoriesImages()}
+        // imageLength={info[actualIndex].imagenes.length}
         actualIndex={actualIndex}
       />
     </div>
@@ -108,3 +131,4 @@ const ContenedorHistorias = () => {
 
 export default ContenedorHistorias;
 //108
+//124

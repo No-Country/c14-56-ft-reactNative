@@ -1,11 +1,8 @@
 import { create } from 'zustand';
 
-const useImageStore = create((set) => ({
-  imageUrls: [],
-
-  addImageUrl: (url) => set((state) => ({ imageUrls: [...state.imageUrls, url] })),
-
-  clearImageUrls: () => set({ imageUrls: [] }),
+const useUserStore = create((set) => ({
+  userData: null,
+  setUserData: (userData) => set({ userData }),
 }));
 
-export default useImageStore;
+export default useUserStore;

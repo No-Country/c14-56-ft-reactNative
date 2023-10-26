@@ -1,25 +1,28 @@
 import React, { useState } from 'react'
-import useImageStore from '@store';
 import './ModalHistorias.css'
 
 import { infoHistorias } from '@HistoriesContainer/InfoHistorias';
 
-const ModalHistorias = ({ mi_modal, imageUrls, imageLength, actualIndex }) => {
+const ModalHistorias = ({ mi_modal, imageUrls, actualIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const imagenes = useImageStore((state) => state.imageUrls);
+  // const imagenes = useImageStore((state) => state.imageUrls);
 
-  const tomarImagenes = () => {
-    let image = []
+  // imageUrls[actualIndex] ? console.log(imageUrls) : ''
+  
+  const takeImages = imageUrls
 
-    for (let i of imageUrls) {
-      if (i) {
-        image.push(...i);
-      }
-    }
-    let totalImage = image.concat(imagenes)
-    return totalImage
-  }
+  // const tomarImagenes = () => {
+  //   let image = []
+
+  //   for (let i of imageUrls) {
+  //     if (i) {
+  //       image.push(...i);
+  //     }
+  //   }
+  //   let totalImage = image.concat(imagenes)
+  //   return totalImage
+  // }
 
   let info = infoHistorias.slice(actualIndex)
   imageUrls = imageUrls.slice(actualIndex)
@@ -56,7 +59,7 @@ const ModalHistorias = ({ mi_modal, imageUrls, imageLength, actualIndex }) => {
         <div className="modal-box p-0 overflow-hidden w-2/5 h-full " >
           <div className="modal-action ">
             <div className=" carousel w-full "  >
-              {tomarImagenes().map((imageUrl, index) => (
+              {takeImages.map((imageUrl, index) => (
                 <div
                   key={index}
                   id={`slide${index}`}

@@ -38,7 +38,7 @@ export default defineConfig({
 
       //store
 
-      '@store': path.resolve(__dirname, 'src/store'),
+      '@store': path.resolve(__dirname, 'src/store/store'),
 
       //assets
       '@logo': path.resolve(__dirname, 'src/assets/img/logoLinkUp.png'),
