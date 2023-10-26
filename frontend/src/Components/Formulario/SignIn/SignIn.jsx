@@ -2,26 +2,41 @@ import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 import InputForm from '@InputForm';
-import ErrorType from '@FormError';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+// import useUserStore from '@store'
 import axios from 'axios';
 
 const SignIn = () => {
   const { handleSubmit, formState: { errors }, register } = useForm();
   const [peticionErronea, setPeticionErronea] = useState(false);
+  // const setUserData = useUserStore((state) => state.setUserData);
 
   const navigate = useNavigate()
   const [, setAuthCookie] = useCookies(['authToken']);
-  const [, setUserIdCookie] = useCookies(['userId']);
+  const [userIdCookie, setUserIdCookie] = useCookies(['userId']);
 
-  const llamarApi = (data) => {
+  
+
+  const storeUserData = () => {
+    axios.get(`http://localhost:3001/api/v1/users/${userIdCookie.userId}`)
+    .then((res) => {
+      localStorage.setItem('userData', JSON.stringify(res.data.data));
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
+  const checkUser = (data) => {
     axios.post('http://localhost:3001/api/v1/auths/login', data)
       .then((res) => {
         setAuthCookie('authToken', res.data.token);
         setUserIdCookie('userId', res.data.user._id);
         setPeticionErronea(false);
+        storeUserData()
+
         navigate('/home')
       })
       .catch((error) => {
@@ -33,17 +48,19 @@ const SignIn = () => {
       });
   }
 
-  const onSubmit = (data) => llamarApi(data);
+  const onSubmit = (data) => {
+    checkUser(data)
+  };
 
   return (
     <form className='flex flex-col justify-center align-center w-full h-full mt-10' onSubmit={handleSubmit(onSubmit)}>
 
-      <InputForm name="email" register={register} type="text" placeholder="Email" errors={errors} />
-      <InputForm name="password" register={register} type="password" placeholder="Password" errors={errors} />
+      <InputForm name="email" register={register} type="text" placeholder="Email" errors={errors} margin={'mt-4'}/>
+      <InputForm name="password" register={register} type="password" placeholder="Password" errors={errors} margin={'mt-4'} />
 
-      <p className='ml-10 text-xs'>Keep me SIGN IN</p>
-      <button className="btn btn-lg bg-violet-700 w-2/3 mx-auto mt-4 rounded-full text-slate-100 hover-bg-violet-600">Sign In</button>
-      <p className='mx-auto text-xs mt-5'>FORGOT PASSWORD</p>
+      {/* <p className='ml-10 text-xs'>Keep me SIGN IN</p> */}
+      <button className="btn btn-lg bg-violet-700 w-2/3 mx-auto mt-14 rounded-full text-slate-100 hover-bg-violet-600">Sign In</button>
+      {/* <p className='mx-auto text-xs mt-5'>FORGOT PASSWORD</p> */}
 
       {peticionErronea && (
          <div className="toast toast-start">

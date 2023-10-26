@@ -5,7 +5,7 @@ const Plus = () => {
     <div className="plus-card">
       <h2 className="plus-title">PLUS</h2>
       <p className="plus-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+        Lorem ipsum dolor sit amet, a nisman lo mataron elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
       </p>
       <button className="subscribe-button">Suscribirse</button>
     </div>

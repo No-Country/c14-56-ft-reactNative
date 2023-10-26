@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ErrorType from '@FormError';
 import InputForm from '@InputForm';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -8,29 +7,23 @@ const SignUp = () => {
   const { handleSubmit, formState: { errors }, register } = useForm();
   const [peticionExitosa, setPeticionExitosa] = useState(false);
 
-  const llamarApi = (data) => {
+  const callApi = (data) => {
 
-    setPeticionExitosa(true);
-    setTimeout(() => {
-      setPeticionExitosa(false);
-      location.reload()
-    }, 5000);
-
-    // axios.post('http://localhost:3001/api/v1/auths/register/', data)
-    // .then((res) => {
-    //   console.log(res.data);
-    //   setPeticionExitosa(false);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    //   setPeticionExitosa(true);
-    //   setTimeout(() => {
-    //     setPeticionExitosa(false);
-    //   }, 5000);
-    // });
+    axios.post('http://localhost:3001/api/v1/auths/register/', data)
+    .then((res) => {
+      console.log(res.data);
+      setPeticionExitosa(true);
+      setTimeout(() => {
+        setPeticionExitosa(false);
+        location.reload()
+      }, 3000);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
-  const onSubmit = (data) => llamarApi(data);
+  const onSubmit = (data) => callApi(data);
 
   return (
     <form
@@ -47,7 +40,7 @@ const SignUp = () => {
       <InputForm name="password" register={register} type="password" placeholder="Password" errors={errors} />
 
       <button className="btn btn-lg bg-violet-700 w-2/3 mx-auto mt-4 rounded-full text-slate-100 hover:bg-violet-600 ">Sign Up</button>
-      <p className='mx-auto text-xs mt-5'>Alredy do you have an account? SIGN IN</p>
+      {/* <p className='mx-auto text-xs mt-5'>Alredy do you have an account? SIGN IN</p> */}
 
       {peticionExitosa && (
         <div className="toast toast-start">

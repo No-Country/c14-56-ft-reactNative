@@ -9,7 +9,12 @@ import MoreIcon from '@Icons/MoreIcon';
 // pero no entiendo porque no funcionan los iconos
 //a vos a nivel local te funciona bien?
 
+//si
+//-lucas
+
 const index = ({ children }) => {
+  
+
   return (
     <nav className="navbar">
       <ul className="ul">
