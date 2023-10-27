@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie'
 import axios from 'axios'
 
 const CrearHistoria = () => {
-  const cambioDeInput = useRef()
+ /*  const cambioDeInput = useRef()
   const userData = JSON.parse(localStorage.getItem('userData'))
 
   const [cookies] = useCookies(['authToken']);
@@ -57,7 +57,7 @@ const CrearHistoria = () => {
       </div>
 
     </div >
-  )
+  ) */
 }
 
 export default CrearHistoria

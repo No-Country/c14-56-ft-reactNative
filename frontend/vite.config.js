@@ -31,6 +31,7 @@ export default defineConfig({
       '@Welcome': path.resolve(__dirname, 'src/components/bienvenida'),
       '@FormError': path.resolve(__dirname, 'src/components/formulario/errortype'),
       '@InputForm': path.resolve(__dirname, 'src/components/inputform'),
+      '@CreatePost': path.resolve(__dirname, 'src/components/main/createpost'),
 
       //pages
 
@@ -38,7 +39,7 @@ export default defineConfig({
 
       //store
 
-      '@store': path.resolve(__dirname, 'src/store/store'),
+      '@store': path.resolve(__dirname, 'src/store'),
 
       //assets
       '@logo': path.resolve(__dirname, 'src/assets/img/logoLinkUp.png'),
