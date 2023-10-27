@@ -40,7 +40,7 @@ const login = async ({ body }: Request, res: Response) => {
     }
 
     res.send(response)
-  } catch (error) {
+  } catch (e) {
     console.error({ e })
   }
 }
