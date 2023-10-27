@@ -10,7 +10,7 @@ const getLikes = async (req: Request, res: Response) => {
   try {
     const page = parseInt(req.query.page as string) || 1
     const limit = parseInt(req.query.limit as string) || 10
-    const { publication: publicationId, user: userId } = req.params
+    const { publication: publicationId, id: userId } = req.params
 
     const Like = new DinamicServices<ILike>(LikeModel)
 
@@ -38,7 +38,7 @@ const getLikes = async (req: Request, res: Response) => {
 
 const insertLike = async (req: Request, res: Response) => {
   try {
-    const { publication: publicationId, user: userId } = req.params
+    const { publication: publicationId, id: userId } = req.params
 
     const Like = new DinamicServices<ILike>(LikeModel)
 

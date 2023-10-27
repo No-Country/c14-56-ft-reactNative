@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 
 import { Auth } from '../services/auth.services'
 import { DinamicServices } from '../services/dinamic.services'
-import userModel from '../models/schema/user'
+import UserModel from '../models/schema/user'
 import { handleHttp } from '../utils/error.handle'
 
 import { IUser } from '../interface/models.interface'
@@ -12,17 +12,17 @@ import { encrypt } from '../utils/bcrypt.handle'
 
 const register = async ({ body }: Request, res: Response) => {
   try {
-    const user = new DinamicServices<IUser>(userModel)
+    const User = new DinamicServices<IUser>(UserModel)
     const { password } = body
 
     const passwordEncript = await encrypt(password)
     body.password = passwordEncript
 
-    const response = await user.insert(body)
+    const response = await User.insert(body)
 
     res.send(response)
   } catch (e) {
-    handleHttp(res, 'ERROR_GET_USER', e)
+    console.error({ e })
   }
 }
 
@@ -40,7 +40,9 @@ const login = async ({ body }: Request, res: Response) => {
     }
 
     res.send(response)
-  } catch (error) {}
+  } catch (error) {
+    console.error({ e })
+  }
 }
 
 export { login, register }
