@@ -1,4 +1,4 @@
-import Avatar from "@Avatar";
+import { useCookies } from 'react-cookie';
 import "./CreatePost.css";
 import Post from "@Post";
 import { useState, useEffect } from 'react';
@@ -6,37 +6,42 @@ import axios from 'axios';
 
 
 const CreatePost = () => {
+  const setPostDate = new Date()
+
   const [post, setPost] = useState({
-    body: '',
+    description: '',
+    userId: '',
+    // createdAt: ''
   });
 
   const [posts, setPosts] = useState([]);
 
   const handleInput = (event) => {
-    setPost({ ...post, [event.target.name]: event.target.value });
+    setPost({ ...post, description: event.target.value }); 
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post("http://localhost:3001/api/v1/publications/all/:id", post)  // Reemplaza '/api/posts' con la URL correcta de tu propia API
+    axios.post('http://localhost:3001/api/v1/publications/all/653bd4c8952a267fbd8e9323', post)
       .then(response => {
-        // Procesa la respuesta de tu API, si es necesario
-        setPosts([response.data, ...posts]); // Añadir la nueva publicación al principio
-        setPost({ body: '' });
+        setPosts([response.data.data, ...posts]);
+        setPost({ description: '' }); 
       })
       .catch(err => console.log(err));
   }
 
   useEffect(() => {
-    // Cargar las publicaciones solo una vez al cargar el componente
-    axios.get("http://localhost:3001/api/v1/publications/all/:id")  // Reemplaza '/api/posts' con la URL correcta de tu propia API
-      .then(response => {
-        // Procesa las publicaciones de tu API
-        setPosts(response.data);
-      })
+    console.log(posts)
+  }, [posts])
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/v1/publications/all/653bd4c8952a267fbd8e9323')
+      .then(response => setPosts(response.data.data))
       .catch(err => console.log(err));
+
   }, []);
+
 
   return (
     <div className="d-flex align-items-center justify-content-center vh-100 w-100">
@@ -44,29 +49,31 @@ const CreatePost = () => {
         <form onSubmit={handleSubmit}>
           <textarea
             placeholder="¿Qué deseas compartir?"
-            value={post.body}
+            value={post.description} // Cambiar 'body' a 'description'
             onChange={handleInput}
-            name="body"
+            name="description" // Cambiar 'body' a 'description'
           />
           <button className="btn btn-primary" type="submit">Post</button>
         </form>
-
         <div>
-          {posts.map((post, index) => (
-            <Post
-              key={index}
-              avatarUrl={post.avatarUrl} 
-              userName={post.userName}   
-              userHandle={post.userHandle} 
-              postContent={post.body}
-              postDate={post.postDate}   
-            />
-          ))}
+          {Array.isArray(posts) ? (
+            posts.map((post, index) => (
+              // console.log(post)
+              <div key={index} ></div>
+              // <Post
+              //   key={index}
+              //   userName={post.userId || 'Usuario Desconocido'} // Manejar el caso en que userId no esté definido
+              //   postContent={post.description}
+              //   postDate={post.createdAt}
+              // />
+            ))
+          ) : (
+            <p>No hay publicaciones disponibles</p>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default CreatePost;
-
+export default CreatePost
