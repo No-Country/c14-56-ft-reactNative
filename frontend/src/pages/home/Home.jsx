@@ -5,12 +5,16 @@ import Header from '@Header';
 import NavBar from '@NavBar';
 import Post from '@Post'
 
+import { useUserContext } from '../../userContext/userContext';
+
 const Home = () => {
   const userData = JSON.parse(localStorage.getItem('userData'))
   // console.log(userData)
 
   const avatarImageUrl = userData.photoProfile.path
   const userName = userData.name;
+
+  const { user, setUser} = useUserContext();
 
   return (
     <div className='home-container'>

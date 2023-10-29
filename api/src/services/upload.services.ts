@@ -11,7 +11,7 @@ export class Upload {
   constructor(
     collection: string,
     idUser: string,
-    validExpension = ['png', 'jpg', 'jpeg', 'gif'],
+    validExpension = ['png', 'jpg', 'jpeg', 'gif', 'webp'],
     invalidTag = ['default']
   ) {
     this.collection = collection

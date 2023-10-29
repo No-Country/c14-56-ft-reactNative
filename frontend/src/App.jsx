@@ -4,6 +4,8 @@ import Profile from './pages/Profile'
 import './index.css'
 import './App.css'
 
+import { UserProvider } from './userContext/userContext'
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,13 +15,15 @@ import {
 const App = () => {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route exact path='/' element={<Login />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/profile' element={<Profile />} />
-        </Routes>
-      </Router>
+      <UserProvider >
+        <Router>
+          <Routes>
+            <Route exact path='/' element={<Login />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/profile' element={<Profile />} />
+          </Routes>
+        </Router>
+      </UserProvider>
     </>
   );
 }
