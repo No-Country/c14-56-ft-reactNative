@@ -3,7 +3,6 @@ import Historia from '@Histories';
 import ModalHistorias from '@HistoriesModal';
 import CrearHistoria from '@HistoriesCreate';
 
-import { infoHistorias } from './infoHistorias'
 import { useCookies } from 'react-cookie'
 
 import axios from 'axios'
@@ -14,10 +13,6 @@ const ContenedorHistorias = () => {
 
   let [actualIndex, setActualIndex] = useState(0)
   const [cookies] = useCookies(['authToken']);
-
-  const userData = JSON.parse(localStorage.getItem('userData'))
-
-  let info = infoHistorias
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -40,27 +35,39 @@ const ContenedorHistorias = () => {
 
   let [stories, setStories] = useState()
   let [users, setUsers] = useState()
+  let [usersWithStories, setUsersWithStories] = useState()
 
   let token = cookies.authToken;
   const headers = {
     Authorization: `Bearer ${token}`,
   };
 
-  const getStories = () => {
-    axios.get('http://localhost:3001/api/v1/historys', { headers })
+  const getStories = (e) => {
+    axios.get(`http://localhost:3001/api/v1/historys?page=${1}&limit=${100}`, { headers })
       .then((res) => {
-        setStories(res.data)
-        console.log(res.data.length)
+        const valorData = res.data.data;
+        const storiesForUsers = {};
+
+        for (let i = 0; i < e.length; i++) {
+          let valor = e[i]._id;
+          let coincidencias = valorData.filter(x => x.userId === valor);
+
+          if (coincidencias > []) storiesForUsers[valor] = coincidencias;
+
+        }
+
+        setUsersWithStories(storiesForUsers);
+        setStories(res.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }
-
   const getUsers = () => {
-    axios.get('http://localhost:3001/api/v1/users/', { headers })
+    axios.get(`http://localhost:3001/api/v1/users?page=${1}&limit=${100}`, { headers })
       .then((res) => {
-        setUsers(res.data)
+        setUsers(res.data.data)
+        getStories(res.data.data)
       })
       .catch((error) => {
         console.log(error);
@@ -68,9 +75,20 @@ const ContenedorHistorias = () => {
   }
 
   useEffect(() => {
-    getStories()
     getUsers()
   }, [cookies])
+
+  const getAllStoriesImages = () => {
+    if (stories) {
+      let images = []
+      for (let i of stories) {
+        images.push(i.path.path)
+      }
+      return (images)
+    } else {
+      return []
+    }
+  }
 
   const HistoriasEjemplo = ({ nombre, index, perfil }) => (
     <div className="text-center">
@@ -82,34 +100,22 @@ const ContenedorHistorias = () => {
       <p className="text-xs w-16 truncate text-center">{nombre}</p>
     </div>
   );
-
-  const getAllStoriesImages = () => {
-    if (stories) {
-      let images = []
-      for (let i of stories) {
-        images.push(i.path.path)
-      }
-
-      return (images)
-    } else {
-      return []
-    }
-  }
+  if (usersWithStories > []) console.log(Object.values(usersWithStories)[0].length)
+  
 
   return (
     <div className='relative w-max m-5'>
       <div className='relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar' ref={containerRef}>
 
         <CrearHistoria />
-
         <Historia />
 
-        {users && users.map((user, index) => (
+        {usersWithStories && Object.keys(usersWithStories).map((userId, index) => (
           <div key={index}>
             <HistoriasEjemplo
-              nombre={user.name}
+              nombre={users.find(user => user._id === userId).name}
               index={index}
-              perfil={user.photoProfile.path}
+              perfil={users.find(user => user._id === userId).photoProfile.path}
             />
           </div>
         ))}
@@ -122,7 +128,7 @@ const ContenedorHistorias = () => {
       <ModalHistorias
         mi_modal={mi_modal}
         imageUrls={getAllStoriesImages()}
-        // imageLength={info[actualIndex].imagenes.length}
+        imageLength={ usersWithStories > [] ? Object.values(usersWithStories)[actualIndex].length : ''}
         actualIndex={actualIndex}
       />
     </div>

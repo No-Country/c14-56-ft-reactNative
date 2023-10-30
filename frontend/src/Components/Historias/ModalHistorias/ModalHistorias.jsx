@@ -3,7 +3,7 @@ import './ModalHistorias.css'
 
 import { infoHistorias } from '@HistoriesContainer/InfoHistorias';
 
-const ModalHistorias = ({ mi_modal, imageUrls, actualIndex }) => {
+const ModalHistorias = ({ mi_modal, imageUrls, imageLength, actualIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // const imagenes = useImageStore((state) => state.imageUrls);
