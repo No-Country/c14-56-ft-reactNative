@@ -2,7 +2,6 @@ import './PostContent.css'
 
 const PostContent = ({ postContent, postDate }) => {
     const actualDate = new Date();
-    const postDateTime = new Date(postDate);
     const timeDifference = actualDate - postDateTime;
     
     let timeAgo = '';

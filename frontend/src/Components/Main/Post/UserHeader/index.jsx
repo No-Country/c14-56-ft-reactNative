@@ -29,6 +29,8 @@ const UserHeader = ({ avatarUrl, userId, userHandle }) => {
         getUserInfo();
     }, [userId]);
 
+const UserHeader = ({ avatarUrl, userName, userHandle }) => {
+
     return (
         <div className="user-header">
             <Avatar imageUrl={defaultValue(photoProfile)} />
