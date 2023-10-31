@@ -1,20 +1,37 @@
 import './styles.css'
+import Avatar from '@Avatar'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 
-const Banner = () => {
+const Banner = ({ user }) => {
+  const userData = JSON.parse(localStorage.getItem('userData'))
+
+  const followButton = () => {
+    if (userData._id !== user?._id) {
+      return (
+        <div className="profile-banner-details-follows-button">
+          <button>Follow</button>
+        </div>
+      )
+    }
+    return null
+  }
   return (
     <div className="profile-banner">
       <div className="profile-banner-container">
         <div className="profile-banner-photo">
-          <img src="src/assets/img/profileImg.png" alt="profile-photo" />
+          <Avatar
+            imageUrl={
+              user ? user?.photoProfile?.path : 'src/assets/profileImg.png'
+            }
+          />
         </div>
         <div className="profile-banner-details">
           <h4 className="profile-banner-details-title">
-            Catherin Ipsum <span>@catherine12</span>
+            {user ? user?.name : 'Cargando...'}{' '}
+            <span>{user ? `@${user?.username}` : 'Cargando...'}</span>
           </h4>
           <span className="profile-banner-details-description">
-            Lorem ipsum dolor sit amet consectetur. Ut eget auctor sem fermentum
-            aenean.
+            {user?.description}
           </span>
           <div className="profile-banner-details-follows">
             <div className="profile-banner-details-follows-location">
@@ -23,7 +40,7 @@ const Banner = () => {
                   style={{ width: 25, height: 25, color: '#fff', margin: 0 }}
                 />
               </span>
-              <p>Australia</p>
+              <p>{user ? user?.country : 'Cargando...'}</p>
             </div>
             <div className="profile-banner-details-follows-p">
               <p>
@@ -37,9 +54,7 @@ const Banner = () => {
               </p>
             </div>
           </div>
-          <div className="profile-banner-details-follows-button">
-            <button>Follow</button>
-          </div>
+          {followButton()}
         </div>
       </div>
     </div>
