@@ -7,7 +7,7 @@ const index = ({ children }) => {
   return (
     <header className="header">
       <div className="logo-container">
-        <a href="/home" className='logo-link ml-20'>
+        <a href="/home" className='logo-link ml-10'>
           <img src={logo} alt="Logo" className="logo" />
         </a>
       </div>

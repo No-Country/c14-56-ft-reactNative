@@ -3,14 +3,19 @@ import Header from '@Header';
 import NavBar from '@NavBar';
 //Agregar Import de ReactRouter, RouterDOM, etc
 
-import ContenedorHistorias from '@HistoriesContainer'
+import ContenedorHistorias from '@HistoriesContainer'    
 import Aside from '@Aside';
 
 import CreatePost from '@CreatePost';
 
 const Home = () => {
-  const avatarImageUrl = 'https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg';  //Imagen de Prueba, eliminar luego para dejar variable
-  const userName = 'Catherine Ipsum';     //Nombre de Prueba, eliminar luego para dejar variable
+  const userData = JSON.parse(localStorage.getItem('userData'))
+  // console.log(userData)
+
+  const avatarImageUrl = userData.photoProfile.path
+  console.log(avatarImageUrl)
+  const userName = userData.name; 
+
   return (
     <div className='home-container'>
       <Header>

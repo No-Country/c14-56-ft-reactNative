@@ -37,12 +37,12 @@ const Bienvenida = () => {
         <div className='bg-blue-900 w-1/4 my-10 mr-10 loginStyles rounded-xl'>
           <div className='w-full flex justify-around mt-5'>
             <button
-              className='btn btn-outline text-slate-100 hover:text-amber-200 hover:bg-transparent focus:text-amber-200'
+              className='btn btn-outline text-slate-100 hover:text-amber-200 hover:bg-transparent focus:text-amber-200 w-1/2'
               style={{ border: '0', borderBottom: '2px solid', borderRadius: '0' }}
               onClick={() => setMostrarForm(true)}
             >sign in</button>
             <button
-              className='btn btn-outline text-slate-100 hover:text-amber-200 hover:bg-transparent focus:text-amber-200 '
+              className='btn btn-outline text-slate-100 hover:text-amber-200 hover:bg-transparent focus:text-amber-200 w-1/2'
               style={{ border: '0', borderBottom: '2px solid', borderRadius: '0' }}
               onClick={() => setMostrarForm(false)}
             >sign up</button>

@@ -40,12 +40,9 @@
 }
 
 .icon-link:hover {
- 
     background-color: #2980b9;
     border-radius: 50%;
     transition: background-color 0.5s ease;
-
-
 }
 
 .user-container {
@@ -68,5 +65,5 @@
 
 
 .icons-nav {
-    margin: 0px 100px;
+    margin: 0px 110px;
 }

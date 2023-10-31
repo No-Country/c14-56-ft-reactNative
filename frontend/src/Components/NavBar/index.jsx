@@ -6,6 +6,7 @@ import MessageIcon from '@Icons/MessageIcon'
 import UserIcon from '@Icons/UserIcon'
 //agregar import de ReactRouter
 import MoreIcon from '@Icons/MoreIcon'
+import Search from '@Search'
 
 // pero no entiendo porque no funcionan los iconos
 //a vos a nivel local te funciona bien?
@@ -27,6 +28,7 @@ const index = ({ children }) => {
     <nav className="navbar">
       <ul className="ul">
         {/*   Eliminar <a hrefs=> y cambiar por Link to   */}
+
         <li>
           <a href="/notifications" className="icon-link">
             <NotificacionIcon />
@@ -42,7 +44,7 @@ const index = ({ children }) => {
             <UserIcon />
           </a>
         </li>
-        <div className="user-container">
+        <div className="user-container ">
           <div className="user-info">{children}</div>
         </div>
         <li>
