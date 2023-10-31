@@ -51,13 +51,18 @@ const ContenedorHistorias = () => {
         for (let i = 0; i < e.length; i++) {
           let valor = e[i]._id;
           let coincidencias = valorData.filter(x => x.userId === valor);
-
+          
           if (coincidencias > []) storiesForUsers[valor] = coincidencias;
-
         }
 
+        const userStoriesKeys = Object.keys(storiesForUsers)
+        const orderedStories = userStoriesKeys.map(key => storiesForUsers[key]).flat();
+
+        console.log(orderedStories);
+        
+        
         setUsersWithStories(storiesForUsers);
-        setStories(res.data.data);
+        setStories(orderedStories);
       })
       .catch((error) => {
         console.log(error);
@@ -80,15 +85,24 @@ const ContenedorHistorias = () => {
 
   const getAllStoriesImages = () => {
     if (stories) {
+      // console.log(stories)
       let images = []
       for (let i of stories) {
-        images.push(i.path.path)
+        let profile_image = users.find(user => user._id === i.userId)
+        images.push({
+          storie: i.path.path,
+          profile: profile_image.photoProfile.path,
+          name: profile_image.username
+        })
       }
+
       return (images)
     } else {
       return []
     }
   }
+
+  const storiesImage = usersWithStories ? usersWithStories : [] 
 
   const HistoriasEjemplo = ({ nombre, index, perfil }) => (
     <div className="text-center">
@@ -100,20 +114,20 @@ const ContenedorHistorias = () => {
       <p className="text-xs w-16 truncate text-center">{nombre}</p>
     </div>
   );
-  if (usersWithStories > []) console.log(Object.values(usersWithStories)[0].length)
-  
+  // if (usersWithStories > []) console.log(Object.values(usersWithStories)[0].length)
 
+  // console.log(usersWithStories)
   return (
     <div className='relative w-max m-5'>
       <div className='relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar' ref={containerRef}>
 
         <CrearHistoria />
-        <Historia />
-
+        {/* <Historia /> */}
         {usersWithStories && Object.keys(usersWithStories).map((userId, index) => (
           <div key={index}>
             <HistoriasEjemplo
               nombre={users.find(user => user._id === userId).name}
+              // nombre={users.find(user => user._id === userId).name}
               index={index}
               perfil={users.find(user => user._id === userId).photoProfile.path}
             />
@@ -127,9 +141,10 @@ const ContenedorHistorias = () => {
       </div>
       <ModalHistorias
         mi_modal={mi_modal}
-        imageUrls={getAllStoriesImages()}
+        imageUrls={storiesImage}
         imageLength={ usersWithStories > [] ? Object.values(usersWithStories)[actualIndex].length : ''}
         actualIndex={actualIndex}
+        users={getAllStoriesImages()}
       />
     </div>
   );
