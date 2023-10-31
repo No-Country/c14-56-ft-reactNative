@@ -23,9 +23,3 @@
 .interaction-button:last-child {
     margin-right: 0;
 }
-
-.likes-count{
-    background-color: red;
-    width: 50px;
-    color: black;
-}
