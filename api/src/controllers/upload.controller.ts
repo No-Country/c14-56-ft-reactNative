@@ -100,10 +100,6 @@ const updatedImage = async (req: Request, res: Response) => {
             throw new Error('Something went wrong during the upload')
           }
           break
-
-        case 'post':
-          break
-
         default:
           break
       }

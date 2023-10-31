@@ -27,8 +27,8 @@ const Post = ({ avatarUrl, userName, userHandle, postContent, postDate, postId, 
   }; console.log(fetchLikes());
 
 
-  useEffect(async() => {
-   await fetchLikes(); console.log(liked, likesCount);
+  useEffect(() => {
+   fetchLikes(); console.log(liked, likesCount);
   }, [postId, userId]); 
 
   const handleLike = (userId) => {

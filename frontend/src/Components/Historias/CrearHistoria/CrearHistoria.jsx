@@ -16,8 +16,8 @@ const CrearHistoria = () => {
       formData.append('file', elements[i]);
     }
     let selectArray = Array.from(elements)
-    console.log('despues')
-    console.log(formData)
+    // console.log('despues')
+    console.log(elements)
     let token = cookies.authToken;
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -30,8 +30,6 @@ const CrearHistoria = () => {
     .catch((error) => {
       console.log(error);
     });
-    console.log('antes')
-    console.log(formData)
   }
   // let addImageUrl = []
 

@@ -5,6 +5,7 @@ import UserModel from '../models/schema/user'
 
 import { IUser } from '../interface/models.interface'
 import { handleHttp } from '../utils/error.handle'
+import { validationResult } from 'express-validator'
 
 const getUsers = async (req: Request, res: Response) => {
   try {
@@ -32,9 +33,9 @@ const getUsers = async (req: Request, res: Response) => {
   }
 }
 
-const getUser = async ({ params }: Request, res: Response) => {
+const getUser = async (req: Request, res: Response) => {
   try {
-    const { id } = params
+    const { id } = req.params
 
     const User = new DinamicServices<IUser>(UserModel)
     const response = await User.getOne(id)
@@ -48,7 +49,7 @@ const getUser = async ({ params }: Request, res: Response) => {
           msg: 'Sorry, we are not find anything by this params',
         })
   } catch (e) {
-    console.error({ e })
+    return res.status(400).json({ e })
   }
 }
 
