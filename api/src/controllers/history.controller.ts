@@ -55,11 +55,12 @@ const getHistory = async ({ params }: Request, res: Response) => {
 const getHistoryByParams = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
+    const body: IHistory = req.body
     const page = parseInt(req.query.page as string) || 1
     const limit = parseInt(req.query.limit as string) || 10
 
     const History = new DinamicServices<IHistory>(HistoryModel)
-    const response = await History.findByParams({ _id: id }, page, limit)
+    const response = await History.findByParams({ body }, page, limit)
 
     if (!response || response.length === 0) {
       return res.status(204).json({
