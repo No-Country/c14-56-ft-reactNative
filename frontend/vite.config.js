@@ -6,31 +6,56 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.jsx', '.js'],
     alias: {
       //Components
-      '@Components': path.resolve(__dirname, 'src/components'),
-      '@Header': path.resolve(__dirname, 'src/components/header/'),
-      '@Aside': path.resolve(__dirname, 'src/components/aside'),
-      '@UserList': path.resolve(__dirname, 'src/components/userlist'),
-      '@UserCard': path.resolve(__dirname, 'src/components/usercard'),
-      '@Plus': path.resolve(__dirname, 'src/components/plus'),
-      '@Trends': path.resolve(__dirname, 'src/components/trends'),
-      '@Search': path.resolve(__dirname, 'src/components/search'),
-      '@NavBar': path.resolve(__dirname, 'src/components/navbar'),
-      '@Post': path.resolve(__dirname, 'src/components/main/post'),
-      '@PostButtons': path.resolve(__dirname, 'src/components/main/post/interactionbuttons'),
-      '@PostContent': path.resolve(__dirname, 'src/components/main/post/postcontent'),
-      '@UserHeader': path.resolve(__dirname, 'src/components/main/post/userheader'),
-      '@Icons': path.resolve(__dirname, 'src/components/icons'),
-      '@Avatar': path.resolve(__dirname, 'src/components/avatar'),
-      '@HistoriesContainer': path.resolve(__dirname, 'src/components/historias/contenedorhistorias'),
-      '@HistoriesCreate': path.resolve(__dirname, 'src/components/historias/crearhistoria'),
-      '@HistoriesModal': path.resolve(__dirname, 'src/components/historias/modalhistorias'),
-      '@Histories': path.resolve(__dirname, 'src/components/historias/historia'),
-      '@Welcome': path.resolve(__dirname, 'src/components/bienvenida'),
-      '@FormError': path.resolve(__dirname, 'src/components/formulario/errortype'),
-      '@InputForm': path.resolve(__dirname, 'src/components/inputform'),
+      '@Components': path.resolve(__dirname, 'src/Components'),
+      '@Header': path.resolve(__dirname, 'src/Components/Header'),
+      '@Aside': path.resolve(__dirname, 'src/Components/Aside'),
+      '@UserList': path.resolve(__dirname, 'src/Components/UserList'),
+      '@UserCard': path.resolve(__dirname, 'src/Components/UserCard'),
+      '@Plus': path.resolve(__dirname, 'src/Components/Plus'),
+      '@Trends': path.resolve(__dirname, 'src/Components/Trends'),
+      '@Search': path.resolve(__dirname, 'src/Components/Search'),
+      '@NavBar': path.resolve(__dirname, 'src/Components/NavBar'),
+      '@Post': path.resolve(__dirname, 'src/Components/Main/Post'),
+      '@Perfil': path.resolve(__dirname, 'src/Components/Perfil'),
+      '@PostButtons': path.resolve(
+        __dirname,
+        'src/Components/Main/Post/InteractionButtons'
+      ),
+      '@PostContent': path.resolve(
+        __dirname,
+        'src/Components/Main/Post/PostContent'
+      ),
+      '@UserHeader': path.resolve(
+        __dirname,
+        'src/Components/Main/Post/UserHeader'
+      ),
+      '@Icons': path.resolve(__dirname, 'src/Components/Icons'),
+      '@Avatar': path.resolve(__dirname, 'src/Components/Avatar'),
+      '@HistoriesContainer': path.resolve(
+        __dirname,
+        'src/Components/Historias/ContenedorHistorias'
+      ),
+      '@HistoriesCreate': path.resolve(
+        __dirname,
+        'src/Components/Historias/CrearHistoria'
+      ),
+      '@HistoriesModal': path.resolve(
+        __dirname,
+        'src/Components/Historias/ModalHistorias'
+      ),
+      '@Histories': path.resolve(
+        __dirname,
+        'src/Components/Historias/Historia'
+      ),
+      '@Welcome': path.resolve(__dirname, 'src/Components/Bienvenida'),
+      '@FormError': path.resolve(
+        __dirname,
+        'src/Components/Formulario/ErrorType'
+      ),
+      '@InputForm': path.resolve(__dirname, 'src/Components/InputForm'),
 
       //pages
 
@@ -43,7 +68,6 @@ export default defineConfig({
       //assets
       '@logo': path.resolve(__dirname, 'src/assets/img/logoLinkUp.png'),
       '@loginImg': path.resolve(__dirname, 'src/assets/loginimage.png/'),
-
     },
   },
   plugins: [react()],
