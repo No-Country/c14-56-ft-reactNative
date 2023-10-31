@@ -10,8 +10,8 @@ import { verifySession } from '../middleware/session'
 
 const router = Router()
 
-router.get('/:publication/:user', getLikes)
-router.post('/:publication/:user', insertLike)
+router.get('/:publication/:id', getLikes)
+router.post('/:publication/:id', insertLike)
 router.delete('/:id', deleteLike)
 
 export { router }
