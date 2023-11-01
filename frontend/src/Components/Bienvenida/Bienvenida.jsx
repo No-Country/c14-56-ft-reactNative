@@ -32,7 +32,7 @@ const Bienvenida = () => {
             <div className="divider bg-amber-200 h-2 rounded my-10" />
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum obcaecati veniam nemo hic fuga nisi nam eum distinctio unde.</p>
           </div>
-          <img src={loginImage} alt="" className='' />
+          <img src={loginImage} alt="" className='w-auto h-auto' />
         </div>
         <div className='bg-blue-900 w-1/4 my-10 mr-10 loginStyles rounded-xl'>
           <div className='w-full flex justify-around mt-5'>

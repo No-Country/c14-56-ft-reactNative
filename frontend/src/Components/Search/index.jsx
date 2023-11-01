@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Avatar from '@Avatar'
 import './Search.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
@@ -23,6 +26,7 @@ const Search = () => {
       .get('http://localhost:3001/api/v1/users')
       .then((res) => {
         setUsers(res.data.data);
+        console.log(res.data.data)
       })
       .catch((error) => {
         console.log(error);
@@ -42,12 +46,13 @@ const Search = () => {
         />
 
       </div>
-      <div className='text-slate-100'>
-        <table>
+      <div className={`text-slate-100 absolute mt-5 w-1/3 bg-slate-100 z-20 text-black rounded-lg ${searchInput === '' ? 'hidden' : ''}`}>
+        <table className=''>
           {filteredUsers.length > 0 ? (
             filteredUsers.map((user, index) => (
-              <tr key={index}>
-                <Avatar imageUrl={user.photoProfile.path} style={'searchInput'} />
+              <tr key={index} onClick={() => navigate(`/profile/${user._id}`)} className='cursor-pointer border-b-slate-400 border-b '>
+                
+                <Avatar imageUrl={user.photoProfile.path} style={'searchInput'}  />
                 <td>{user.name}</td>
               </tr>
             ))

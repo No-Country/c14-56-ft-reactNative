@@ -2,9 +2,9 @@ import React from 'react'
 import ErrorType from '@FormError';
 
 const InputForm = ({ name, register, type, placeholder, errors, margin }) => (
-    <div className='flex justify-center'>
+    <div className='flex flex-col justify-center'>
       {errors[name] && (
-        <div className="tooltip tooltip-open tooltip-left tooltip-error" data-tip={ErrorType(errors[name].type)} />
+        <div className="tooltip tooltip-open tooltip-left tooltip-error " data-tip={ErrorType(errors[name].type)} />
       )}
       <input
         type={type}

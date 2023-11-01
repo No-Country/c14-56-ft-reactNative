@@ -136,7 +136,7 @@ const ContenedorHistorias = () => {
 
       </div>
       <div className='absolute top-1/2 w-full h-1 flex justify-between z-10'>
-        <a className="btn btn-sm btn-circle drop-shadow-lg filter ml-3" onClick={scrollLeft}>❮</a>
+        <a className="btn btn-sm btn-circle drop-shadow-lg filter ml-3 z-10" onClick={scrollLeft}>❮</a>
         <a className="btn btn-sm btn-circle drop-shadow-lg filter mr-3" onClick={scrollRight}>❯</a>
       </div>
       <ModalHistorias

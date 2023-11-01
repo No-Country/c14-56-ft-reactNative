@@ -1,5 +1,6 @@
 import logo from '@logo';
 import './Header.css';
+import Search from '@Search';
 
 
 
@@ -11,6 +12,7 @@ const index = ({ children }) => {
           <img src={logo} alt="Logo" className="logo" />
         </a>
       </div>
+      <Search />
       <div className="navbar-container">
         {children}
       </div>

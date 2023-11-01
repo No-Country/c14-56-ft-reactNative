@@ -10,7 +10,7 @@ const Aside = () => {
   return (
     <div className='index-container'>
       <div className="index-components">
-        <Search />
+        {/* <Search /> */}
         <Plus />
         <Trends /> {/* Incorpora el componente Trends aquí */}
         <UserList>

@@ -58,7 +58,7 @@ const SignIn = () => {
   };
 
   return (
-    <form className='flex flex-col justify-center align-center w-full h-full mt-10' onSubmit={handleSubmit(onSubmit)}>
+    <form className='flex flex-col justify-center align-center w-full mt-10' onSubmit={handleSubmit(onSubmit)}>
 
       <InputForm name="email" register={register} type="text" placeholder="Email" errors={errors} margin={'mt-4'} />
       <InputForm name="password" register={register} type="password" placeholder="Password" errors={errors} margin={'mt-4'} />
