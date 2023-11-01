@@ -22,8 +22,6 @@ const index = ({ children }) => {
     setUser(res)
   }, [])
 
-  console.log(user)
-
   return (
     <nav className="navbar">
       <ul className="ul">

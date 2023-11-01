@@ -18,11 +18,27 @@
   width: 240px;
   height: 200px;
   border-radius: 100%;
+  position: relative;
 }
 .profile-banner-photo img {
   width: 100%;
   height: 100%;
   border-radius: 100%;
+}
+.profile-banner-photo-upload {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  background-color: #f7a8c0;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  display: flex;
+  cursor: pointer;
+}
+.profile-banner-photo-upload:hover {
+  background-color: #f7779e;
 }
 
 /*  Details profile  */

@@ -20,6 +20,7 @@ export default defineConfig({
       '@NavBar': path.resolve(__dirname, 'src/Components/NavBar'),
       '@Post': path.resolve(__dirname, 'src/Components/Main/Post'),
       '@Perfil': path.resolve(__dirname, 'src/Components/Perfil'),
+      '@CreatePost': path.resolve(__dirname, 'src/Components/Main/CreatePost'),
       '@PostButtons': path.resolve(
         __dirname,
         'src/Components/Main/Post/InteractionButtons'

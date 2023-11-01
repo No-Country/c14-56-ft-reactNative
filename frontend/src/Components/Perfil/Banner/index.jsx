@@ -1,20 +1,108 @@
 import './styles.css'
-import Avatar from '@Avatar'
+import axios from 'axios'
 import { FaMapMarkerAlt } from 'react-icons/fa'
+import { MdAddAPhoto } from 'react-icons/md'
+import { useParams } from 'react-router-dom'
 
-const Banner = ({ user }) => {
+import Avatar from '@Avatar'
+import { useEffect, useRef, useState } from 'react'
+
+const Banner = ({ user, posts, followers, followeds }) => {
+  const [follower, setFollower] = useState(0)
+  const [relational, setRelational] = useState(false)
+  const [selectedFile, setSelectedFile] = useState(null)
+
+  const fileInputRef = useRef(null)
+
   const userData = JSON.parse(localStorage.getItem('userData'))
+  const { id } = useParams()
 
-  const followButton = () => {
-    if (userData._id !== user?._id) {
+  useEffect(() => {
+    setFollower(followers)
+    getRelacional()
+  }, [followers])
+
+  const getRelacional = async () => {
+    try {
+      const followData = await axios.get(
+        `http://localhost:3001/api/v1/followers/${id}/${userData?._id}`
+      )
+      setRelational(followData?.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleFollow = () => {
+    try {
+      const followData = {
+        userFollower: id,
+        userFollowed: userData?._id,
+      }
+      axios.post(`http://localhost:3001/api/v1/followers`, followData)
+
+      setFollower(follower + 1)
+      setRelational(true)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleUnfollow = () => {
+    try {
+      axios.delete(
+        `http://localhost:3001/api/v1/followers/${relational?.data[0]?._id}`
+      )
+
+      setFollower(follower - 1)
+      setRelational(false)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleFileChange = async event => {
+    try {
+      const formData = new FormData()
+      formData.append('file', event.target.files[0])
+      await axios.post(
+        `http://localhost:3001/api/v1/uploads/profile/${userData?._id}`,
+        formData
+      )
+      window.location.reload()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click()
+  }
+
+  const FollowButton = () => {
+    const { match } = relational
+    if (userData?._id !== user?._id) {
       return (
         <div className="profile-banner-details-follows-button">
-          <button>Follow</button>
+          <button onClick={!match ? handleFollow : handleUnfollow}>
+            {!match ? 'Follow' : 'Unfollow'}
+          </button>
         </div>
       )
     }
     return null
   }
+
+  const photoIconStyle = {
+    width: '30px',
+    height: '30px',
+    display: 'flex',
+    color: 'f2f2f2',
+    margin: 'auto',
+  }
+
+  const validImage = 'image/jpeg,image/png,image/jpg,image/webp'
+
   return (
     <div className="profile-banner">
       <div className="profile-banner-container">
@@ -24,15 +112,30 @@ const Banner = ({ user }) => {
               user ? user?.photoProfile?.path : 'src/assets/profileImg.png'
             }
           />
+          {userData?._id === user?._id && (
+            <>
+              <button
+                onClick={handleButtonClick}
+                className="profile-banner-photo-upload"
+              >
+                <MdAddAPhoto style={photoIconStyle} />
+              </button>
+              <input
+                type="file"
+                id="file-input"
+                onChange={handleFileChange}
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                accept={validImage}
+              />
+            </>
+          )}
         </div>
         <div className="profile-banner-details">
           <h4 className="profile-banner-details-title">
             {user ? user?.name : 'Cargando...'}{' '}
             <span>{user ? `@${user?.username}` : 'Cargando...'}</span>
           </h4>
-          <span className="profile-banner-details-description">
-            {user?.description}
-          </span>
           <div className="profile-banner-details-follows">
             <div className="profile-banner-details-follows-location">
               <span>
@@ -44,17 +147,17 @@ const Banner = ({ user }) => {
             </div>
             <div className="profile-banner-details-follows-p">
               <p>
-                15K <span>Seguidores</span>
+                {follower ? follower : 0} <span>Seguidores</span>
               </p>
               <p>
-                15K <span>Seguidos</span>
+                {followeds ? followeds : 0} <span>Seguidos</span>
               </p>
               <p>
-                30 <span>Publicaciones</span>
+                {posts ? posts : 0} <span>Publicaciones</span>
               </p>
             </div>
           </div>
-          {followButton()}
+          <FollowButton />
         </div>
       </div>
     </div>
