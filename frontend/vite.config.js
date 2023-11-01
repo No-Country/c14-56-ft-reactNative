@@ -19,6 +19,7 @@ export default defineConfig({
       '@Search': path.resolve(__dirname, 'src/Components/Search'),
       '@NavBar': path.resolve(__dirname, 'src/Components/NavBar'),
       '@Post': path.resolve(__dirname, 'src/Components/Main/Post'),
+      '@Comments': path.resolve(__dirname, 'src/Components/Main/Post/Comments'),
       '@Perfil': path.resolve(__dirname, 'src/Components/Perfil'),
       '@PostButtons': path.resolve(
         __dirname,
