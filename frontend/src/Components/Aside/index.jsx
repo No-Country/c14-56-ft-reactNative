@@ -1,18 +1,11 @@
 import './Aside.css';
 import UserList from '@UserList';
-import Search from '@Search';
-import Plus from '@Plus';
-import Trends from '@Trends'
 import UserCard from '@UserCard';
-
 
 const Aside = () => {
   return (
     <div className='index-container'>
       <div className="index-components">
-        {/* <Search /> */}
-        <Plus />
-        <Trends /> {/* Incorpora el componente Trends aquí */}
         <UserList>
           <UserCard />
         </UserList>

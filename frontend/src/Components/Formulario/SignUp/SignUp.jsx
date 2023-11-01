@@ -10,17 +10,17 @@ const SignUp = () => {
   const callApi = (data) => {
 
     axios.post('http://localhost:3001/api/v1/auths/register/', data)
-    .then((res) => {
-      console.log(res.data);
-      setPeticionExitosa(true);
-      setTimeout(() => {
-        setPeticionExitosa(false);
-        location.reload()
-      }, 3000);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((res) => {
+        console.log(res.data);
+        setPeticionExitosa(true);
+        setTimeout(() => {
+          setPeticionExitosa(false);
+          location.reload()
+        }, 3000);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const onSubmit = (data) => callApi(data);
@@ -29,18 +29,19 @@ const SignUp = () => {
     <form
       className='flex flex-col justify-center align-center w-full h-full ' onSubmit={handleSubmit(onSubmit)}>
 
-      <InputForm name="name" register={register} type="text" placeholder="Name" errors={errors} />
-      <InputForm name="username" register={register} type="text" placeholder="Username" errors={errors} />
-      <InputForm name="email" register={register} type="text" placeholder="Email" errors={errors} />
+      <div className='grid max-md:grid-cols-2  '>
+        <InputForm name="name" register={register} type="text" placeholder="Name" errors={errors} />
+        <InputForm name="username" register={register} type="text" placeholder="Username" errors={errors} />
+        <InputForm name="email" register={register} type="text" placeholder="Email" errors={errors} />
 
-      <InputForm name="description" register={register} type="text" placeholder="Description" errors={errors} />
-      <InputForm name="birthday" register={register} type="text" placeholder="Birthday" errors={errors} />
-      <InputForm name="country" register={register} type="text" placeholder="Country" errors={errors} />
+        <InputForm name="description" register={register} type="text" placeholder="Description" errors={errors} />
+        <InputForm name="birthday" register={register} type="text" placeholder="Birthday" errors={errors} />
+        <InputForm name="country" register={register} type="text" placeholder="Country" errors={errors} />
 
-      <InputForm name="password" register={register} type="password" placeholder="Password" errors={errors} />
+        <InputForm name="password" register={register} type="password" placeholder="Password" errors={errors} />
+      </div>
 
-      <button className="btn btn-lg bg-violet-700 w-2/3 mx-auto mt-4 rounded-full text-slate-100 hover:bg-violet-600 ">Sign Up</button>
-      {/* <p className='mx-auto text-xs mt-5'>Alredy do you have an account? SIGN IN</p> */}
+      <button className="btn btn-lg bg-violet-700 w-2/3 mx-auto max-md:my-5 my-2 rounded-full text-slate-100 hover-bg-violet-600 max-sm:w-1/2">Sign Up</button>
 
       {peticionExitosa && (
         <div className="toast toast-start">

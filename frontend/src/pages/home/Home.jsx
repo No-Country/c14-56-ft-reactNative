@@ -3,7 +3,7 @@ import Header from '@Header';
 import NavBar from '@NavBar';
 //Agregar Import de ReactRouter, RouterDOM, etc
 
-import ContenedorHistorias from '@HistoriesContainer'    
+import ContenedorHistorias from '@HistoriesContainer'
 import Aside from '@Aside';
 
 import CreatePost from '@CreatePost';
@@ -14,13 +14,13 @@ const Home = () => {
 
   const avatarImageUrl = userData.photoProfile.path
   console.log(avatarImageUrl)
-  const userName = userData.name; 
+  const userName = userData.name;
 
   return (
     <div className='home-container'>
       <Header>
         <NavBar>
-          <Avatar imageUrl={avatarImageUrl} />    {/*  Agregar Routes  */}
+          <Avatar imageUrl={avatarImageUrl} marginTop={'w-14'} />    {/*  Agregar Routes  */}
 
           {userName}
 
@@ -34,14 +34,14 @@ const Home = () => {
           </div>
         </div>
         <div className='main'>
-          <div className='histories mx-32' >
+          <div className='histories w-max' >
             <ContenedorHistorias />
           </div>
           <div className='create-post'>
-          <CreatePost />
+            <CreatePost />
           </div>
           <div className='post'>
-            
+
           </div>
         </div>
       </div>

@@ -85,7 +85,6 @@ const ContenedorHistorias = () => {
 
   const getAllStoriesImages = () => {
     if (stories) {
-      // console.log(stories)
       let images = []
       for (let i of stories) {
         let profile_image = users.find(user => user._id === i.userId)
@@ -114,20 +113,16 @@ const ContenedorHistorias = () => {
       <p className="text-xs w-16 truncate text-center">{nombre}</p>
     </div>
   );
-  // if (usersWithStories > []) console.log(Object.values(usersWithStories)[0].length)
-
-  // console.log(usersWithStories)
+  
   return (
     <div className='relative w-max m-5'>
       <div className='relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar' ref={containerRef}>
 
         <CrearHistoria />
-        {/* <Historia /> */}
         {usersWithStories && Object.keys(usersWithStories).map((userId, index) => (
           <div key={index}>
             <HistoriasEjemplo
               nombre={users.find(user => user._id === userId).name}
-              // nombre={users.find(user => user._id === userId).name}
               index={index}
               perfil={users.find(user => user._id === userId).photoProfile.path}
             />

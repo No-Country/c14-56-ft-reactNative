@@ -2,7 +2,7 @@
 import '../IconStyles.css'; 
 
 const MoreIcon = () => {
-  return <ion-icon name="ellipsis-horizontal" ></ion-icon>;
+  return <ion-icon name="contrast-outline"></ion-icon>
 
 };
 

@@ -51,15 +51,31 @@ const CreatePost = () => {
   return (
     <div className="d-flex align-items-center justify-content-center vh-100 w-100">
       <div className="w-50 text-center">
-        <form onSubmit={handleSubmit}>
-          <textarea
-            placeholder="¿Qué deseas compartir?"
-            value={post.description}
-            onChange={handleInput}
-            name="description"
-          />
-          <button className="btn btn-primary" type="submit">Post</button>
-        </form>
+        <div className='bg-blue'>
+          <form onSubmit={handleSubmit} className="bg-slate-200 shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                ¿Qué deseas compartir?
+              </label>
+              <textarea
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="description"
+                placeholder="Escribe tu publicación aquí"
+                value={post.description}
+                onChange={handleInput}
+                name="description"
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Publicar
+              </button>
+            </div>
+          </form>
+        </div>
         <div>
           {Array.isArray(posts) ? (
             posts.map(post => (

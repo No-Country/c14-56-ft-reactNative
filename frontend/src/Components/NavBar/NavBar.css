@@ -30,7 +30,7 @@
     padding: 10px;
     margin: 0px 15px;
     text-align: center;
-    border-radius: 100%;
+    /* border-radius: 100%; */
     transition: background-color 0.5s ease;
     justify-content: center;
     align-items: center;
@@ -40,9 +40,9 @@
 }
 
 .icon-link:hover {
-    background-color: #2980b9;
-    border-radius: 50%;
-    transition: background-color 0.5s ease;
+    /* background-color: #2980b9; */
+    /* border-radius: 50%; */
+    /* transition: background-color 0.5s ease; */
 }
 
 .user-container {
@@ -61,8 +61,6 @@
     cursor: pointer;
 
 }
-
-
 
 .icons-nav {
     margin: 0px 110px;
