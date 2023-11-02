@@ -3,10 +3,12 @@ import './CreatePost.css'
 import Post from '@Post'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import FormData from 'form-data'
 
 const CreatePost = () => {
   const [post, setPost] = useState({
     description: '',
+    image: '',
   })
 
   const [posts, setPosts] = useState([])
@@ -17,19 +19,44 @@ const CreatePost = () => {
     setPost({ ...post, [event.target.name]: event.target.value })
   }
 
-  const handleSubmit = event => {
-    event.preventDefault()
+  const handleFileChange = event => {
+    try {
+      event.preventDefault()
 
-    axios
-      .post(
-        `https://linkup-5h1y.onrender.com/api/v1/publications/all/${userId}`,
-        post
-      )
-      .then(response => {
-        setPosts([response.data, ...posts])
-        setPost({ description: '' })
-      })
-      .catch(err => console.log(err))
+      setPost({ ...post, image: event.target.files[0] })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleSubmit = event => {
+    try {
+      event.preventDefault()
+
+      const formData = new FormData()
+      formData.append('description', post?.description)
+      formData.append('image', post?.image)
+
+      setPost({ image: '', description: '' })
+
+      axios
+        .post(
+          `http://localhost:3001/api/v1/publications/post/${userId}`,
+          formData,
+          {
+            headers: {
+              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+            },
+          }
+        )
+        .then(response => {
+          console.log(response)
+          setPosts([response.data, ...posts])
+        })
+        .catch(err => console.log(err))
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const handleLikeClick = async (postId, liked) => {
@@ -73,6 +100,8 @@ const CreatePost = () => {
       .catch(err => console.log(err))
   }, [userId])
 
+  const validImage = 'image/jpeg,image/png,image/jpg,image/webp'
+
   return (
     <div className="d-flex align-items-center justify-content-center vh-100 w-100">
       <div className="w-50 text-center">
@@ -96,6 +125,12 @@ const CreatePost = () => {
                 onChange={handleInput}
                 name="description"
               />
+              <input
+                type="file"
+                id="file-input"
+                onChange={handleFileChange}
+                accept={validImage}
+              />
             </div>
             <div className="flex items-center justify-between">
               <button
@@ -115,6 +150,7 @@ const CreatePost = () => {
                 userId={userId}
                 userName={post.userId}
                 postContent={post.description}
+                postImage={post.image}
                 postId={post._id}
                 postDate={post.createdAt}
                 handleLikeClick={handleLikeClick}

@@ -113,12 +113,12 @@ const insertPublication = async (req: Request, res: Response) => {
         const response = await Publication.insert(post)
 
         if (!response) {
-          res.status(401).json({ msg: 'Sorry, something went wrong' })
+          return res.status(401).json({ msg: 'Sorry, something went wrong' })
         }
 
-        res.send(response)
+        return res.send(response)
       } else
-        res
+        return res
           .status(400)
           .json({ msg: 'Only one image can be upload on this service' })
     }
@@ -136,10 +136,10 @@ const insertPublication = async (req: Request, res: Response) => {
     const response = await Publication.insert(post)
 
     if (!response) {
-      res.status(401).json({ msg: 'Sorry, something went wrong' })
+      return res.status(401).json({ msg: 'Sorry, something went wrong' })
     }
 
-    res.send(response)
+    return res.send(response)
   } catch (e) {
     console.error({ e })
   }

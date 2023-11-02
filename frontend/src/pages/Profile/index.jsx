@@ -7,8 +7,8 @@ import Avatar from '@Avatar'
 import Header from '@Header'
 import NavBar from '@NavBar'
 import About from '@Perfil/About'
-import Post from '@Perfil/Posted'
 import Banner from '@Perfil/Banner'
+import Post from '../../Components/Perfil/Posted'
 
 const Index = () => {
   const [user, setUser] = useState()
@@ -27,6 +27,12 @@ const Index = () => {
       console.log(error)
     }
   }
+
+  // const updateProfilePosts = newPost => {
+  //   // Actualiza las publicaciones en el estado de Profile
+  //   setPosts([newPost, ...posts])
+  // }
+
   const getFollowers = async () => {
     try {
       const response = await axios.get(
@@ -87,7 +93,7 @@ const Index = () => {
           <About description={user?.description} />
         </div>
         <div className="body-profile-post">
-          <Post user={user} />
+          <Post user={user} posts={posts} />
         </div>
       </div>
     </div>
