@@ -55,7 +55,6 @@ const InteractionButtons = ({ postId }) => {
       <button className="button">
         <ion-icon name="chatbubble"></ion-icon>
         <span className="comment-count">0</span>
-        {isLiked ? 'su' : 'no'}
       </button>
     </div>
   );
