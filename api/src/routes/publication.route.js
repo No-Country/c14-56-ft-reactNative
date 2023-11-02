@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const publication_controller_1 = require("../controllers/publication.controller");
+const router = (0, express_1.Router)();
+exports.router = router;
+router.get('/all/:id', publication_controller_1.getPublications);
+router.get('/own/:id', publication_controller_1.getOwnPublications);
+router.get('/:id', publication_controller_1.getOnePublication);
+router.post('/:collection/:id', publication_controller_1.insertPublication);
+router.put('/:id', publication_controller_1.updatePublication);
+router.delete('/:id', publication_controller_1.deletePublication);

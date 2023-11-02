@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const history_controller_1 = require("../controllers/history.controller");
+const session_1 = require("../middleware/session");
+const router = (0, express_1.Router)();
+exports.router = router;
+router.get('/:id', session_1.verifySession, history_controller_1.getHistory);
+router.get('/find/:id', session_1.verifySession, history_controller_1.getHistoryByParams);
+router.get('/', session_1.verifySession, history_controller_1.getHistories);
+router.post('/', history_controller_1.insertHistory);
+router.delete('/:id', history_controller_1.deleteHistory);
