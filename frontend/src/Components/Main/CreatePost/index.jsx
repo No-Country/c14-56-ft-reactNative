@@ -28,16 +28,33 @@ const CreatePost = () => {
       .catch(err => console.log(err));
   }
 
-  const handleUpdateLikes = (postId, delta) => {
-    // Actualiza el estado de "likes" en CreatePost utilizando la variable posts y postId
-    // Puedes usar .map para actualizar el conteo de "likes" de una publicación específica.
-    setPosts(prevPosts =>
-      prevPosts.map(prevPost =>
-        prevPost._id === postId
-          ? { ...prevPost, likesCount: prevPost.likesCount + delta }
-          : prevPost
-      )
-    );
+
+  const handleLikeClick = async (postId, liked) => {
+    try {
+      if (liked) {
+        // Usuario deshace el like
+        await axios.delete(`http://localhost:3001/api/v1/likes/${postId}`);
+      } else {
+        // Usuario da like
+        await axios.post(`http://localhost:3001/api/v1/likes/${postId}`);
+      }
+
+      // Actualiza el conteo de likes en el estado
+      const updatedPosts = posts.map((p) => {
+        if (p._id === postId) {
+          return {
+            ...p,
+            likesCount: liked ? p.likesCount - 1 : p.likesCount + 1,
+            liked: !liked,
+          };
+        }
+        return p;
+      });
+
+      setPosts(updatedPosts);
+    } catch (error) {
+      console.error('Error al manejar el like', error);
+    }
   };
 
   useEffect(() => {
@@ -86,9 +103,9 @@ const CreatePost = () => {
                 postContent={post.description}
                 postId={post._id}
                 postDate={post.createdAt}
-                handleUpdateLikes={handleUpdateLikes}
+                handleLikeClick={handleLikeClick}
                 likesCount={post.likesCount}
-                handleLikeClick={post.handleLikeClick}
+                liked={post.liked}
               />
             ))
           ) : (
