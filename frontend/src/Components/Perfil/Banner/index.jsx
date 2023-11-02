@@ -24,7 +24,7 @@ const Banner = ({ user, posts, followers, followeds }) => {
   const getRelacional = async () => {
     try {
       const followData = await axios.get(
-        `http://localhost:3001/api/v1/followers/${id}/${userData?._id}`
+        `https://linkup-5h1y.onrender.com/api/v1/followers/${id}/${userData?._id}`
       )
       setRelational(followData?.data)
     } catch (error) {
@@ -38,7 +38,10 @@ const Banner = ({ user, posts, followers, followeds }) => {
         userFollower: id,
         userFollowed: userData?._id,
       }
-      axios.post(`http://localhost:3001/api/v1/followers`, followData)
+      axios.post(
+        `https://linkup-5h1y.onrender.com/api/v1/followers`,
+        followData
+      )
 
       setFollower(follower + 1)
       setRelational(true)
@@ -50,7 +53,7 @@ const Banner = ({ user, posts, followers, followeds }) => {
   const handleUnfollow = () => {
     try {
       axios.delete(
-        `http://localhost:3001/api/v1/followers/${relational?.data[0]?._id}`
+        `https://linkup-5h1y.onrender.com/api/v1/followers/${relational?.data[0]?._id}`
       )
 
       setFollower(follower - 1)
@@ -65,7 +68,7 @@ const Banner = ({ user, posts, followers, followeds }) => {
       const formData = new FormData()
       formData.append('file', event.target.files[0])
       await axios.post(
-        `http://localhost:3001/api/v1/uploads/profile/${userData?._id}`,
+        `https://linkup-5h1y.onrender.com/api/v1/uploads/profile/${userData?._id}`,
         formData
       )
       window.location.reload()

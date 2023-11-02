@@ -20,7 +20,7 @@ const Index = () => {
   const getPosts = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/v1/publications/own/${id}`
+        `https://linkup-5h1y.onrender.com/api/v1/publications/own/${id}`
       )
       setPosts(response?.data?.data)
     } catch (error) {
@@ -30,7 +30,7 @@ const Index = () => {
   const getFollowers = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/v1/followers/all/${id}`
+        `https://linkup-5h1y.onrender.com/api/v1/followers/all/${id}`
       )
       setFollowers(response?.data)
     } catch (error) {
@@ -40,7 +40,7 @@ const Index = () => {
   const getFolloweds = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/v1/followers/followed/${id}`
+        `https://linkup-5h1y.onrender.com/api/v1/followers/followed/${id}`
       )
       setFolloweds(response?.data?.data)
     } catch (error) {
@@ -51,7 +51,7 @@ const Index = () => {
   const getUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/v1/users/${id}`
+        `https://linkup-5h1y.onrender.com/api/v1/users/${id}`
       )
       setUser(response?.data?.data)
     } catch (error) {
