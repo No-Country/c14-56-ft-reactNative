@@ -28,18 +28,14 @@ const CreatePost = () => {
       .catch(err => console.log(err));
   }
 
-
   const handleLikeClick = async (postId, liked) => {
     try {
       if (liked) {
-        // Usuario deshace el like
         await axios.delete(`http://localhost:3001/api/v1/likes/${postId}`);
       } else {
-        // Usuario da like
         await axios.post(`http://localhost:3001/api/v1/likes/${postId}`);
       }
 
-      // Actualiza el conteo de likes en el estado
       const updatedPosts = posts.map((p) => {
         if (p._id === postId) {
           return {
@@ -98,7 +94,7 @@ const CreatePost = () => {
             posts.map(post => (
               <Post
                 key={post._id}
-                userId={userId}
+                user_id={userId}
                 userName={post.userId}
                 postContent={post.description}
                 postId={post._id}

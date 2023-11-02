@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import Historia from '@Histories';
 import ModalHistorias from '@HistoriesModal';
 import CrearHistoria from '@HistoriesCreate';
 
@@ -57,9 +56,6 @@ const ContenedorHistorias = () => {
 
         const userStoriesKeys = Object.keys(storiesForUsers)
         const orderedStories = userStoriesKeys.map(key => storiesForUsers[key]).flat();
-
-        console.log(orderedStories);
-        
         
         setUsersWithStories(storiesForUsers);
         setStories(orderedStories);

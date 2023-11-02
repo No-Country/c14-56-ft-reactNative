@@ -28,7 +28,7 @@ const Home = () => {
 
       </Header>
       <div className="container">
-        <div className='aside'>
+        <div className='aside border rounded-lg '>
           <div>
             <Aside />
           </div>

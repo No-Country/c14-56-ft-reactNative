@@ -1,5 +1,4 @@
 import UserCard from '@UserCard';
-import './UserList.css';
 
 const UserList = () => {
   const users = [
@@ -14,12 +13,8 @@ const UserList = () => {
   };
 
   return (
-    <div className="user-list">
-
-      <h3>Follow</h3>
-
-      <h2 className='h2-follow'>Follow</h2>
-
+    <div className="user-list bg-gray-300 max-w-xs mx-auto rounded-lg p-4">
+      <h3 className="font-roboto font-light text-center text-uppercase py-4">Personas que quizas conozcas</h3>
       {users.map((user, index) => (
         <UserCard
           key={index}

@@ -1,16 +1,13 @@
 import './Aside.css';
 import UserList from '@UserList';
-import UserCard from '@UserCard';
 
 const Aside = () => {
   return (
     <div className='index-container'>
       <div className="index-components">
-        <UserList>
-          <UserCard />
-        </UserList>
+        <UserList />
       </div>
-      <div className="index-footer ">
+      <div className="index-footer mt-10 ">
         <ul>
           <li><a href="/condiciones-de-servicio">Condiciones de Servicio </a>| </li>
           <li><a href="/politica-de-privacidad">Política de Privacidad</a> | </li>

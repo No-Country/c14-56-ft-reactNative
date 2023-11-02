@@ -1,14 +1,31 @@
-import './InteractionButtons.css';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useRef } from 'react';
+import Comments from '@Comments';
 import { useCookies } from 'react-cookie';
 
-const InteractionButtons = ({ postId }) => {
+import axios from 'axios';
+
+const InteractionButtons = ({ postId, user_id }) => {
   const { userId } = useCookies(['userId'])[0];
 
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [likeId, setLikeId] = useState(undefined);
+
+  const [commentsLength, setCommentsLength] = useState(0)
+
+  useEffect(() => {
+    try {
+      axios.get(`http://localhost:3001/api/v1/comments/all/${postId}`)
+        .then((res) => {
+          const value = res.data.data
+          setCommentsLength(value.length)
+
+        })
+    } catch (error) {
+      console.log(error);
+    }
+  }, [postId])
+  
 
   useEffect(() => {
     axios
@@ -26,7 +43,6 @@ const InteractionButtons = ({ postId }) => {
 
   const handleLike = async () => {
     if (isLiked) {
-      // Si ya le diste "me gusta", elimina el like
       try {
         await axios.delete(`http://localhost:3001/api/v1/likes/${likeId}`);
         setLikesCount(likesCount - 1);
@@ -35,29 +51,46 @@ const InteractionButtons = ({ postId }) => {
         console.log(error);
       }
     } else {
-      // Si aún no le diste "me gusta", agrega el like
       try {
         await axios.post(`http://localhost:3001/api/v1/likes/${postId}/${userId}`);
         setLikesCount(likesCount + 1);
         setIsLiked(true);
+        setCommentsLength(commentsLength + 1);
       } catch (error) {
         console.log(error);
       }
     }
   };
 
-  return (
-    <div className="interaction-buttons">
-      <button className={`heart-button ${isLiked ? 'liked' : ''}`} onClick={handleLike}>
-        <ion-icon name="heart"></ion-icon>
-        {likesCount} <span>Me gusta</span>
-      </button>
-      <button className="button">
-        <ion-icon name="chatbubble"></ion-icon>
-        <span className="comment-count">0</span>
-      </button>
-    </div>
-  );
-};
+  const mi_modal = useRef();
 
+  const handleOpenModal = () => {
+    if (mi_modal.current) {
+      mi_modal.current.showModal();
+    }
+  };
+
+  return (
+    <div className="interaction-buttons flex bg-gradient-to-r from-pink-100 to-red-100 rounded-b-lg py-2 justify-between">
+      <button
+        className={`heart-button relative bg-transparent cursor-pointer ${
+          isLiked ? 'text-red-600 liked' : 'text-black'
+        }`}
+        onClick={handleLike}
+      >
+        <ion-icon name="heart" class="text-2xl"></ion-icon>
+        {likesCount} <span className="text-lg">Me gusta</span>
+      </button>
+      <button
+        className="button relative bg-transparent cursor-pointer chatbubble-button"
+        onClick={() => handleOpenModal()}
+      >
+        <ion-icon name="chatbubble" class="text-2xl"></ion-icon>
+        <span className="comment-count text-lg">{commentsLength}</span>
+      </button>
+      <Comments postId={postId} mi_modal={mi_modal} user_id={user_id} />
+    </div>
+  )
+
+};
 export default InteractionButtons;

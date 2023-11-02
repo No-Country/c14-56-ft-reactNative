@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './ModalHistorias.css'
 
 const ModalHistorias = ({ mi_modal, imageUrls, imageLength, actualIndex, users }) => {
