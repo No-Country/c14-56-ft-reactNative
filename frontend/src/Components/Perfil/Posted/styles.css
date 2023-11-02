@@ -1,5 +1,6 @@
 .profile-post {
   padding: 15px;
+  height: 80vh;
 }
 
 .profile-post-box {
@@ -8,6 +9,9 @@
   grid-template-columns: repeat(auto-fill, minmax(25%, 3fr));
   gap: 10px;
 
+  @media (max-width: 1300px) {
+    grid-template-columns: repeat(auto-fill, minmax(40%, 2fr));
+  }
   @media (max-width: 900px) {
     display: block;
   }
@@ -32,6 +36,7 @@
   background-color: #1f3054;
   border-radius: 20px;
   padding: 0 10px 20px 10px;
+  margin: 20px 0 20px 0;
 }
 
 .profile-post-card-header {

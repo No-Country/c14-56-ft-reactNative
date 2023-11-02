@@ -1,7 +1,11 @@
 .profile-about-box {
-  padding: 13px;
+  padding: 30px 20px 30px 20px;
   background-color: #3c2c46;
   border-radius: 23px;
+
+  @media (max-width: 1100px) {
+    display: block;
+  }
 }
 .profile-about-title {
   margin: 30px 0 25px 0;
@@ -22,4 +26,5 @@
 }
 .profile-about-box-description {
   text-align: start;
+  color: #f2f2f2;
 }

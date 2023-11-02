@@ -10,7 +10,6 @@ import { useEffect, useRef, useState } from 'react'
 const Banner = ({ user, posts, followers, followeds }) => {
   const [follower, setFollower] = useState(0)
   const [relational, setRelational] = useState(false)
-  const [selectedFile, setSelectedFile] = useState(null)
 
   const fileInputRef = useRef(null)
 
