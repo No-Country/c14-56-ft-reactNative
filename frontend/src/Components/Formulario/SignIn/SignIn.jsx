@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import axios from 'axios';
+import axios from 'axios'
 
 const SignIn = () => {
   const { handleSubmit, formState: { errors }, register } = useForm();
@@ -19,39 +19,37 @@ const SignIn = () => {
     await axios.get(`http://localhost:3001/api/v1/users/${userId}`)
       .then((res) => {
         localStorage.setItem('userData', JSON.stringify(res.data.data))
-
-        console.log(res.data.data)
       })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+      .catch(error => {
+        console.error(error)
+      })
+  }
 
-  const checkUser = async (data) => {
-    await axios.post('http://localhost:3001/api/v1/auths/login', data)
-      .then((res) => {
-        setAuthCookie('authToken', res.data.token);
-        setUserIdCookie('userId', res.data.user._id);
-        setPeticionErronea(false);
-        storeUserData(res.data.user._id);
-
+  const checkUser = async data => {
+    await axios
+      .post('http://localhost:3001/api/v1/auths/login', data)
+      .then(res => {
+        setAuthCookie('authToken', res.data.token)
+        setUserIdCookie('userId', res.data.user._id)
+        setPeticionErronea(false)
+        storeUserData(res.data.user._id)
 
         setTimeout(() => {
-          navigate('/home');
-        }, 2000);
+          navigate('/home')
+        }, 2000)
       })
-      .catch((error) => {
-        console.log(error);
-        setPeticionErronea(true);
+      .catch(error => {
+        console.error(error)
+        setPeticionErronea(true)
         setTimeout(() => {
-          setPeticionErronea(false);
-        }, 5000);
-      });
-  };
+          setPeticionErronea(false)
+        }, 5000)
+      })
+  }
 
-  const onSubmit = (data) => {
-    checkUser(data);
-  };
+  const onSubmit = data => {
+    checkUser(data)
+  }
 
   return (
     <form className='flex flex-col justify-center align-center w-full md:mt-10' onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +70,7 @@ const SignIn = () => {
         </div>
       )}
     </form>
-  );
+  )
 }
 
-export default SignIn;
+export default SignIn

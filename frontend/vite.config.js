@@ -21,6 +21,7 @@ export default defineConfig({
       '@Post': path.resolve(__dirname, 'src/Components/Main/Post'),
       '@Comments': path.resolve(__dirname, 'src/Components/Main/Post/Comments'),
       '@Perfil': path.resolve(__dirname, 'src/Components/Perfil'),
+      '@CreatePost': path.resolve(__dirname, 'src/Components/Main/CreatePost'),
       '@PostButtons': path.resolve(
         __dirname,
         'src/Components/Main/Post/InteractionButtons'
