@@ -26,7 +26,7 @@ const Search = () => {
       .get('http://localhost:3001/api/v1/users')
       .then((res) => {
         setUsers(res.data.data);
-        console.log(res.data.data)
+        // console.log(res.data.data)
       })
       .catch((error) => {
         console.log(error);
@@ -53,7 +53,7 @@ const Search = () => {
               <tr key={index} onClick={() => navigate(`/profile/${user._id}`)} className='cursor-pointer border-b-slate-400 border-b '>
                 
                 <Avatar imageUrl={user.photoProfile.path} style={'searchInput'}  />
-                <td>{user.name}</td>
+                <td className='text-slate-800'>{user.name}</td>
               </tr>
             ))
           ) : (

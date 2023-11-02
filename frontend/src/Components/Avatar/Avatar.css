@@ -1,11 +1,11 @@
 .avatar {
   border-radius: 50%;
-  width: 100%;
+  /* width: 4rem; */
   height: 100%;
   align-items: center;
   justify-content: center;
 
-  /* margin-right: 30px; */
+  margin-right: 1rem;
   
   margin-bottom: 10px;
 }
