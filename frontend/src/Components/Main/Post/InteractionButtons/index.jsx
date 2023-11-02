@@ -1,89 +1,62 @@
 import './InteractionButtons.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Comments from '@Comments'; // Asegúrate de importar correctamente el componente Comments
+import { useCookies } from 'react-cookie';
 
-const InteractionButtons = ({ postId, userId }) => {
+const InteractionButtons = ({ postId }) => {
+  const { userId } = useCookies(['userId'])[0];
+
   const [likesCount, setLikesCount] = useState(0);
-  const [liked, setLiked] = useState(false);
-  const [commentCount, setCommentCount] = useState(0);
-  const [comments, setComments] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeId, setLikeId] = useState(undefined);
 
   useEffect(() => {
-    const isLiked = localStorage.getItem(`like-${postId}`);
+    axios
+      .get(`http://localhost:3001/api/v1/likes/${postId}/${userId}`)
+      .then((res) => {
+        const likeData = res.data.data.find((like) => like.userId === userId);
+        setLikesCount(res.data.data.length);
+        setIsLiked(!!likeData);
+        setLikeId(likeData ? likeData._id : undefined);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [postId, userId]);
 
+  const handleLike = async () => {
     if (isLiked) {
-      setLiked(true);
-    }
-  }, [postId]);
-
-  const handleLikeClick = async () => {
-    try {
-      if (liked) {
-        // Usuario deshace el "Me gusta"
-        await axios.delete(`http://localhost:3001/api/v1/likes/${postId}`);
-        setLikesCount((prevCount) => prevCount - 1);
-        setLiked(false);
-
-        localStorage.removeItem(`like-${postId}`);
-      } else {
-        // Usuario da "Me gusta"
-        await axios.post(`http://localhost:3001/api/v1/likes/${postId}/${userId}`);
-        setLikesCount((prevCount) => prevCount + 1);
-        setLiked(true);
-
-        localStorage.setItem(`like-${postId}`, 'true');
-      }
-    } catch (error) {
-      console.error('Error al manejar el "Me gusta"', error);
-    }
-  };
-
-  useEffect(() => {
-    const fetchComments = async () => {
+      // Si ya le diste "me gusta", elimina el like
       try {
-        const response = await axios.get(`http://localhost:3001/api/v1/comments/all/${postId}`);
-        setCommentCount(response.data.total || 0);
-        setComments(response.data.data || []);
+        await axios.delete(`http://localhost:3001/api/v1/likes/${likeId}`);
+        setLikesCount(likesCount - 1);
+        setIsLiked(false);
       } catch (error) {
-        console.error('Error al obtener los comentarios', error);
-        setCommentCount(0);
-        setComments([]);
+        console.log(error);
       }
-    };
-
-    fetchComments();
-  }, [postId]);
-
-  const handleToggleComments = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+    } else {
+      // Si aún no le diste "me gusta", agrega el like
+      try {
+        await axios.post(`http://localhost:3001/api/v1/likes/${postId}/${userId}`);
+        setLikesCount(likesCount + 1);
+        setIsLiked(true);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
     <div className="interaction-buttons">
-      <button className={`heart-button ${liked ? 'liked' : ''}`} onClick={handleLikeClick}>
+      <button className={`heart-button ${isLiked ? 'liked' : ''}`} onClick={handleLike}>
         <ion-icon name="heart"></ion-icon>
-        {likesCount}
+        {likesCount} <span>Me gusta</span>
       </button>
-      <button className="button" onClick={handleToggleComments}>
+      <button className="button">
         <ion-icon name="chatbubble"></ion-icon>
-        <span className="comment-count">{commentCount}</span> 
+        <span className="comment-count">0</span>
+        {isLiked ? 'su' : 'no'}
       </button>
-
-      {isModalOpen && (
-        <div className="modal" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>Comentarios</h3>
-            <button onClick={closeModal}>Cerrar</button>
-            <Comments postId={postId} userId={userId} onClose={closeModal} />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

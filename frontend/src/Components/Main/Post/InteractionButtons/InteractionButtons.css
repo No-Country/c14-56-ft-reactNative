@@ -29,12 +29,10 @@
   }
 
   .heart-button.liked ion-icon {
-    color: rgb(245, 0, 0);
+    color: rgb(255, 48, 64);
   }
 
-
-
   .heart-button:active ion-icon {
-    transform: scale(1.5);
-    transition: transform 0.1s;
+    transform: scale(1.2);
+    transition: transform .1s;
   }

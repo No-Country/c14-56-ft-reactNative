@@ -6,23 +6,6 @@ import './Post.css';
 import { useEffect, useState } from 'react';
 
 const Post = ({ avatarUrl, userName, userHandle, postContent, postDate, postId, handleLikeClick, likesCount, liked }) => {
-  const [posts, setPosts] = useState();
-  const userData = JSON.parse(localStorage.getItem('userData'));
-
-  const getPosts = () => {
-    axios
-      .get(`http://localhost:3001/api/v1/publications/all/${userData._id}?limit=10`)
-      .then((res) => {
-        setPosts(res?.data?.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    getPosts();
-  }, []);
 
   return (
     <div className="post">
