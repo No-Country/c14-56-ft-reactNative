@@ -2,7 +2,6 @@
   padding: 30px 20px 30px 20px;
   background-color: #3c2c46;
   border-radius: 23px;
-
   @media (max-width: 1100px) {
     display: block;
   }
