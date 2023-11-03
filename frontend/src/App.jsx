@@ -7,6 +7,7 @@ import './App.css'
 import { UserProvider } from './userContext/userContext'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import PageNotFound from './pages/NotFound'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route exact path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="*" element={<PageNotFound />}></Route>
           </Routes>
         </Router>
       </UserProvider>
