@@ -11,9 +11,37 @@ contenido y estar al tanto de lo que está sucediendo en tu red.</p>
 ## Integrantes
 
 <table>
-    <th><a href="https://github.com/lucasferdal">Lucas Fernández</a></th>
-    <th><a href="https://github.com/Tommyx66">Tomás Zarriello</a></th>
-    <th><a href="https://github.com/darklts">Richard Layne</a></th>
+    <thead>
+        <tr>
+            <th><a href="https://github.com/lucasferdal">Lucas Fernández</a></th>
+            <th><a href="https://github.com/Tommyx66">Tomás Zarriello</a></th>
+            <th><a href="https://github.com/darklts">Richard Layne</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>🇺🇾 :uruguay:</td>
+            <td>Roles</td>
+            <li>Frontend</li>
+            <li>PMO</li>
+            <li>Tester</li>
+        </tr>
+        <tr>
+            <td>🇦🇷 :argentina:</td>
+            <td>Roles</td>
+            <li>Frontend</li>
+            <li>UX/UI</li>
+            <li>Tester</li>
+        </tr>
+        <tr>
+            <td>🇨🇷 :costa_rica:</td>
+            <td>Roles</td>
+            <li>Fullstack</li>
+            <li>UX/UI</li>
+            <li>Tester</li>
+        </tr>
+    </tbody>
+    
 </table>
 
 ## Características
@@ -23,6 +51,17 @@ contenido y estar al tanto de lo que está sucediendo en tu red.</p>
 <li>Comentarios y reacciones en las publicaciones. </li>
 <li>Búsqueda de usuarios y conexiones. </li>
 <li>Perfiles de usuario personalizables.</li>
+
+## Diseño
+
+Se utilizó figma para la maquetación y UI de la app. ILlustrator para la
+generacion de iconos y logos
+
+<hr>
+Versión WEB
+[WEB Design](https://www.figma.com/file/cLwCWRB86FZzQphAOFsQzJ/Web-Design?type=design&node-id=0-1&mode=design&t=Y4hnfuUVgfXhZS7Y-0)
+Versión Movil (Futuramente con React Native)
+[Movil Design](https://www.figma.com/file/Kh7OVTjSh5EHVYBQGrdwXj/Mobile-Design?type=design&mode=design&t=Y4hnfuUVgfXhZS7Y-0)
 
 ## Instalación
 
