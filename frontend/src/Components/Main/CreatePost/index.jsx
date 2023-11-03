@@ -105,14 +105,14 @@ const CreatePost = () => {
     <div className="d-flex align-items-center justify-content-center vh-100 w-4/6
     
     xs:w-100 xs:p-10 xs:justify-center xs:text-center
-    sm:w-full 
-    md:w-full
+    max-sm:w-80 
+    max-md:w-full
     lg:w-100 ">
       <div className="w-50 text-center">
-        <div className="bg-blue">
+        <div className="bg-blue ">
           <form
             onSubmit={handleSubmit}
-            className="bg-slate-200 shadow-2xl rounded px-8 pt-6 pb-8 mb-4 dark:bg-neutral-800"
+            className="bg-slate-200 shadow-2xl rounded w-full px-8 pt-6 pb-8 mb-4 dark:bg-neutral-800"
           >
             <div className="mb-4">
               <label
