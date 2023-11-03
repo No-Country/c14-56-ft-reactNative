@@ -19,7 +19,7 @@ contenido y estar al tanto de lo que está sucediendo en tu red.</p>
         </tr>
     </thead>
     <tbody>
-        <td>
+        <tr>
             <td>Uruguay :uruguay:</td>
             <td>Argentina :argentina:</td>
             <td>Costa Rica :costa_rica:</td>
