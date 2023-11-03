@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Comments from '@Comments';
 import { useCookies } from 'react-cookie';
+import './InteractionButtons.css'
 
 import axios from 'axios';
 
@@ -74,15 +75,27 @@ const InteractionButtons = ({ postId, user_id }) => {
   };
 
   return (
-    <div className="flex bg-pink-100 rounded-b-lg py-2 justify-between dark:bg-neutral-800 ">
+   // <div className="flex bg-pink-100 rounded-b-lg py-2 justify-between dark:bg-neutral-800 ">
+     // <button
+      //  className={`heart-button relative bg-transparent cursor-pointer ${
+      //    isLiked ? 'text-red-600 liked' : 'text-black dark:text-slate-200'
+     //   } `}
+     //   onClick={handleLike}
+    //  >
+     //   <ion-icon name="heart" class="text-2xl"></ion-icon>
+     //   {likesCount} <span className="text-lg">Me gusta</span>
+    
+    //
+
+    <div className="interaction-buttons">
       <button
-        className={`heart-button relative bg-transparent cursor-pointer ${
-          isLiked ? 'text-red-600 liked' : 'text-black dark:text-slate-200'
-        } `}
+        className={`heart-button ${isLiked ? 'liked' : ''}`}
         onClick={handleLike}
       >
-        <ion-icon name="heart" class="text-2xl"></ion-icon>
-        {likesCount} <span className="text-lg">Me gusta</span>
+        <ion-icon name="heart"></ion-icon>
+        {likesCount} <span>Me gusta</span>
+        
+        
       </button>
       <button
         className="button relative bg-transparent cursor-pointer chatbubble-button dark:text-slate-200"
