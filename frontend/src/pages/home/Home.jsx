@@ -35,7 +35,7 @@ const Home = () => {
             <Aside />
           </div>
         </div>
-        <div className="main ">
+        <div className="main grid">
           <div className="histories w-max">
             <ContenedorHistorias />
           </div>
