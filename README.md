@@ -65,6 +65,7 @@ generacion de iconos y logos
 Versión WEB
 
 [WEB](https://www.figma.com/file/cLwCWRB86FZzQphAOFsQzJ/Web-Design?type=design&node-id=0%3A1&mode=design&t=Mh4j0zjKHzMH8E3d-1)
+
 Versión Movil (Futuramente con React Native)
 
 [Movil](https://www.figma.com/file/Kh7OVTjSh5EHVYBQGrdwXj/Mobile-Design?type=design&node-id=0%3A1&mode=design&t=NA1baaWy0kw4Ejnp-1)
