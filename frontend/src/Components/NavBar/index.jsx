@@ -17,7 +17,6 @@ const index = ({ children }) => {
   return (
     <nav className="flex">
       <ul className="ul">
-        {/*   Eliminar <a hrefs=> y cambiar por Link to   */}
         <div className="user-container" onClick={() => navigate(`/profile/${user ? user._id : ''}`)}>
           <div className="user-info">{children}</div>
         </div>
@@ -26,7 +25,6 @@ const index = ({ children }) => {
             <MoreIcon />
           </a>
         </li>
-        {/*   Eliminar <a hrefs=> y cambiar por Link to   */}
       </ul>
     </nav>
   )

@@ -46,12 +46,12 @@ const cambioDeInput = useRef()
 
       <div className="text-center">
         <div className="avatar mt-3 mx-3 h-14 w-14 cursor-pointer" onClick={() => cambioDeInput.current.click()}>
-          <div className={`w-24 rounded-full ring ring-info ring-offset-base-100 ring-offset-2 hover-bg-slate-100`} >
+          <div className={`w-24 rounded-full ring ring-info ring-offset-base-400 ring-offset-2 hover-bg-slate-100`} >
             <img src={userData.photoProfile.path} />
 
           </div>
         </div>
-        <p className="text-xs truncate text-center">Crear</p>
+        <p className="text-xs truncate text-center dark:text-slate-200">Crear</p>
       </div>
 
     </div >

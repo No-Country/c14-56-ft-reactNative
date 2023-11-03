@@ -21,10 +21,10 @@ const PostContent = ({ postContent, postDate }) => {
   }
 
   return (
-    <div>
-      <p className="post-date text-end italic">{timeAgo}</p>
-      <div className="post-content text-left rounded">
-        <p className="content text-ml">{postContent}</p>
+    <div >
+      <p className="post-date text-end italic ">{timeAgo}</p>
+      <div className="post-content text-left rounded dark:bg-neutral-900">
+        <p className="content text-ml dark:text-slate-200">{postContent}</p>
       </div>
     </div>
   );

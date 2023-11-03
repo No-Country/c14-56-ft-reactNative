@@ -3,11 +3,11 @@ import UserList from '@UserList';
 
 const Aside = () => {
   return (
-    <div className='index-container'>
+    <div className='index-container '>
       <div className="index-components">
         <UserList />
       </div>
-      <div className="index-footer mt-10 ">
+      <div className="index-footer mt-10 dark:text-slate-200">
         <ul>
           <li><a href="/condiciones-de-servicio">Condiciones de Servicio </a>| </li>
           <li><a href="/politica-de-privacidad">Política de Privacidad</a> | </li>

@@ -7,7 +7,7 @@ import InteractionButtons from '@PostButtons';
 const Post = ({ avatarUrl, userName, userHandle, postContent, postDate, postId, handleLikeClick, likesCount, liked, user_id, commentsLength }) => {
     
   return (
-    <div className="post">
+    <div className="post dark:bg-neutral-800 dark:border-neutral-700">
       <UserHeader avatarUrl={avatarUrl} userId={userName} userHandle={userHandle} />
       <PostContent postContent={postContent} postDate={postDate} />
       <InteractionButtons

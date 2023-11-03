@@ -69,9 +69,9 @@ const Comments = ({ postId, mi_modal, user_id }) => {
 
   return (
     <dialog className="modal fixed z-10 inset-0 overflow-y-auto" style={{ fontFamily: 'initial' }} ref={mi_modal}>
-      <div className="modal-content bg-white h-5/6 mx-auto my-8 border border-gray-300 rounded-lg p-4 w-4/5">
+      <div className="modal-content bg-white h-5/6 mx-auto my-8 border border-gray-300 rounded-lg p-4 w-4/5 dark:bg-neutral-900">
         <div className="w-full flex ">
-          <h3 className="text-2xl font-semibold mb-4 ">Comentarios</h3>
+          <h3 className="text-2xl font-semibold mb-4 dark:text-slate-200">Comentarios</h3>
           <ion-icon
             name="close-outline"
             className="closeIcon text-2xl absolute top-2 right-10"
@@ -79,7 +79,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
           ></ion-icon>
         </div>
 
-        <div className="comments-list mt-4 h-80 overflow-x-auto bg-slate-100 rounded-3xl">
+        <div className="comments-list mt-4 h-80 overflow-x-auto bg-slate-100 rounded-3xl dark:bg-neutral-800">
           {completeComments ? (
             <div>
               {Object.values(completeComments).map((element, index) => (
@@ -87,12 +87,12 @@ const Comments = ({ postId, mi_modal, user_id }) => {
                   <div className='flex'>
                     <Avatar imageUrl={element.photoProfile} marginTop={'w-14'} />
                     <div className="text-left my-2 ">
-                      <p className='font-bold'>{element.name}</p>
+                      <p className='font-bold dark:text-slate-200'>{element.name}</p>
                       <p className="text-slate-400">@{element.userName}</p>
                     </div>
                   </div>
-                  <div className="bg-sky-100 h-16 rounded-xl">
-                    <p className="text-left ml-5 my-2 t">{element.text}</p>
+                  <div className="bg-sky-100 h-16 rounded-xl dark:bg-neutral-600">
+                    <p className="text-left ml-5 my-2 dark:text-slate-200">{element.text}</p>
                   </div>
                 </div>
               ))}
@@ -106,11 +106,11 @@ const Comments = ({ postId, mi_modal, user_id }) => {
               placeholder="Agrega un comentario..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              className="w-full h-16 border rounded p-2 focus:outline-none focus:ring focus:border-blue-300"
+              className="w-full h-16 border rounded p-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-neutral-800 dark:border-neutral-700"
             />
           </div>
           <button
-            className=" btn btn-info btn-md bg-blue-500 text-white  mt-2 rounded hover-bg-blue-700 w-1/6 mx-4"
+            className=" btn btn-info btn-md bg-blue-500 text-white  mt-2 rounded hover-bg-blue-700 w-1/6 mx-4 dark:bg-blue-800 dark:hover:bg-blue-700"
             onClick={handleAddComment}
           >
             Enviar

@@ -35,25 +35,25 @@ const Search = () => {
 
   return (
     <div>
-      <div className="search-bar activeicon">
+      <div className="search-bar activeicon dark:bg-neutral-700">
         <ion-icon name="search"></ion-icon>
         <input
           type="text"
           placeholder="Buscar"
-          className="search-input"
+          className="search-input dark:bg-neutral-700"
           onChange={handleChange}
           value={searchInput}
         />
 
       </div>
-      <div className={`text-slate-100 absolute mt-5 w-1/3 bg-slate-100 z-20 text-black rounded-lg ${searchInput === '' ? 'hidden' : ''}`}>
+      <div className={`text-slate-100 absolute mt-5 w-1/3 bg-slate-100 z-20 text-black rounded-lg ${searchInput === '' ? 'hidden' : ''} dark:bg-neutral-800`}>
         <table className=''>
           {filteredUsers.length > 0 ? (
             filteredUsers.map((user, index) => (
-              <tr key={index} onClick={() => navigate(`/profile/${user._id}`)} className='cursor-pointer border-b-slate-400 border-b '>
+              <tr key={index} onClick={() => navigate(`/profile/${user._id}`)} className='cursor-pointer border-b-slate-400 border-b dark:border-b-neutral-500'>
                 
                 <Avatar imageUrl={user.photoProfile.path} style={'searchInput'}  />
-                <td className='text-slate-800'>{user.name}</td>
+                <td className='text-slate-800 dark:text-slate-200'>{user.name}</td>
               </tr>
             ))
           ) : (

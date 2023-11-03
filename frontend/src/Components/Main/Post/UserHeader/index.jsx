@@ -29,12 +29,12 @@ const UserHeader = ({ avatarUrl, userId, userHandle }) => {
   }, [userId]);
 
   return (
-    <div className="user-header">
+    <div className="user-header dark:bg-neutral-900">
       <div className='w-1/6'>
         <Avatar imageUrl={defaultValue(photoProfile)} />
       </div>
       <div className='text-left'>
-        <p className="user-name">{defaultValue(name)}</p>
+        <p className="user-name dark:text-slate-200">{defaultValue(name)}</p>
         <p className="user-handle">@{defaultValue(userName)}</p>
       </div>
     </div>

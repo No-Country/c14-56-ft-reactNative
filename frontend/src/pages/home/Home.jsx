@@ -17,7 +17,7 @@ const Home = () => {
   const userName = userData.name;
 
   return (
-    <div className='home-container'>
+    <div className='home-container dark:bg-neutral-900'>
       <Header>
         <NavBar>
           <Avatar imageUrl={avatarImageUrl} marginTop={'w-14'} />    {/*  Agregar Routes  */}
@@ -28,7 +28,7 @@ const Home = () => {
 
       </Header>
       <div className="container">
-        <div className='aside border rounded-lg '>
+        <div className='aside border rounded-lg dark:bg-neutral-900 dark:border-neutral-800'>
           <div>
             <Aside />
           </div>
@@ -40,13 +40,8 @@ const Home = () => {
           <div className='create-post'>
             <CreatePost />
           </div>
-          <div className='post'>
-
-          </div>
         </div>
       </div>
-
-
 
     </div>
   )

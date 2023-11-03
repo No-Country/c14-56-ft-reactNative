@@ -55,7 +55,7 @@ const InteractionButtons = ({ postId, user_id }) => {
         await axios.post(`http://localhost:3001/api/v1/likes/${postId}/${userId}`);
         setLikesCount(likesCount + 1);
         setIsLiked(true);
-        setCommentsLength(commentsLength + 1);
+        // setCommentsLength(commentsLength + 1);
       } catch (error) {
         console.log(error);
       }
@@ -71,18 +71,18 @@ const InteractionButtons = ({ postId, user_id }) => {
   };
 
   return (
-    <div className="interaction-buttons flex bg-gradient-to-r from-pink-100 to-red-100 rounded-b-lg py-2 justify-between">
+    <div className="flex bg-pink-100 rounded-b-lg py-2 justify-between dark:bg-neutral-800 ">
       <button
         className={`heart-button relative bg-transparent cursor-pointer ${
-          isLiked ? 'text-red-600 liked' : 'text-black'
-        }`}
+          isLiked ? 'text-red-600 liked' : 'text-black dark:text-slate-200'
+        } `}
         onClick={handleLike}
       >
         <ion-icon name="heart" class="text-2xl"></ion-icon>
         {likesCount} <span className="text-lg">Me gusta</span>
       </button>
       <button
-        className="button relative bg-transparent cursor-pointer chatbubble-button"
+        className="button relative bg-transparent cursor-pointer chatbubble-button dark:text-slate-200"
         onClick={() => handleOpenModal()}
       >
         <ion-icon name="chatbubble" class="text-2xl"></ion-icon>
