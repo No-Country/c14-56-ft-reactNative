@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Avatar from '@Avatar'
 import './Search.css'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import searchIcon from '../../assets/icons/search-icon.png'
+import axios from 'axios'
 
 const Search = () => {
   const [users, setUsers] = useState([])
@@ -35,7 +36,8 @@ const Search = () => {
   return (
     <div>
       <div className="search-bar activeicon dark:bg-neutral-700 xs:hidden md:flex">
-        <ion-icon name="search"></ion-icon>
+        <img src={searchIcon} alt="" className='w-6'/>
+        {/* <ion-icon name="search"></ion-icon> */}
         <input
           type="text"
           placeholder="Buscar"
