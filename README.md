@@ -19,26 +19,30 @@ contenido y estar al tanto de lo que está sucediendo en tu red.</p>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>🇺🇾 :uruguay:</td>
-            <td>Roles</td>
-            <li>Frontend</li>
-            <li>PMO</li>
-            <li>Tester</li>
+        <td>
+            <td>Uruguay :uruguay:</td>
+            <td>Argentina :argentina:</td>
+            <td>Costa Rica :costa_rica:</td>
         </tr>
         <tr>
-            <td>🇦🇷 :argentina:</td>
             <td>Roles</td>
-            <li>Frontend</li>
-            <li>UX/UI</li>
-            <li>Tester</li>
+            <td>Roles</td>
+            <td>Roles</td>
+        </tr >
+        <tr>
+            <td>Frontend</td>
+            <td>Frontend</td>
+            <td>Fullstack</td>
         </tr>
         <tr>
-            <td>🇨🇷 :costa_rica:</td>
-            <td>Roles</td>
-            <li>Fullstack</li>
-            <li>UX/UI</li>
-            <li>Tester</li>
+            <td>Tester</td>
+            <td>Tester</td>
+            <td>Tester</td>
+        </tr>
+        <tr>
+            <td>PMO</td>
+            <td>UX/UI</td>
+            <td>UX/UI</td>
         </tr>
     </tbody>
     
