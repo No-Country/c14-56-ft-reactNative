@@ -106,7 +106,7 @@ const CreatePost = () => {
     
     xs:w-100 xs:p-10 xs:justify-center xs:text-center
     max-sm:w-80 
-    max-md:w-full
+    md:w-full
     lg:w-100 ">
       <div className="w-50 text-center">
         <div className="bg-blue ">
