@@ -5,6 +5,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/c14-56-ft-reactNative/',
   resolve: {
     extensions: ['.jsx', '.js'],
     alias: {
