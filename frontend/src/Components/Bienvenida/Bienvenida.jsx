@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import icon from '@logo'
-import loginImage from '@loginImg'
+// import loginImage from '@loginImg'
 import './Bienvenida.css'
 
 import SignIn from '../Formulario/SignIn'
@@ -37,7 +37,7 @@ const Bienvenida = () => {
               <p className='max-sm:hidden'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum obcaecati veniam nemo hic fuga nisi nam eum distinctio unde.</p>
             </div>
           </div>
-          <img src={loginImage} alt="" className='w-1/3 h-auto max-sm:hidden max-md:w-1/4 ' />
+          {/* <img src={loginImage} alt="" className='w-1/3 h-auto max-sm:hidden max-md:w-1/4 ' /> */}
         </div>
         <div className={`flex-col md:w-1/4 ${mostrarForm ? 'my-auto' : 'my-2'}  lg:mr-10 rounded-xl w-4/6 max-sm:my-3 loginStyles h-full`}>
           <div className='w-full flex justify-around mt-1'>
