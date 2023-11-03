@@ -1,9 +1,17 @@
-.white-icon {
+ion-icon {
+  justify-content: space-between;
+  font-size: 20px;
+  
   color: white;
+  cursor: pointer;
+  border-radius: 100%;
+  transition: background-color 0.5s ease;
+
 }
 
-.fa {
-  justify-content: space-between;
-  width: 20px;
-  height: 20px;
+ion-icon:hover {
+  /* background-color: #2980b9;
+  border-radius: 100%;
+  transition: background-color 0.5s ease; */
+ 
 }

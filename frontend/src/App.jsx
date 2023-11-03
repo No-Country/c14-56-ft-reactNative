@@ -1,26 +1,27 @@
+import Login from './pages/Login'
+import Home from './pages/home/'
+import Profile from './pages/Profile'
+import './index.css'
+import './App.css'
 
-import Avatar from './Components/Avatar/Avatar';
-import Header from './Components/Header/Header';
-import NavBar from './Components/NavBar/NavBar';
-//Agregar Import de ReactRouter, RouterDOM, etc
+import { UserProvider } from './userContext/userContext'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const App = () => {
-  const avatarImageUrl = 'https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg';  //Imagen de Prueba, eliminar luego para dejar variable
-  const userName = 'Catherine Ipsum';     //Nombre de Prueba, eliminar luego para dejar variable
   return (
-    <div>
-      <Header>
-        <NavBar>
-          <Avatar imageUrl={avatarImageUrl} />    {/*  Agregar Routes  */}
-         
-            {userName}
-         
-        </NavBar>
+    <>
+      <UserProvider>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile/:id" element={<Profile />} />
+          </Routes>
+        </Router>
+      </UserProvider>
+    </>
+  )
+}
 
-      </Header>
-    </div>
-  );
-};
-
-
-export default App;
+export default App

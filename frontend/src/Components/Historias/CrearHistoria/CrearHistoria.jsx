@@ -1,35 +1,72 @@
-import React, { useRef } from 'react';
-import useImageStore from '../../../../store'
+import React, { useRef } from 'react'
+import { useCookies } from 'react-cookie'
+import axios from 'axios'
 
 const CrearHistoria = () => {
   const cambioDeInput = useRef()
-  const addImageUrl = useImageStore((state) => state.addImageUrl);
+  const userData = JSON.parse(localStorage.getItem('userData'))
 
-  const guardarElementos = (e) => {
-    let ejemplo = e.target.files
+  const [cookies] = useCookies(['authToken'])
 
-    let selectArray = Array.from(ejemplo)
+  const storeElements = e => {
+    const elements = e?.target?.files
+    const formData = new FormData()
 
-    selectArray.map(file => {
-      const url = URL.createObjectURL(file);
-      addImageUrl(url);
-      return url;
-    })
+    for (let i = 0; i < elements?.length; i++) {
+      formData.append('file', elements[i])
+    }
+    let selectArray = Array.from(elements)
+    // console.log('despues')
+    console.log(elements)
+    let token = cookies?.authToken
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    }
+
+    axios
+      .post(
+        `https://linkup-5h1y.onrender.com/api/v1/uploads/history/${userData?._id}`,
+        formData
+      )
+      .then(res => {
+        console.log(res)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
+  // let addImageUrl = []
+
+  // selectArray.map(file => {
+  //   const url = URL.createObjectURL(file);
+  //   addImageUrl.push(url);
+  //   return url;
+  // })
 
   return (
     <div>
+      <input
+        multiple
+        type="file"
+        className="hidden"
+        ref={cambioDeInput}
+        onChange={storeElements}
+      />
 
-      <input multiple type="file" className="hidden" ref={cambioDeInput} onChange={guardarElementos}/>
-
-      <button className="btn btn-neutral m-1 btn-sm" onClick={() => cambioDeInput.current.click() }>
-        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-          <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" fill="#ffffff" />
-        </svg>
-        Crear
-      </button>
-
-    </div >
+      <div className="text-center">
+        <div
+          className="avatar mt-3 mx-3 h-14 w-14 cursor-pointer"
+          onClick={() => cambioDeInput.current?.click()}
+        >
+          <div
+            className={`w-24 rounded-full ring ring-info ring-offset-base-100 ring-offset-2 hover-bg-slate-100`}
+          >
+            <img src={userData?.photoProfile?.path} />
+          </div>
+        </div>
+        <p className="text-xs truncate text-center">Crear</p>
+      </div>
+    </div>
   )
 }
 
