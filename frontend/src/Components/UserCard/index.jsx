@@ -14,7 +14,7 @@ const UserCard = ({ name, username, avatarUrl, onFollowClick }) => {
       <button
         onClick={onFollowClick}
         className="follow-button bg-blue-500 text-white rounded-full py-1 px-4 cursor-pointer transition duration-300 hover:bg-blue-600 dark:bg-blue-800 dark:hover:bg-blue-700
-        md:w-1/4 h-4 border-r-black text-transparent lg:w-24 lg:text-white lg:m-8 xl: w-32 xl:m-16 "
+        md:w-1/4 h-4 border-r-black text-transparent lg:w-24 h-8 lg:text-white lg:m-8 xl: w-32 h-8 xl:m-16 "
       >
         Seguir
       </button>
