@@ -113,7 +113,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
               placeholder="Agrega un comentario..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              className="w-full h-16 border rounded p-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-neutral-800 dark:border-neutral-700"
+              className="w-full h-16 border rounded p-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-neutral-800 dark:border-neutral-700 dark:text-slate-200"
             />
           </div>
           <button
