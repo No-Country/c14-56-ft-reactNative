@@ -64,7 +64,7 @@ const ContenedorHistorias = () => {
           .map(key => storiesForUsers[key])
           .flat()
 
-        console.log(orderedStories)
+        // console.log(orderedStories)
 
         setUsersWithStories(storiesForUsers)
         setStories(orderedStories)
@@ -131,7 +131,7 @@ const ContenedorHistorias = () => {
   return (
     <div className="relative w-max m-5">
       <div
-        className="relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar"
+        className="relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar dark:bg-neutral-900"
         ref={containerRef}
       >
         <CrearHistoria />

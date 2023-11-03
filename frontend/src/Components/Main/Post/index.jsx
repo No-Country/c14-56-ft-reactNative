@@ -1,6 +1,6 @@
-import { FaRegHeart, FaComment, FaHeart, FaShareAlt } from 'react-icons/fa'
 import UserHeader from '@UserHeader'
 import PostContent from '@PostContent'
+import InteractionButtons from './InteractionButtons'
 
 import './Post.css'
 
@@ -19,7 +19,7 @@ const Post = ({
   commentsLength,
 }) => {
   return (
-    <div className="profile-post-card">
+    <div className="post dark:bg-neutral-800 dark:border-neutral-700">
       <UserHeader
         avatarUrl={avatarUrl}
         userId={userName}
@@ -29,6 +29,14 @@ const Post = ({
         postContent={postContent}
         postDate={postDate}
         postImage={postImage?.path}
+        postId={postId}
+        handleLikeClick={handleLikeClick}
+        likesCount={likesCount}
+        liked={liked}
+        user_id={user_id}    
+        commentsLength={commentsLength} 
+      />
+      <InteractionButtons
         postId={postId}
         handleLikeClick={handleLikeClick}
         likesCount={likesCount}

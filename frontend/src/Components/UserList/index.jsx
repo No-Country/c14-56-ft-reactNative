@@ -29,10 +29,10 @@ const UserList = () => {
   }
 
   return (
-    <div className="user-list">
+    <div className="user-list bg-gray-300 max-w-xs mx-auto rounded-lg p-4 dark:bg-neutral-800">
      
 
-      <h2 className="h2-follow">Follow</h2>
+      <h2 className="font-roboto font-light text-center text-uppercase py-4 dark:text-slate-200">Personas que quizas conozcas</h2>
 
       {users.map((user, index) => (
         <UserCard

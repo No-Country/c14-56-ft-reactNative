@@ -17,7 +17,7 @@ const CrearHistoria = () => {
     }
     let selectArray = Array.from(elements)
     // console.log('despues')
-    console.log(elements)
+    // console.log(elements)
     let token = cookies?.authToken
     const headers = {
       Authorization: `Bearer ${token}`,
