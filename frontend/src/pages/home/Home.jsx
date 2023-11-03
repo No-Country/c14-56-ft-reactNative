@@ -16,19 +16,19 @@ const Home = () => {
   const userName = userData?.name
 
   return (
-    <div className='home-container  dark:bg-neutral-900'>
-      {/* <div className='header  m-0 p-0'> */}
-        {/* <div> */}
+    <div className='home-container m-0 p-0 dark:bg-neutral-900'>
+       <div className='header  m-0 p-0'> 
+         <div> 
           <Header>
             <NavBar>
               <Avatar imageUrl={avatarImageUrl} marginTop={'w-14'} />{' '}
               {userName}
             </NavBar>
           </Header>
-        {/* </div> */}
-      {/* </div> */}
+         </div> 
+      </div> 
 
-      <div className="container">
+      <div className="container ">
         <div className='aside xs:hidden md:block border rounded-lg dark:bg-neutral-900 dark:border-neutral-800
         sm:'>
           <div>

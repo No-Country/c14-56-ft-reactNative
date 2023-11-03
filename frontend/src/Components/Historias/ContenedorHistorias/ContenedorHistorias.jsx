@@ -113,7 +113,7 @@ const ContenedorHistorias = () => {
   const storiesImage = usersWithStories ? usersWithStories : []
 
   const HistoriasEjemplo = ({ nombre, index, perfil }) => (
-    <div className="text-center">
+    <div className=" text-center">
       <div
         className="avatar mt-3 mx-3 h-14 w-14 cursor-pointer"
         onClick={() => openModal(index)}
