@@ -9,7 +9,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const userId = user_id
-
+  
   const [completeComments, setCompleteComments] = useState([])
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
         const response = await axios.get(
           `https://linkup-5h1y.onrender.com/api/v1/comments/all/${postId}`
         )
-        setComments(response?.data?.data || [])
+        setComments(response.data.data || [])
       } catch (error) {
         console.error('Error al obtener los comentarios', error)
         setComments([])
@@ -27,13 +27,15 @@ const Comments = ({ postId, mi_modal, user_id }) => {
 
     fetchComments()
   }, [postId])
-
+  
+  console.log(userId)
   useEffect(() => {
     const fetchCompleteComments = async () => {
       try {
         const completeCommentsArray = [];
         for (let comment of comments) {
           const response = await axios.get(`https://linkup-5h1y.onrender.com/api/v1/users/${userId}`);
+          // console.log(response.data.data)
           const value = response.data.data;
           completeCommentsArray.push({
             text: comment.text,
@@ -63,7 +65,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
         }
       )
 
-      setComments([...comments, response?.data])
+      setComments([...comments, response.data])
       setNewComment('')
 
       // onClose();
@@ -111,7 +113,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
               placeholder="Agrega un comentario..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              className="w-full h-16 border rounded p-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-neutral-800 dark:border-neutral-700"
+              className="w-full h-16 border rounded p-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-neutral-800 dark:border-neutral-700 dark:text-slate-200"
             />
           </div>
           <button

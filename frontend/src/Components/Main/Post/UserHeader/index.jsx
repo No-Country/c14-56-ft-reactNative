@@ -28,13 +28,13 @@ const UserHeader = ({ avatarUrl, userId, userHandle }) => {
   }, [userId])
 
   return (
-    <div className="profile-post-card-header">
-      <div className="profile-post-card-header-photo">
+    <div className="user-header dark:bg-neutral-900">
+      <div className="user-header-avatar">
         <Avatar imageUrl={defaultValue(photoProfile)} />
       </div>
-      <div className="profile-post-card-header-details">
-        <p>{defaultValue(name)}</p>
-        <span>@{defaultValue(userName)}</span>
+      <div className="text-left">
+        <p className="user-name dark:text-slate-200">{defaultValue(name)}</p>
+        <span className="user-handle">@{defaultValue(userName)}</span>
       </div>
     </div>
   )

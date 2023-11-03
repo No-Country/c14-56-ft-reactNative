@@ -15,7 +15,7 @@ const SignUp = () => {
     axios
       .post('https://linkup-5h1y.onrender.com/api/v1/auths/register/', data)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setPeticionExitosa(true)
         setTimeout(() => {
           setPeticionExitosa(false)

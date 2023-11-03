@@ -20,7 +20,7 @@ const index = ({ children }) => {
               to={`/profile/${user ? user?._id : ''}`}
               className="user-container"
             >
-              <div className="user-info xs:text-transparent">{children}</div>
+              <div className="user-info max-xs:text-transparent">{children}</div>
             </Link>
           </div>
 

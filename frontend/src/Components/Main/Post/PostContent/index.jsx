@@ -36,18 +36,18 @@ const PostContent = ({
   }
 
   return (
-    <div className="profile-post-card-body">
-      <p className="post-date">{timeAgo}</p>
-      <div className="profile-post-card-body-post">
-        <div className="profile-post-content-card-info">{postContent}</div>
+    <div className="">
+      <p className="post-date text-end italic">{timeAgo}</p>
+      <div className="post-content text-left rounded dark:bg-neutral-900">
+        <div className="content text-ml dark:text-slate-200">{postContent}</div>
         {postImage !== 'none' ? <img src={postImage} alt="post-image" /> : null}
       </div>
-      <InteractionButtons
+      {/* <InteractionButtons
         postId={postId}
         handleLikeClick={handleLikeClick}
         likesCount={likesCount}
         liked={liked}
-      />
+      /> */}
     </div>
   )
 }

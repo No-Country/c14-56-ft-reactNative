@@ -1,38 +1,43 @@
 .user-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo del avatar */
-  .user-header img {
-    width: 50px;
-    height: 50px; /* Aumenta el tamaño del avatar */
-    border-radius: 50%; /* Para que sea un círculo */
-    margin-right: 10px;
-    border: 2px solid #fff; /* Agrega un borde blanco al avatar */
-  }
-  
-  /* Estilo del nombre del usuario */
-  .user-name {
-    font-weight: bold;
-    color: #333; /* Cambia el color del nombre a un tono más oscuro */
-    margin: 0;
-    font-size: 18px; /* Ajusta el tamaño de fuente del nombre */
-  }
-  
-  /* Estilo del nombre de usuario */
-  .user-handle {
-    color: #777;
-    margin: 0;
-    font-size: 14px; /* Ajusta el tamaño de fuente del nombre de usuario */
-  }
-  
-  /* Cambia el fondo del UserHeader */
-  .user-header {
-    background-color: #f2f2f2; /* Cambia el fondo a un tono más claro */
-    padding: 10px; /* Agrega un poco de espacio interno */
-    border-radius: 5px; /* Redondea las esquinas del UserHeader */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega una suave sombra */
-  }
-  
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Estilo del avatar */
+.user-header img {
+  width: 30px;
+  height: 50px; /* Aumenta el tamaño del avatar */
+  border-radius: 50%; /* Para que sea un círculo */
+  margin-right: 10px;
+  border: 2px solid #fff; /* Agrega un borde blanco al avatar */
+}
+
+.user-header-avatar {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+/* Estilo del nombre del usuario */
+.user-name {
+  font-weight: bold;
+  color: #333; /* Cambia el color del nombre a un tono más oscuro */
+  margin: 0;
+  font-size: 18px; /* Ajusta el tamaño de fuente del nombre */
+}
+
+/* Estilo del nombre de usuario */
+.user-handle {
+  color: #777;
+  margin: 0;
+  font-size: 14px; /* Ajusta el tamaño de fuente del nombre de usuario */
+}
+
+/* Cambia el fondo del UserHeader */
+.user-header {
+  background-color: #f2f2f2; /* Cambia el fondo a un tono más claro */
+  padding: 10px; /* Agrega un poco de espacio interno */
+  border-radius: 5px; /* Redondea las esquinas del UserHeader */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega una suave sombra */
+}

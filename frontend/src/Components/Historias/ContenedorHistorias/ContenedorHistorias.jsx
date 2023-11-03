@@ -64,7 +64,7 @@ const ContenedorHistorias = () => {
           .map(key => storiesForUsers[key])
           .flat()
 
-        console.log(orderedStories)
+        // console.log(orderedStories)
 
         setUsersWithStories(storiesForUsers)
         setStories(orderedStories)
@@ -131,7 +131,7 @@ const ContenedorHistorias = () => {
   return (
     <div className="relative w-max m-5">
       <div
-        className="relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar"
+        className="relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar dark:bg-neutral-900"
         ref={containerRef}
       >
         <CrearHistoria />
@@ -148,16 +148,16 @@ const ContenedorHistorias = () => {
             </div>
           ))}
       </div>
-      <div className="absolute top-1/2 w-full h-1 flex justify-between z-10">
+      <div className="absolute top-1/2 w-full h-1 flex justify-between z-10 ">
         <a
-          className="btn btn-sm btn-circle drop-shadow-lg filter ml-3 z-10"
+          className="btn btn-sm btn-circle drop-shadow-lg filter ml-3 z-10 text-xl text-slate-800"
           onClick={scrollLeft}
-        >
+        >{'<'}
         </a>
         <a
-          className="btn btn-sm btn-circle drop-shadow-lg filter mr-3"
+          className="btn btn-sm btn-circle drop-shadow-lg filter mr-3 text-xl text-slate-800"
           onClick={scrollRight}
-        >
+        > {'>'}
         </a>
       </div>
       <ModalHistorias
