@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import './NavBar.css'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 //agregar import de ReactRouter
 import MoreIcon from '@Icons/MoreIcon'
 
 const index = ({ children }) => {
   const [user, setUser] = useState('')
-  const navigate = useNavigate()
 
   useEffect(() => {
     const res = JSON.parse(localStorage.getItem('userData'))
@@ -17,9 +16,10 @@ const index = ({ children }) => {
   return (
     <nav className="flex">
       <ul className="ul">
-        <div className="user-container" onClick={() => navigate(`/profile/${user ? user._id : ''}`)}>
+        <div className="user-container" onClick={() => navigate(`/profile/${user ? user?._id : ''}`)}>
+
           <div className="user-info">{children}</div>
-        </div>
+        </Link>
         <li>
           <a className="icon-link">
             <MoreIcon />

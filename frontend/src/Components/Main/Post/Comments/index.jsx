@@ -12,19 +12,22 @@ const Comments = ({ postId, mi_modal, user_id }) => {
 
   const [completeComments, setCompleteComments] = useState([])
 
+
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/v1/comments/all/${postId}`);
-        setComments(response.data.data || []);
+        const response = await axios.get(
+          `https://linkup-5h1y.onrender.com/api/v1/comments/all/${postId}`
+        )
+        setComments(response?.data?.data || [])
       } catch (error) {
-        console.error('Error al obtener los comentarios', error);
-        setComments([]);
+        console.error('Error al obtener los comentarios', error)
+        setComments([])
       }
-    };
+    }
 
-    fetchComments();
-  }, [postId]);
+    fetchComments()
+  }, [postId])
 
   useEffect(() => {
     const fetchCompleteComments = async () => {
@@ -53,19 +56,23 @@ const Comments = ({ postId, mi_modal, user_id }) => {
 
   const handleAddComment = async () => {
     try {
-      const response = await axios.post(`http://localhost:3001/api/v1/comments/${postId}`, {
-        text: newComment,
-        userId: userId,
-      });
+      const response = await axios.post(
+        `https://linkup-5h1y.onrender.com/api/v1/comments/${postId}`,
+        {
+          text: newComment,
+          userId: userId,
+        }
+      )
 
-      setComments([...comments, response.data]);
-      setNewComment('');
+      setComments([...comments, response?.data])
+      setNewComment('')
 
       // onClose();
+
     } catch (error) {
-      console.error('Error al agregar un comentario', error);
+      console.error('Error al agregar un comentario', error)
     }
-  };
+  }
 
   return (
     <dialog className="modal fixed z-10 inset-0 overflow-y-auto" style={{ fontFamily: 'initial' }} ref={mi_modal}>
@@ -96,6 +103,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
                   </div>
                 </div>
               ))}
+
             </div>
           ) : ''}
         </div>
@@ -105,7 +113,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
             <textarea
               placeholder="Agrega un comentario..."
               value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
+              onChange={(e) => setNewComment(e?.target?.value)}
               className="w-full h-16 border rounded p-2 focus:outline-none focus:ring focus:border-blue-300 dark:bg-neutral-800 dark:border-neutral-700"
             />
           </div>
@@ -119,6 +127,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
       </div>
     </dialog>
   );
+
 }
 
-export default Comments;
+export default Comments

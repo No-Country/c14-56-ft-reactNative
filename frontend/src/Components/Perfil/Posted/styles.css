@@ -1,6 +1,11 @@
 .profile-post {
   padding: 15px;
   height: 80vh;
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 900px) {
+    height: auto;
+  }
 }
 
 .profile-post-box {
@@ -45,14 +50,16 @@
   min-height: 60px;
   overflow: auto;
   display: grid;
-  grid-template-columns: 20% 50% 30%;
+  grid-template-columns: 20% 80%;
   gap: 0;
   align-items: center;
 }
 .profile-post-card-header-photo {
-  width: 40px;
-  height: 40px;
+  max-width: 45px;
+  max-height: auto;
+  overflow: hidden;
   border-radius: 100%;
+  padding: 20px 0 0 0;
 }
 .profile-post-card-header-details {
   line-height: 15px;
@@ -60,7 +67,15 @@
 }
 .profile-post-card-header-details p {
   font-weight: 500;
+  font-size: 22px;
   color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  @media (max-width: 900px) {
+    font-size: 18px;
+  }
 }
 .profile-post-card-header-date {
   font-style: italic;
@@ -75,7 +90,7 @@
 .profile-post-card-body-post {
   background-color: #fff;
   width: 100%;
-  border-radius: 25px;
+  border-radius: 20px 20px 0 0;
   position: relative;
   flex-wrap: wrap;
   z-index: 100;

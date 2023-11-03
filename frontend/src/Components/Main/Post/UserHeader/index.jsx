@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import Avatar from '@Avatar';
+import { useState, useEffect } from 'react'
+import Avatar from '@Avatar'
 import './UserHeader.css'
 import axios from 'axios'
 
@@ -8,32 +8,34 @@ const UserHeader = ({ avatarUrl, userId, userHandle }) => {
   const { photoProfile, name, userName } = userInfo
 
   const getUserInfo = () => {
-    axios.get(`http://localhost:3001/api/v1/users/${userId}`)
+    axios
+      .get(`https://linkup-5h1y.onrender.com/api/v1/users/${userId}`)
       .then(res => {
-        let values = res.data.data;
+        let values = res?.data?.data
         setUserInfo({
-          photoProfile: values.photoProfile.path,
-          name: values.name,
-          userName: values.username
-        });
+          photoProfile: values?.photoProfile?.path,
+          name: values?.name,
+          userName: values?.username,
+        })
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }
 
-  const defaultValue = (e) => (
-    e ? e : 'Undefined'
-  )
+  const defaultValue = e => (e ? e : 'Undefined')
 
   useEffect(() => {
     getUserInfo();
   }, [userId]);
 
   return (
-    <div className="user-header dark:bg-neutral-900">
-      <div className='w-1/6'>
+    //profile-post-card-header sacado de develop. poner user-header
+    <div className="profile-post-card-header dark:bg-neutral-900">
+    //profile-post-card-header-photo sacado de develop. poner w-1/6
+      <div className='profile-post-card-header-photo'>
         <Avatar imageUrl={defaultValue(photoProfile)} />
       </div>
-      <div className='text-left'>
+    //profile-post-card-header-details sacado de develop. poner text-left
+      <div className='profile-post-card-header-details '>
         <p className="user-name dark:text-slate-200">{defaultValue(name)}</p>
         <p className="user-handle">@{defaultValue(userName)}</p>
       </div>
@@ -41,4 +43,4 @@ const UserHeader = ({ avatarUrl, userId, userHandle }) => {
   );
 };
 
-export default UserHeader;
+export default UserHeader
