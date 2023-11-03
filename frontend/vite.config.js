@@ -70,7 +70,6 @@ export default defineConfig({
 
       //assets
       '@logo': path.resolve(__dirname, 'src/assets/img/logoLinkUp.png'),
-      '@loginImg': path.resolve(__dirname, 'src/assets/loginimage.png/'),
     },
   },
   plugins: [react()],
