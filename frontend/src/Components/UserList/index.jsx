@@ -30,7 +30,7 @@ const UserList = () => {
 
   return (
     <div className="user-list">
-      <h3>Follow</h3>
+     
 
       <h2 className="h2-follow">Follow</h2>
 

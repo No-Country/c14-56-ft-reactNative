@@ -22,7 +22,7 @@ const Search = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/api/v1/users')
+      .get('https://linkup-5h1y.onrender.com/api/v1/users')
       .then(res => {
         setUsers(res?.data?.data)
         // console.log(res.data.data)
@@ -34,7 +34,7 @@ const Search = () => {
 
   return (
     <div>
-      <div className="search-bar activeicon dark:bg-neutral-700">
+      <div className="search-bar activeicon dark:bg-neutral-700 xs:hidden md:flex">
         <ion-icon name="search"></ion-icon>
         <input
           type="text"

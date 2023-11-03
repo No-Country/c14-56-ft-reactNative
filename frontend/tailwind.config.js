@@ -3,7 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],  
   "darkMode": "class",
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xs': '300px',
+        
+      }
+    },
   },
   plugins: [require("daisyui")],
 }

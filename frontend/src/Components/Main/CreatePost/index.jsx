@@ -103,7 +103,12 @@ const CreatePost = () => {
   const validImage = 'image/jpeg,image/png,image/jpg,image/webp'
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100 w-4/6">
+    <div className="d-flex align-items-center justify-content-center vh-100 
+    
+    xs:w-100 p-10 justify-center text-center
+    sm:w-full 
+    md:w-full
+    lg:w-100 ">
       <div className="w-50 text-center">
         <div className="bg-blue">
           <form

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Comments from '@Comments';
 import { useCookies } from 'react-cookie';
-import './InteractionButtons.css'
-
+import './InteractionButtons.css';
 import axios from 'axios';
 
 const InteractionButtons = ({ postId, user_id }) => {
@@ -16,11 +15,10 @@ const InteractionButtons = ({ postId, user_id }) => {
 
   useEffect(() => {
     try {
-      axios.get(`http://localhost:3001/api/v1/comments/all/${postId}`)
+      axios.get(`https://linkup-5h1y.onrender.com/api/v1/comments/all/${postId}`)
         .then((res) => {
           const value = res.data.data
           setCommentsLength(value.length)
-
         })
     } catch (error) {
       console.log(error);

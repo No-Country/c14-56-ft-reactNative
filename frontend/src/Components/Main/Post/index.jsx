@@ -15,6 +15,8 @@ const Post = ({
   handleLikeClick,
   likesCount,
   liked,
+  user_id,
+  commentsLength,
 }) => {
   return (
     <div className="profile-post-card">

@@ -16,24 +16,29 @@ const Home = () => {
   const userName = userData?.name
 
   return (
-    <div className='home-container dark:bg-neutral-900'>
-      <Header>
-        <NavBar>
-          <Avatar imageUrl={avatarImageUrl} marginTop={'w-14'} />{' '}
-          {userName}
-        </NavBar>
-      </Header>
-      <div className="container">
-        <div className='aside border rounded-lg dark:bg-neutral-900 dark:border-neutral-800'>
+    <div className='home-container  dark:bg-neutral-900'>
+      <div className='header  m-0 p-0'>
+        <div>
+          <Header>
+            <NavBar>
+              <Avatar imageUrl={avatarImageUrl} marginTop={'w-14'} />{' '}
+              {userName}
+            </NavBar>
+          </Header></div>
+      </div>
+
+      <div className="container p-0 m-0">
+        <div className='aside xs:hidden md:block  border rounded-lg dark:bg-neutral-900 dark:border-neutral-800
+        sm:'>
           <div>
             <Aside />
           </div>
         </div>
-        <div className="main">
-          <div className="histories w-max">
+        <div className="main overflow-hidden  p-0 m-0 ">
+          <div className="histories max-w-max">
             <ContenedorHistorias />
           </div>
-          <div className="create-post">
+          <div className="create-post min-w-full max-w-max xs: w-full justify-center text-center grid-cols-1">
             <CreatePost />
           </div>
           <div className="post"></div>

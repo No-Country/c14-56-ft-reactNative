@@ -13,21 +13,28 @@ const index = ({ children }) => {
 
   return (
     <nav className="flex">
-      <ul className="ul">
-        <Link
-          to={`/profile/${user ? user?._id : ''}`}
-          className="user-container"
-        >
-          <div className="user-info">{children}</div>
-        </Link>
-        <li>
-          <a className="icon-link">
-            <MoreIcon />
-          </a>
-        </li>
-      </ul>
+      <div className='navbar h-24 xs:w-full'>
+        <ul className="ul">
+          <div className='xs:ml-32 '>
+            <Link
+              to={`/profile/${user ? user?._id : ''}`}
+              className="user-container"
+            >
+              <div className="user-info xs:text-transparent">{children}</div>
+            </Link>
+          </div>
+
+          <li>
+            <a className="icon-link xs:hidden md:block p-0 m-2">
+              <MoreIcon />
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
-  )
+  );
 }
+
+
 
 export default index

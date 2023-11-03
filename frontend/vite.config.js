@@ -30,10 +30,7 @@ export default defineConfig({
         __dirname,
         'src/Components/Main/Post/PostContent'
       ),
-      '@CreatePost': path.resolve(
-        __dirname,
-        'src/Components/Main/CreatePost'
-      ),
+     
       '@UserHeader': path.resolve(
         __dirname,
         'src/Components/Main/Post/UserHeader'
