@@ -9,7 +9,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const userId = user_id
-  
+
   const [completeComments, setCompleteComments] = useState([])
 
   useEffect(() => {
@@ -27,14 +27,14 @@ const Comments = ({ postId, mi_modal, user_id }) => {
 
     fetchComments()
   }, [postId])
-  
-  console.log(userId)
+
   useEffect(() => {
     const fetchCompleteComments = async () => {
       try {
         const completeCommentsArray = [];
         for (let comment of comments) {
-          const response = await axios.get(`https://linkup-5h1y.onrender.com/api/v1/users/${userId}`);
+          console.log(comment.userId)
+          const response = await axios.get(`https://linkup-5h1y.onrender.com/api/v1/users/${comment.userId}`);
           // console.log(response.data.data)
           const value = response.data.data;
           completeCommentsArray.push({
@@ -44,7 +44,7 @@ const Comments = ({ postId, mi_modal, user_id }) => {
             name: value.name,
             postId: postId
           });
-          
+
         }
         setCompleteComments(completeCommentsArray);
       } catch (error) {
@@ -92,7 +92,9 @@ const Comments = ({ postId, mi_modal, user_id }) => {
               {Object.values(completeComments).map((element, index) => (
                 <div key={index} className="w-5/6 my-2 flex flex-col justify-start">
                   <div className='flex'>
-                    <Avatar imageUrl={element.photoProfile} marginTop={'w-14'} />
+                    <div className='w-1/12'>
+                      <Avatar imageUrl={element.photoProfile} marginTop={'w-14'} />
+                    </div>
                     <div className="text-left my-2 ">
                       <p className='font-bold dark:text-slate-200'>{element.name}</p>
                       <p className="text-slate-400">@{element.userName}</p>
