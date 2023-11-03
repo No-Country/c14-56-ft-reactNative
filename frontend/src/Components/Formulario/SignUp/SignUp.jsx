@@ -93,7 +93,7 @@ const SignUp = () => {
       </button>
 
       {peticionExitosa && (
-        <div className="toast toast-start">
+        <div className="toast toast-start w-1/3">
           <div className="alert alert-success flex">
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"

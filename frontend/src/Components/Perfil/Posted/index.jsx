@@ -9,7 +9,7 @@ import './styles.css'
 const Post = ({ user, posts }) => {
   return (
     <div className="profile-post">
-      <h2 className="profile-post-title">Posts</h2>
+      <h2 className="profile-post-title dark:text-slate-200">Posts</h2>
       <hr className="profile-post-title-line" />
       <div className="profile-post-box">
         {Array.isArray(posts) ? (

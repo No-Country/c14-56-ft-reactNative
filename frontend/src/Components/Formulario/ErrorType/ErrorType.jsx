@@ -1,13 +1,13 @@
 const ErrorType = (errorType) => {
     switch (errorType) {
         case "required":
-            return "This field is required";
+            return "Este campo es obligatorio";
         case "minLength":
-            return "Too short, minimum length is 7 characters";
+            return "Demasiado corto, la longitud mínima es de 7 caracteres";
         case "maxLength":
-            return "Too long, maximum length is 15 characters";
+            return "Demasiado largo, la longitud máxima es de 15 caracteres";
         default:
-            return "An error occurred";
+            return "Ocurrió un error";
     }
 }
 

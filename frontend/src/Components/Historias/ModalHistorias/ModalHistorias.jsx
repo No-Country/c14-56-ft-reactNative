@@ -88,18 +88,18 @@ const ModalHistorias = ({
                     />
 
                     <div
-                      className={`absolute flex transform -translate-y-1/2 left-5 right-5 top-1/3 justify-between `}
+                      className={`absolute flex transform -translate-y-1/2 left-2 right-10 top-1/3 justify-between `}
                     >
                       <a
                         href={`#slide${index - 1}`}
-                        className="btn btn-circle"
+                        className="btn btn-circle ml-5"
                         onClick={goToPreviousSlide}
                       >
                         ❮
                       </a>
                       <a
                         href={`#slide${index + 1}`}
-                        className="btn btn-circle"
+                        className="btn btn-circle mr-7"
                         onClick={goToNextSlide}
                       >
                         ❯

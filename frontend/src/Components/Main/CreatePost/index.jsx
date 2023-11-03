@@ -50,7 +50,6 @@ const CreatePost = () => {
           }
         )
         .then(response => {
-          console.log(response)
           setPosts([response.data, ...posts])
         })
         .catch(err => console.log(err))
@@ -131,6 +130,7 @@ const CreatePost = () => {
                 name="description"
               />
               <input
+                className='dark:text-slate-200'
                 type="file"
                 id="file-input"
                 onChange={handleFileChange}

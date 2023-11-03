@@ -28,11 +28,6 @@ const Index = () => {
     }
   }
 
-  // const updateProfilePosts = newPost => {
-  //   // Actualiza las publicaciones en el estado de Profile
-  //   setPosts([newPost, ...posts])
-  // }
-
   const getFollowers = async () => {
     try {
       const response = await axios.get(
@@ -72,12 +67,15 @@ const Index = () => {
     getFolloweds()
   }, [id])
 
+  const userData = JSON.parse(localStorage.getItem('userData'))
+  console.log(userData)
+
   return (
     <div>
       <Header>
         <NavBar>
-          <Avatar imageUrl={user?.photoProfile?.path} marginTop='w-14' />
-          {user?.name}
+          <Avatar imageUrl={userData?.photoProfile?.path} marginTop='w-14' />
+          {userData?.name}
         </NavBar>
       </Header>
       <div className="bg-slate-300 w-full h-60 profile-banner">
@@ -92,7 +90,7 @@ const Index = () => {
         <div className="body-profile-about">
           <About description={user?.description} />
         </div>
-        <div className="body-profile-post ">
+        <div className="body-profile-post dark:bg-neutral-800">
           <Post user={user} posts={posts} />
         </div>
       </div>
