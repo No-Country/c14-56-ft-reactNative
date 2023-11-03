@@ -63,9 +63,9 @@ generacion de iconos y logos
 
 <hr>
 Versión WEB
-[WEB Design](https://www.figma.com/file/cLwCWRB86FZzQphAOFsQzJ/Web-Design?type=design&node-id=0-1&mode=design&t=Y4hnfuUVgfXhZS7Y-0)
+[WEB](https://www.figma.com/file/cLwCWRB86FZzQphAOFsQzJ/Web-Design?type=design&node-id=0%3A1&mode=design&t=Mh4j0zjKHzMH8E3d-1)
 Versión Movil (Futuramente con React Native)
-[Movil Design](https://www.figma.com/file/Kh7OVTjSh5EHVYBQGrdwXj/Mobile-Design?type=design&mode=design&t=Y4hnfuUVgfXhZS7Y-0)
+[Movil](https://www.figma.com/file/Kh7OVTjSh5EHVYBQGrdwXj/Mobile-Design?type=design&node-id=0%3A1&mode=design&t=NA1baaWy0kw4Ejnp-1)
 
 ## Instalación
 
