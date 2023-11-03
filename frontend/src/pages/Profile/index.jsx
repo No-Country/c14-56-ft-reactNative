@@ -92,7 +92,7 @@ const Index = () => {
         <div className="body-profile-about">
           <About description={user?.description} />
         </div>
-        <div className="body-profile-post">
+        <div className="body-profile-post ">
           <Post user={user} posts={posts} />
         </div>
       </div>

@@ -33,11 +33,9 @@ const Comments = ({ postId, mi_modal, user_id }) => {
       try {
         const completeCommentsArray = []
         for (let comment of comments) {
-          console.log(comment.userId)
           const response = await axios.get(
             `https://linkup-5h1y.onrender.com/api/v1/users/${comment.userId}`
           )
-          // console.log(response.data.data)
           const value = response.data.data
           completeCommentsArray.push({
             text: comment.text,

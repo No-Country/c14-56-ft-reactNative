@@ -1,24 +1,16 @@
-import { useState } from 'react'
 import './PostContent.css'
-import { FaRegHeart, FaComment, FaHeart, FaShareAlt } from 'react-icons/fa'
-
-import InteractionButtons from '@PostButtons'
 
 const PostContent = ({
   postContent,
   postDate,
   postImage,
-  postId,
-  handleLikeClick,
-  likesCount,
-  liked,
 }) => {
   const actualDate = new Date()
   const postDateTime = new Date(postDate)
   const timeDifference = actualDate - postDateTime
 
   let timeAgo = ''
-
+  
   if (timeDifference < 60000) {
     // Menos de un minuto
     timeAgo = 'hace unos segundos'
@@ -40,14 +32,8 @@ const PostContent = ({
       <p className="post-date text-end italic">{timeAgo}</p>
       <div className="post-content text-left rounded dark:bg-neutral-900">
         <div className="content text-ml dark:text-slate-200">{postContent}</div>
-        {postImage !== 'none' ? <img src={postImage} alt="post-image" /> : null}
+        {postImage !== 'none' ? <img src={postImage} alt="post-image" className='mt-5'/> : null}
       </div>
-      {/* <InteractionButtons
-        postId={postId}
-        handleLikeClick={handleLikeClick}
-        likesCount={likesCount}
-        liked={liked}
-      /> */}
     </div>
   )
 }
