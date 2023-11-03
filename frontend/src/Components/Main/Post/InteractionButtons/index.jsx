@@ -30,10 +30,10 @@ const InteractionButtons = ({ postId, user_id }) => {
     axios
       .get(`https://linkup-5h1y.onrender.com/api/v1/likes/${postId}/${userId}`)
       .then(res => {
-        const likeData = res?.data?.data?.find(like => like?.userId === userId)
-        setLikesCount(res?.data?.data?.length)
+        const likeData = res.data.data.find(like => like.userId === userId)
+        setLikesCount(res.data.data.length)
         setIsLiked(!!likeData)
-        setLikeId(likeData ? likeData?._id : undefined)
+        setLikeId(likeData ? likeData._id : undefined)
       })
       .catch(error => {
         console.log(error)
@@ -73,25 +73,17 @@ const InteractionButtons = ({ postId, user_id }) => {
   };
 
   return (
-   // <div className="flex bg-pink-100 rounded-b-lg py-2 justify-between dark:bg-neutral-800 ">
-     // <button
-      //  className={`heart-button relative bg-transparent cursor-pointer ${
-      //    isLiked ? 'text-red-600 liked' : 'text-black dark:text-slate-200'
-     //   } `}
-     //   onClick={handleLike}
-    //  >
-     //   <ion-icon name="heart" class="text-2xl"></ion-icon>
-     //   {likesCount} <span className="text-lg">Me gusta</span>
+   <div className="flex bg-pink-100 rounded-b-lg py-2 justify-between dark:bg-neutral-800 ">
+     <button
+       className={`heart-button relative bg-transparent cursor-pointer ${
+         isLiked ? 'text-red-600 liked' : 'text-black dark:text-slate-200'
+       } `}
+       onClick={handleLike}
+     >
+       <ion-icon name="heart" class="text-2xl"></ion-icon>
+       {likesCount} <span className="text-lg">Me gusta</span>
     
-    //
 
-    <div className="interaction-buttons">
-      <button
-        className={`heart-button ${isLiked ? 'liked' : ''}`}
-        onClick={handleLike}
-      >
-        <ion-icon name="heart"></ion-icon>
-        {likesCount} <span>Me gusta</span>
         
         
       </button>

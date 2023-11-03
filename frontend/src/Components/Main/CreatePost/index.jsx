@@ -41,7 +41,7 @@ const CreatePost = () => {
 
       axios
         .post(
-          `http://localhost:3001/api/v1/publications/post/${userId}`,
+          `https://linkup-5h1y.onrender.com/api/v1/publications/post/${userId}`,
           formData,
           {
             headers: {
@@ -103,9 +103,9 @@ const CreatePost = () => {
   const validImage = 'image/jpeg,image/png,image/jpg,image/webp'
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100 
+    <div className="d-flex align-items-center justify-content-center vh-100 w-4/6
     
-    xs:w-100 p-10 justify-center text-center
+    xs:w-100 xs:p-10 xs:justify-center xs:text-center
     sm:w-full 
     md:w-full
     lg:w-100 ">
@@ -113,11 +113,11 @@ const CreatePost = () => {
         <div className="bg-blue">
           <form
             onSubmit={handleSubmit}
-            className="bg-slate-200 shadow-2xl rounded px-8 pt-6 pb-8 mb-4"
+            className="bg-slate-200 shadow-2xl rounded px-8 pt-6 pb-8 mb-4 dark:bg-neutral-800"
           >
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-bold mb-2 dark:text-slate-200"
                 htmlFor="description"
               >
                 ¿Qué deseas compartir?
@@ -152,7 +152,7 @@ const CreatePost = () => {
             posts.map(post => (
               <Post
                 key={post?._id}
-                userId={userId}
+                user_id={userId}
                 userName={post?.userId}
                 postContent={post?.description}
                 postImage={post?.image}

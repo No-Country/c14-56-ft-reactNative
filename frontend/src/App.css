@@ -9,10 +9,8 @@ body {
   justify-content: center;
 }
 
-
-
 .main {
-  max-width: 72vw;
+  max-width: 60%;
   padding: 20px;
   width: auto;
   min-height: 100vh;
@@ -30,5 +28,3 @@ body {
   margin-left:0;
   /* height: 50%; */
 }
-
-
