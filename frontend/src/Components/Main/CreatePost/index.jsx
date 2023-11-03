@@ -103,7 +103,7 @@ const CreatePost = () => {
   const validImage = 'image/jpeg,image/png,image/jpg,image/webp'
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100 w-100">
+    <div className="d-flex align-items-center justify-content-center vh-100 w-4/6">
       <div className="w-50 text-center">
         <div className="bg-blue">
           <form
@@ -118,7 +118,7 @@ const CreatePost = () => {
                 ¿Qué deseas compartir?
               </label>
               <textarea
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-neutral-700 dark:border-neutral-800"
                 id="description"
                 placeholder="Escribe tu publicación aquí"
                 value={post.description}
@@ -134,7 +134,7 @@ const CreatePost = () => {
             </div>
             <div className="flex items-center justify-between">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline dark:bg-blue-800 dark:hover:bg-blue-700"
                 type="submit"
               >
                 Publicar

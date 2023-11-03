@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
 
-  ;
 }
 
 .container {
@@ -17,14 +16,17 @@ body {
   min-height: 100vh;
   justify-content: center;
  
-
+  
 
 }
 
 .aside {
-  background: linear-gradient(rgb(62, 90, 135) 30%,  rgb(31, 43, 56)70%);
+  background-color: #f2f2f2;
   padding: 20px;
-  width: 25vw;
+  width: 25%;
+  margin-top: 1rem;
+  margin-left:0;
+  /* height: 50%; */
 }
 
 

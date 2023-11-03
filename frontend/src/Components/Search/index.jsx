@@ -34,12 +34,12 @@ const Search = () => {
 
   return (
     <div>
-      <div className="search-bar activeicon">
+      <div className="search-bar activeicon dark:bg-neutral-700">
         <ion-icon name="search"></ion-icon>
         <input
           type="text"
           placeholder="Buscar"
-          className="search-input"
+          className="search-input dark:bg-neutral-700"
           onChange={handleChange}
           value={searchInput}
         />

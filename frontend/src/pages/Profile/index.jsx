@@ -76,7 +76,7 @@ const Index = () => {
     <div>
       <Header>
         <NavBar>
-          <Avatar imageUrl={user?.photoProfile?.path} />
+          <Avatar imageUrl={user?.photoProfile?.path} marginTop='w-14' />
           {user?.name}
         </NavBar>
       </Header>

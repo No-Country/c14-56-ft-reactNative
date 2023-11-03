@@ -1,10 +1,91 @@
 .post {
     border: 1px solid #ccc;
-    margin: 10px;
+    margin: 2rem 0;
     padding: 10px;
-    background-color: #1f3054;
+    background-color: #f4f4f4;
     border-radius: 10px;
-   
-
-}
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregar sombra suave */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilos para UserHeader */
+  .user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .user-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 10px;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    margin-bottom: 0;
+  }
+  
+  .user-handle {
+    color: #777;
+    margin-top: 0;
+  }
+  
+  /* Estilos para PostContent */
+  .post-content {
+    min-height: 30px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px;
+    padding: 20px; /* Espaciado interno aumentado */
+    font-size: 1.1rem; /* Tamaño de fuente ligeramente más grande */
+    line-height: 1.4; /* Espaciado entre líneas */
+  }
+  
+  .post-date {
+    color: #777;
+    text-align: right;
+    font-style: italic;
+    margin-top: 10px; /* Mover la fecha más arriba */
+  }
+  
+  /* Estilos para InteractionButtons */
+  .interaction-buttons {
+    display: flex;
+    background: linear-gradient(rgba(244, 211, 221, 0.38) 0%, rgba(156, 96, 114, 0.38) 60%);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 10px;
+    justify-content: space-around;
+  }
+  
+  .heart-button {
+    position: relative;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease; /* Agregar transición suave */
+  }
+  
+  .heart-button ion-icon {
+    font-size: 1.5em;
+  }
+  
+  .heart-button.liked ion-icon {
+    color: rgb(255, 48, 64);
+  }
+  .chatbubble-button ion-icon {
+    color: rgb(62, 76, 204);
+  }
+  
+  .heart-button:active ion-icon {
+    transform: scale(1.2);
+    transition: transform 0.1s;
+  }
+  
+  .comment-count {
+    font-size: 1.2rem;
+  }
+  

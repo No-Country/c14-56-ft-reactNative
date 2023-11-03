@@ -64,7 +64,7 @@ const CrearHistoria = () => {
             <img src={userData?.photoProfile?.path} />
           </div>
         </div>
-        <p className="text-xs truncate text-center">Crear</p>
+        <p className="text-xs truncate text-center dark:text-slate-200">Crear</p>
       </div>
     </div>
   )

@@ -16,16 +16,15 @@ const Home = () => {
   const userName = userData?.name
 
   return (
-    <div className="home-container">
+    <div className='home-container dark:bg-neutral-900'>
       <Header>
         <NavBar>
           <Avatar imageUrl={avatarImageUrl} marginTop={'w-14'} />{' '}
-          {/*  Agregar Routes  */}
           {userName}
         </NavBar>
       </Header>
       <div className="container">
-        <div className="aside">
+        <div className='aside border rounded-lg dark:bg-neutral-900 dark:border-neutral-800'>
           <div>
             <Aside />
           </div>

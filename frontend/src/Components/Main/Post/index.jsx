@@ -31,6 +31,8 @@ const Post = ({
         handleLikeClick={handleLikeClick}
         likesCount={likesCount}
         liked={liked}
+        user_id={user_id}    
+        commentsLength={commentsLength} 
       />
     </div>
   )

@@ -124,7 +124,7 @@ const ContenedorHistorias = () => {
           <img src={perfil} />
         </div>
       </div>
-      <p className="text-xs w-16 truncate text-center">{nombre}</p>
+      <p className="text-xs w-16 truncate text-center dark:text-slate-200">{nombre}</p>
     </div>
   )
 
@@ -153,13 +153,11 @@ const ContenedorHistorias = () => {
           className="btn btn-sm btn-circle drop-shadow-lg filter ml-3 z-10"
           onClick={scrollLeft}
         >
-          ❮
         </a>
         <a
           className="btn btn-sm btn-circle drop-shadow-lg filter mr-3"
           onClick={scrollRight}
         >
-          ❯
         </a>
       </div>
       <ModalHistorias
