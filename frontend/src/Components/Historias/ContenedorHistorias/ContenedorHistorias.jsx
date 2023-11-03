@@ -15,20 +15,20 @@ const ContenedorHistorias = () => {
   const [cookies] = useCookies(['authToken'])
 
   const scrollLeft = () => {
-    if (containerRef.current) {
+    if (containerRef?.current) {
       containerRef.current.scrollLeft -= 300
     }
   }
 
   const scrollRight = () => {
-    if (containerRef.current) {
+    if (containerRef?.current) {
       containerRef.current.scrollLeft += 300
     }
   }
 
   const openModal = e => {
-    if (mi_modal.current) {
-      mi_modal.current.showModal()
+    if (mi_modal?.current) {
+      mi_modal?.current?.showModal()
     }
     setActualIndex(e)
   }
@@ -37,7 +37,7 @@ const ContenedorHistorias = () => {
   let [users, setUsers] = useState()
   let [usersWithStories, setUsersWithStories] = useState()
 
-  let token = cookies.authToken
+  let token = cookies?.authToken
   const headers = {
     Authorization: `Bearer ${token}`,
   }

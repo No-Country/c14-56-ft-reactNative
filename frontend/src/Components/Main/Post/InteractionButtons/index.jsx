@@ -14,10 +14,10 @@ const InteractionButtons = ({ postId }) => {
     axios
       .get(`https://linkup-5h1y.onrender.com/api/v1/likes/${postId}/${userId}`)
       .then(res => {
-        const likeData = res.data.data.find(like => like.userId === userId)
-        setLikesCount(res.data.data.length)
+        const likeData = res?.data?.data?.find(like => like?.userId === userId)
+        setLikesCount(res?.data?.data?.length)
         setIsLiked(!!likeData)
-        setLikeId(likeData ? likeData._id : undefined)
+        setLikeId(likeData ? likeData?._id : undefined)
       })
       .catch(error => {
         console.log(error)

@@ -12,20 +12,19 @@ const Search = () => {
   const navigate = useNavigate()
 
   const handleChange = e => {
-    const inputValue = e.target.value
+    const inputValue = e.target?.value
     setSearchInput(inputValue)
-    const filtered = users.filter(user =>
-      user.name.toLowerCase().includes(inputValue.toLowerCase())
+    const filtered = users?.filter(user =>
+      user?.name?.toLowerCase()?.includes(inputValue?.toLowerCase())
     )
-    console.log(filtered)
-    setFilteredUsers(inputValue.length === 0 ? '' : filtered)
+    setFilteredUsers(inputValue?.length === 0 ? '' : filtered)
   }
 
   useEffect(() => {
     axios
-      .get('https://linkup-5h1y.onrender.com/api/v1/users')
+      .get('http://localhost:3001/api/v1/users')
       .then(res => {
-        setUsers(res.data.data)
+        setUsers(res?.data?.data)
         // console.log(res.data.data)
       })
       .catch(error => {
@@ -51,18 +50,18 @@ const Search = () => {
         }`}
       >
         <table className="">
-          {filteredUsers.length > 0
-            ? filteredUsers.map((user, index) => (
+          {filteredUsers?.length > 0
+            ? filteredUsers?.map((user, index) => (
                 <tr
                   key={index}
-                  onClick={() => navigate(`/profile/${user._id}`)}
+                  onClick={() => navigate(`/profile/${user?._id}`)}
                   className="cursor-pointer border-b-slate-400 border-b "
                 >
                   <Avatar
-                    imageUrl={user.photoProfile.path}
+                    imageUrl={user?.photoProfile?.path}
                     style={'searchInput'}
                   />
-                  <td className="text-slate-800">{user.name}</td>
+                  <td className="text-slate-800">{user?.name}</td>
                 </tr>
               ))
             : ''}

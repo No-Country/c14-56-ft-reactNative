@@ -11,11 +11,11 @@ const UserHeader = ({ avatarUrl, userId, userHandle }) => {
     axios
       .get(`https://linkup-5h1y.onrender.com/api/v1/users/${userId}`)
       .then(res => {
-        let values = res.data.data
+        let values = res?.data?.data
         setUserInfo({
-          photoProfile: values.photoProfile.path,
-          name: values.name,
-          userName: values.username,
+          photoProfile: values?.photoProfile?.path,
+          name: values?.name,
+          userName: values?.username,
         })
       })
       .catch(err => console.log(err))

@@ -70,7 +70,7 @@ const Index = () => {
     getPosts()
     getFollowers()
     getFolloweds()
-  }, [])
+  }, [id])
 
   return (
     <div>

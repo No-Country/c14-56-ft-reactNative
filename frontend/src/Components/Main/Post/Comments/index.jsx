@@ -11,7 +11,7 @@ const Comments = ({ postId, userId, onClose }) => {
         const response = await axios.get(
           `https://linkup-5h1y.onrender.com/api/v1/comments/all/${postId}`
         )
-        setComments(response.data.data || [])
+        setComments(response?.data?.data || [])
       } catch (error) {
         console.error('Error al obtener los comentarios', error)
         setComments([])
@@ -31,7 +31,7 @@ const Comments = ({ postId, userId, onClose }) => {
         }
       )
 
-      setComments([...comments, response.data])
+      setComments([...comments, response?.data])
       setNewComment('')
 
       // Cierra el modal cuando se agrega un comentario
@@ -47,10 +47,10 @@ const Comments = ({ postId, userId, onClose }) => {
         <h3>Comentarios</h3>
         <button onClick={onClose}>Cerrar</button>
         <div className="comments-list">
-          {comments.map(comment => (
-            <div key={comment._id} className="comment">
-              <span>{comment.text}</span>
-              <span>Usuario: {comment.userId}</span>
+          {comments?.map(comment => (
+            <div key={comment?._id} className="comment">
+              <span>{comment?.text}</span>
+              <span>Usuario: {comment?.userId}</span>
             </div>
           ))}
         </div>
@@ -58,7 +58,7 @@ const Comments = ({ postId, userId, onClose }) => {
           <textarea
             placeholder="Agrega un comentario..."
             value={newComment}
-            onChange={e => setNewComment(e.target.value)}
+            onChange={e => setNewComment(e?.target?.value)}
           />
           <button onClick={handleAddComment}>Enviar</button>
         </div>

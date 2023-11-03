@@ -9,7 +9,8 @@ import { useEffect, useRef, useState } from 'react'
 
 const Banner = ({ user, posts, followers, followeds }) => {
   const [follower, setFollower] = useState(0)
-  const [relational, setRelational] = useState(false)
+  const [relational, setRelational] = useState()
+  const [match, setMatch] = useState(false)
 
   const fileInputRef = useRef(null)
 
@@ -27,6 +28,8 @@ const Banner = ({ user, posts, followers, followeds }) => {
         `https://linkup-5h1y.onrender.com/api/v1/followers/${id}/${userData?._id}`
       )
       setRelational(followData?.data)
+      setMatch(followData?.data.match)
+      console.log(followData)
     } catch (error) {
       console.error(error)
     }
@@ -44,7 +47,7 @@ const Banner = ({ user, posts, followers, followeds }) => {
       )
 
       setFollower(follower + 1)
-      setRelational(true)
+      setMatch(true)
     } catch (error) {
       console.error(error)
     }
@@ -57,7 +60,7 @@ const Banner = ({ user, posts, followers, followeds }) => {
       )
 
       setFollower(follower - 1)
-      setRelational(false)
+      setMatch(false)
     } catch (error) {
       console.error(error)
     }
@@ -66,7 +69,7 @@ const Banner = ({ user, posts, followers, followeds }) => {
   const handleFileChange = async event => {
     try {
       const formData = new FormData()
-      formData.append('file', event.target.files[0])
+      formData.append('file', event?.target?.files[0])
       await axios.post(
         `https://linkup-5h1y.onrender.com/api/v1/uploads/profile/${userData?._id}`,
         formData
@@ -82,7 +85,6 @@ const Banner = ({ user, posts, followers, followeds }) => {
   }
 
   const FollowButton = () => {
-    const { match } = relational
     if (userData?._id !== user?._id) {
       return (
         <div className="profile-banner-details-follows-button">

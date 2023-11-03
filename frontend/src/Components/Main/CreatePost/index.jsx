@@ -16,14 +16,14 @@ const CreatePost = () => {
   const { userId } = useCookies(['userId'])[0]
 
   const handleInput = event => {
-    setPost({ ...post, [event.target.name]: event.target.value })
+    setPost({ ...post, [event.target?.name]: event.target?.value })
   }
 
   const handleFileChange = event => {
     try {
       event.preventDefault()
 
-      setPost({ ...post, image: event.target.files[0] })
+      setPost({ ...post, image: event.target?.files[0] })
     } catch (error) {
       console.error(error)
     }
@@ -45,7 +45,7 @@ const CreatePost = () => {
           formData,
           {
             headers: {
-              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+              'Content-Type': `multipart/form-data; boundary=${formData?._boundary}`,
             },
           }
         )
@@ -74,11 +74,11 @@ const CreatePost = () => {
       }
 
       // Actualiza el conteo de likes en el estado
-      const updatedPosts = posts.map(p => {
-        if (p._id === postId) {
+      const updatedPosts = posts?.map(p => {
+        if (p?._id === postId) {
           return {
             ...p,
-            likesCount: liked ? p.likesCount - 1 : p.likesCount + 1,
+            likesCount: liked ? p?.likesCount - 1 : p?.likesCount + 1,
             liked: !liked,
           }
         }
@@ -95,7 +95,7 @@ const CreatePost = () => {
     axios
       .get(`https://linkup-5h1y.onrender.com/api/v1/publications/all/${userId}`)
       .then(response => {
-        setPosts(response.data.data)
+        setPosts(response?.data?.data)
       })
       .catch(err => console.log(err))
   }, [userId])
@@ -146,16 +146,16 @@ const CreatePost = () => {
           {Array.isArray(posts) ? (
             posts.map(post => (
               <Post
-                key={post._id}
+                key={post?._id}
                 userId={userId}
-                userName={post.userId}
-                postContent={post.description}
-                postImage={post.image}
-                postId={post._id}
-                postDate={post.createdAt}
+                userName={post?.userId}
+                postContent={post?.description}
+                postImage={post?.image}
+                postId={post?._id}
+                postDate={post?.createdAt}
                 handleLikeClick={handleLikeClick}
-                likesCount={post.likesCount}
-                liked={post.liked}
+                likesCount={post?.likesCount}
+                liked={post?.liked}
               />
             ))
           ) : (

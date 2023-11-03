@@ -15,14 +15,14 @@ const Post = ({ user, posts }) => {
         {Array.isArray(posts) ? (
           posts.map(post => (
             <Posted
-              key={post._id}
-              userName={post.userId}
-              postContent={post.description}
-              postImage={post.image}
-              postId={post._id}
-              postDate={post.createdAt}
-              likesCount={post.likesCount}
-              liked={post.liked}
+              key={post?._id}
+              userName={post?.userId}
+              postContent={post?.description}
+              postImage={post?.image}
+              postId={post?._id}
+              postDate={post?.createdAt}
+              likesCount={post?.likesCount}
+              liked={post?.liked}
             />
           ))
         ) : (
