@@ -68,7 +68,6 @@ const Index = () => {
   }, [id])
 
   const userData = JSON.parse(localStorage.getItem('userData'))
-  console.log(userData)
 
   return (
     <div>
@@ -87,10 +86,10 @@ const Index = () => {
         />
       </div>
       <div className="body-profile">
-        <div className="body-profile-about">
+        <div className="body-profile-about bg-gradient-to-b from-blue-400 to-blue-900 dark:bg-gradient-to-b dark:from-neutral-900 dark:to-neutral-900 border-r border-neutral-700">
           <About description={user?.description} />
         </div>
-        <div className="body-profile-post dark:bg-neutral-800">
+        <div className="body-profile-post dark:bg-neutral-800 ">
           <Post user={user} posts={posts} />
         </div>
       </div>

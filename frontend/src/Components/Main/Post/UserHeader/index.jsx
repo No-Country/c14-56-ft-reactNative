@@ -3,7 +3,7 @@ import Avatar from '@Avatar'
 import './UserHeader.css'
 import axios from 'axios'
 
-const UserHeader = ({ avatarUrl, userId, userHandle }) => {
+const UserHeader = ({ userId }) => {
   const [userInfo, setUserInfo] = useState({})
   const { photoProfile, name, userName } = userInfo
 

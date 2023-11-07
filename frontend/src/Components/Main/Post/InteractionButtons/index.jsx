@@ -3,6 +3,7 @@ import Comments from '@Comments'
 import { useCookies } from 'react-cookie'
 import './InteractionButtons.css'
 import heartButton from '../../../../assets/icons/heart_icon.png'
+import heartButtonRed from '../../../../assets/icons/heart_icon_red.png'
 import messageButton from '../../../../assets/icons/message-icon.png'
 import axios from 'axios'
 
@@ -76,24 +77,30 @@ const InteractionButtons = ({ postId, user_id }) => {
 
   return (
     <div className="flex bg-pink-100 rounded-b-lg py-2 justify-between dark:bg-neutral-800 ">
-      <button
-        className={`heart-button relative bg-transparent cursor-pointer ${
-          isLiked ? 'text-red-600 liked ' : 'text-black dark:text-slate-200'
-        } `}
-        onClick={handleLike}
+      <div
+        className={`focus:outline-none ${isLiked ? 'text-red-600' : 'text-black dark:text-slate-200'}`}
       >
-        <img src={heartButton} alt="" className="w-8" />
-        {likesCount} <span className="text-lg">Me gusta</span>
-      </button>
-      <button
-        className="button relative bg-transparent cursor-pointer chatbubble-button dark:text-slate-200"
-        onClick={() => handleOpenModal()}
+        <img
+          src={isLiked ? heartButtonRed : heartButton}
+          alt=""
+          className="w-9 cursor-pointer transform hover:scale-110"
+          onClick={handleLike}
+        />
+        <span className="text-lg">{likesCount} Me gusta</span>
+      </div>
+      <div
+        className=" dark:text-slate-200 focus:outline-none"
       >
-        <img src={messageButton} alt="" className="w-6" />
-        {/* <ion-icon name="chatbubble" class="text-2xl"></ion-icon> */}
+        <img
+          src={messageButton}
+          alt="" className="w-6 cursor-pointer transform hover:scale-110 pt-1 pb-2"
+          onClick={() => handleOpenModal()} />
         <span className="comment-count text-lg">{commentsLength}</span>
-      </button>
-      <Comments postId={postId} mi_modal={mi_modal} user_id={user_id} />
+      </div>
+      <Comments
+        postId={postId}
+        mi_modal={mi_modal}
+        user_id={user_id} />
     </div>
   )
 }

@@ -110,7 +110,7 @@ const Banner = ({ user, posts, followers, followeds }) => {
   return (
     <div className="profile-banner">
       <div className="profile-banner-container">
-        <div className="profile-banner-photo">
+        <div className="profile-banner-photo ">
           <Avatar
             imageUrl={
               user ? user?.photoProfile?.path : 'src/assets/profileImg.png'
@@ -120,9 +120,9 @@ const Banner = ({ user, posts, followers, followeds }) => {
             <>
               <button
                 onClick={handleButtonClick}
-                className="profile-banner-photo-upload"
+                className="profile-banner-photo-upload dark:border-neutral-500"
               >
-                <MdAddAPhoto style={photoIconStyle} />
+                <MdAddAPhoto style={photoIconStyle}/>
               </button>
               <input
                 type="file"

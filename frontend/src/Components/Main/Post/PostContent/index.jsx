@@ -32,7 +32,7 @@ const PostContent = ({
       <p className="post-date text-end italic">{timeAgo}</p>
       <div className="post-content text-left rounded dark:bg-neutral-900">
         <div className="content text-ml dark:text-slate-200">{postContent}</div>
-        {postImage !== 'none' ? <img src={postImage} alt="post-image" className='mt-5'/> : null}
+        {postImage !== 'none' ? <img src={postImage} alt="post-image" className='mt-5 rounded'/> : null}
       </div>
     </div>
   )

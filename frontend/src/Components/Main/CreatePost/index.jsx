@@ -130,8 +130,8 @@ const CreatePost = () => {
                 name="description"
               />
               <input
-                className='dark:text-slate-200'
                 type="file"
+                className="file-input file-input-bordered file-input-sm w-full dark:border-neutral-700 dark:bg-neutral-700 dark:text-slate-200"
                 id="file-input"
                 onChange={handleFileChange}
                 accept={validImage}

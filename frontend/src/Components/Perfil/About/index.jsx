@@ -1,16 +1,13 @@
-import './styles.css'
 const About = ({ description }) => {
   return (
     <>
-      <div className='about'>
-        <h1 className="profile-about-title">Profesión</h1>
-        <div className="profile-about-box">
-          <h4 className="profile-about-box-title">Sobre MI</h4>
-          <hr className="profile-about-box-line" />
-          <p className="profile-about-box-description">{description}</p>
+      <div className='mt-20'>
+        <div className="bg-white dark:bg-neutral-800 shadow-md p-4 rounded-lg">
+          <h4 className="text-xl font-semibold dark:text-slate-200">Sobre Mí</h4>
+          <hr className="my-2 bg-slate-200 h-1 rounded-xl dark:border-slate-600" />
+          <p className="text-slate-700 dark:text-slate-400">{description}</p>
         </div>
       </div>
-
     </>
   )
 }
