@@ -1,11 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
-import Historia from '@Histories'
 import ModalHistorias from '@HistoriesModal'
 import CrearHistoria from '@HistoriesCreate'
 
+import useFetch from '@useFetch'
 import { useCookies } from 'react-cookie'
-
-import axios from 'axios'
 
 const ContenedorHistorias = () => {
   const mi_modal = useRef()
@@ -42,55 +40,44 @@ const ContenedorHistorias = () => {
     Authorization: `Bearer ${token}`,
   }
 
+  //uso del custom hook 'useFetch' para hacer una peticion de tipo 'get' de las historias
+  const { isLoading: loadingStories, apiData: storiesApiData, serverError: storiesServerError } = useFetch({ url: `https://linkup-5h1y.onrender.com/api/v1/historys?page=${1}&limit=${100}`, method: 'get', headers: headers })
+
   const getStories = e => {
-    axios
-      .get(
-        `https://linkup-5h1y.onrender.com/api/v1/historys?page=${1}&limit=${100}`,
-        { headers }
-      )
-      .then(res => {
-        const valorData = res.data.data
-        const storiesForUsers = {}
+    if (!loadingStories && storiesApiData) {
+      const valorData = storiesApiData.data
+      const storiesForUsers = {}
 
-        for (let i = 0; i < e.length; i++) {
-          let valor = e[i]._id
-          let coincidencias = valorData.filter(x => x.userId === valor)
+      for (let i = 0; i < e.length; i++) {
+        let valor = e[i]._id
+        let coincidencias = valorData.filter(x => x.userId === valor)
 
-          if (coincidencias > []) storiesForUsers[valor] = coincidencias
-        }
+        if (coincidencias > []) storiesForUsers[valor] = coincidencias
+      }
 
-        const userStoriesKeys = Object.keys(storiesForUsers)
-        const orderedStories = userStoriesKeys
-          .map(key => storiesForUsers[key])
-          .flat()
+      const userStoriesKeys = Object.keys(storiesForUsers)
+      const orderedStories = userStoriesKeys
+        .map(key => storiesForUsers[key])
+        .flat()
 
-        // console.log(orderedStories)
-
-        setUsersWithStories(storiesForUsers)
-        setStories(orderedStories)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      setUsersWithStories(storiesForUsers)
+      setStories(orderedStories)
+    } else if (!loadingStories && storiesServerError) {
+      console.error("Error en la solicitud:", storiesServerError);
+    }
   }
-  const getUsers = () => {
-    axios
-      .get(
-        `https://linkup-5h1y.onrender.com/api/v1/users?page=${1}&limit=${100}`,
-        { headers }
-      )
-      .then(res => {
-        setUsers(res.data.data)
-        getStories(res.data.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+
+  //uso del custom hook 'useFetch' para hacer una peticion de tipo 'get' de los usuarios
+  const { isLoading: userLoading, apiData: userApiData, serverError: userServerError } = useFetch({ url: `https://linkup-5h1y.onrender.com/api/v1/users?page=${1}&limit=${100}`, method: 'get', headers: headers })
 
   useEffect(() => {
-    getUsers()
-  }, [cookies])
+    if (!userLoading && userApiData) {
+      setUsers(userApiData.data);
+      getStories(userApiData.data);
+    } else if (!userLoading && userServerError) {
+      console.error("Error en la solicitud:", userServerError);
+    }
+  }, [userLoading, userApiData, userServerError])
 
   const getAllStoriesImages = () => {
     if (stories) {
@@ -134,6 +121,7 @@ const ContenedorHistorias = () => {
         className="relative flex overflow-x-scroll max-w-xl bg-white p-1 scroll-smooth no-scrollbar dark:bg-neutral-900"
         ref={containerRef}
       >
+        {userLoading || loadingStories ? 'Cargando' : null}
         <CrearHistoria />
         {usersWithStories &&
           Object.keys(usersWithStories).map((userId, index) => (
@@ -178,3 +166,4 @@ const ContenedorHistorias = () => {
 export default ContenedorHistorias
 //108
 //124
+//189

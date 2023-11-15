@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import icon from '@logo'
-// import loginImage from '@loginImg'
 import './Bienvenida.css'
 
 import SignIn from '../Formulario/SignIn'
@@ -22,9 +21,6 @@ const Bienvenida = () => {
     )
   }
 
-  //sm:w-11/12 md:w-2/3 lg:w-11/12 xl:w-2/3
-  // bg-slate-100
-
   return (
     <div className='min-h-screen gradiente flex items-center justify-center '>
       <div className='max-sm:flex-col h-full max-md:h-full max-sm:my-5 my-10 mitad bg-black w-11/12 rounded-xl flex max-md:flex-col'>
@@ -37,7 +33,6 @@ const Bienvenida = () => {
               <p className='max-sm:hidden'>Conéctate, comparte historias y descubre nuevos horizontes. Comparte post, sigue amigos, y conecta con el mundo en una sola plataforma!</p>
             </div>
           </div>
-          {/* <img src={loginImage} alt="" className='w-1/3 h-auto max-sm:hidden max-md:w-1/4 ' /> */}
         </div>
         <div className={`flex-col md:w-1/4 ${mostrarForm ? 'my-auto' : 'my-2'}  lg:mr-32 rounded-xl w-4/6 max-sm:my-3 loginStyles h-full`}>
           <div className='w-full flex justify-around mt-1'>

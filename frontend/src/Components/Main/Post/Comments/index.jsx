@@ -27,7 +27,6 @@ const Comments = ({ postId, mi_modal, user_id }) => {
     fetchComments()
   }, [postId])
 
-  console.log(userId)
   useEffect(() => {
     const fetchCompleteComments = async () => {
       try {

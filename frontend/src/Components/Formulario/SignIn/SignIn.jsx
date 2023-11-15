@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import InputForm from '@InputForm'
+import useFetch from '@useFetch'
 
 import { useCookies } from 'react-cookie'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-
-import axios from 'axios'
 
 const SignIn = () => {
   const {
@@ -14,53 +13,55 @@ const SignIn = () => {
     register,
   } = useForm()
   const [peticionErronea, setPeticionErronea] = useState(false)
+  const [data, setData] = useState(null)
 
   const navigate = useNavigate()
   const [, setAuthCookie] = useCookies(['authToken'])
-  const [, setUserIdCookie] = useCookies(['userId'])
+  const [userIdCookie, setUserIdCookie] = useCookies(['userId'])
 
-  const storeUserData = async userId => {
-    await axios
-      .get(`https://linkup-5h1y.onrender.com/api/v1/users/${userId}`)
-      .then(res => {
-        localStorage.setItem('userData', JSON.stringify(res.data.data))
-      })
-      .catch(error => {
-        console.error(error)
-      })
-  }
+  const { isLoading: loadingUsers, apiData: usersApiData, serverError: usersServerError } = useFetch({
+    url: userIdCookie.userId ? `https://linkup-5h1y.onrender.com/api/v1/users/${userIdCookie.userId}` : '', 
+    method: 'get'
+  })
 
-  const checkUser = async data => {
-    await axios
-      .post('https://linkup-5h1y.onrender.com/api/v1/auths/login', data)
-      .then(res => {
-        setAuthCookie('authToken', res.data.token)
-        setUserIdCookie('userId', res.data.user._id)
+  useEffect(() => {
+    if (!loadingUsers && usersApiData) {
+      localStorage.setItem('userData', JSON.stringify(usersApiData.data))
+    } else if (!loadingUsers && usersServerError) {
+      console.error("Error en la solicitud:", usersServerError);
+    }
+  }, [loadingUsers, usersApiData, usersServerError, userIdCookie.userId])
+
+  const { isLoading: loadingAuth, apiData: authApiData, serverError: authServerError } = useFetch({
+    url: data ? 'https://linkup-5h1y.onrender.com/api/v1/auths/login' : '',
+    method: 'post',
+    body: data
+  })
+
+  useEffect(() => {
+    if (!loadingAuth && authApiData) {
+      setAuthCookie('authToken', authApiData.token)
+      setUserIdCookie('userId', authApiData.user._id)
+      setPeticionErronea(false)
+
+      setTimeout(() => {
+        navigate('/home')
+      }, 2000)
+    } else if (!loadingAuth && authServerError) {
+      console.error("Error en la solicitud:", usersServerError);
+      setPeticionErronea(true)
+      setTimeout(() => {
         setPeticionErronea(false)
-        storeUserData(res.data.user._id)
-
-        setTimeout(() => {
-          navigate('/home')
-        }, 2000)
-      })
-      .catch(error => {
-        console.error(error)
-        setPeticionErronea(true)
-        setTimeout(() => {
-          setPeticionErronea(false)
-        }, 5000)
-      })
-  }
-
-  const onSubmit = data => {
-    checkUser(data)
-  }
+      }, 5000)
+    }
+  }, [loadingAuth, authApiData, authServerError, data])
 
   return (
     <form
       className="flex flex-col justify-center align-center w-full md:mt-10"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(data => setData(data))}
     >
+      
       <InputForm
         name="email"
         register={register}
@@ -78,11 +79,9 @@ const SignIn = () => {
         margin={'mt-4'}
       />
 
-      {/* <p className='ml-10 text-xs'>Keep me SIGN IN</p> */}
       <button className="btn btn-lg bg-violet-700 w-2/3 mx-auto my-5 rounded-full text-slate-100 hover-bg-violet-600 max-md:w-1/2 max-sm:w-2/3">
         Sign In
       </button>
-      {/* <p className='mx-auto text-xs mt-5'>FORGOT PASSWORD</p> */}
 
       {peticionErronea && (
         <div className="toast toast-start w-1/3 ">
@@ -109,3 +108,4 @@ const SignIn = () => {
 }
 
 export default SignIn
+//112
